@@ -57,14 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ColorfulScreen.cs" />
+    <Compile Include="Battery\BatteryBase.cs" />
+    <Compile Include="Battery\IBatteryStatus.cs" />
+    <Compile Include="Battery\LithiumLonBattery.cs" />
+    <Compile Include="Screen\ColorfulScreen.cs" />
     <Compile Include="Mobile.cs" />
-    <Compile Include="MonochromeScreen.cs" />
-    <Compile Include="OLEDScreen.cs" />
+    <Compile Include="Screen\IScreenImage.cs" />
+    <Compile Include="Screen\MonochromeScreen.cs" />
+    <Compile Include="Screen\OLEDScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RetinaScreen.cs" />
-    <Compile Include="ScreenBase.cs" />
+    <Compile Include="Screen\RetinaScreen.cs" />
+    <Compile Include="Screen\ScreenBase.cs" />
     <Compile Include="SimCorpMobile.cs" />
   </ItemGroup>
   <ItemGroup>
