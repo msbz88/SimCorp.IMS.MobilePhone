@@ -2,7 +2,7 @@
 using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Battery;
 
-namespace Simcorp.IMS.MobilePhone {
+namespace Simcorp.IMS.MobilePhone.API {
     public abstract class Mobile {
         public abstract ScreenBase Screen { get; }
         public abstract BatteryBase Battery { get; }

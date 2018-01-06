@@ -61,7 +61,7 @@
     <Compile Include="Battery\IBattery.cs" />
     <Compile Include="Battery\LithiumLonBattery.cs" />
     <Compile Include="Screen\ColorfulScreen.cs" />
-    <Compile Include="Mobile.cs" />
+    <Compile Include="API\Mobile.cs" />
     <Compile Include="Screen\IScreenImage.cs" />
     <Compile Include="Screen\MonochromeScreen.cs" />
     <Compile Include="Screen\OLEDScreen.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen\RetinaScreen.cs" />
     <Compile Include="Screen\ScreenBase.cs" />
-    <Compile Include="SimCorpMobile.cs" />
+    <Compile Include="API\SimCorpMobile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
