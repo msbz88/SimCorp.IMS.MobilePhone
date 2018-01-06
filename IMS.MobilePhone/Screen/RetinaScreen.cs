@@ -1,11 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Simcorp.IMS.MobilePhone {
+namespace Simcorp.IMS.MobilePhone.Screen {
     public class RetinaScreen : ColorfulScreen {
+        public RetinaScreen(int sizeInch, int heightPixel, int widthPixel) {
+            this.SizeInch = sizeInch;
+            this.HeightPixel = heightPixel;
+            this.WidthPixel = widthPixel;
+        }
+
         public override void Show(IScreenImage screenImage) {
             Console.WriteLine($"I am {nameof(RetinaScreen)}");
         }
@@ -15,7 +17,7 @@ namespace Simcorp.IMS.MobilePhone {
         }
 
         public override string ToString() {
-            return "Retina Screen";
+            return $"Retina Screen ({this.SizeInch}\", {this.HeightPixel}x{this.WidthPixel})";
         }
     }
 }

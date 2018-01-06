@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Simcorp.IMS.MobilePhone {
+namespace Simcorp.IMS.MobilePhone.Battery {
     class LithiumLonBattery: BatteryBase {
+        public LithiumLonBattery(int volume, int charge) {
+            this.Volume = volume;
+            this.Charge = charge;
+        }
+
         public override void GetStatus(IBattery battery) {
             Console.WriteLine($"I am {nameof(LithiumLonBattery)}");
         }
@@ -19,7 +20,7 @@ namespace Simcorp.IMS.MobilePhone {
         }
 
         public override string ToString() {
-            return "Lithium Lon Battery";
+            return $"Lithium Lon Battery (volume: {this.Volume}, charged: {this.Charge}%)";
         }
 
     }

@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Simcorp.IMS.MobilePhone {
-    public abstract class BatteryBase: IBattery {
-        public int Charge {
-            get { return Charge; }
+﻿namespace Simcorp.IMS.MobilePhone.Battery {
+    public abstract class BatteryBase {
+        private int volume;
+        protected int Volume {
+            get { return volume; }
             set {
-                if (Charge < 0) { Charge = 0; }
-                else if (Charge > 100) { Charge = 100; }
-                else { Charge = value; }
+                if (value < 0) { volume = 0; }
+                else { volume = value; }
             }
         }
 
-        public int Volume {
-            get { return Volume; }
+        private int charge;
+        protected int Charge {
+            get { return charge; }
             set {
-                if (Volume < 0) { Volume = 0; }
-                else { Volume = value; }
+                if (value < 0) { charge = 0; }
+                else if (value > 100) { charge = 100; }
+                else { charge = value; }
             }
         }
 

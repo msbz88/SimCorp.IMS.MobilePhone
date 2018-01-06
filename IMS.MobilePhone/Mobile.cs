@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
+using Simcorp.IMS.MobilePhone.Screen;
+using Simcorp.IMS.MobilePhone.Battery;
 
 namespace Simcorp.IMS.MobilePhone {
     public abstract class Mobile {
@@ -31,7 +29,8 @@ namespace Simcorp.IMS.MobilePhone {
 
         public string Description() {
             var descriptionBuilder = new StringBuilder();
-            descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}\nBattery Type: {Battery.ToString()}");
+            descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}");
+            descriptionBuilder.AppendLine($"Battery Type: {Battery.ToString()}");
             return descriptionBuilder.ToString();
         }
     }

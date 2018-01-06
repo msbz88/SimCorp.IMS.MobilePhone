@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Simcorp.IMS.MobilePhone {
+namespace Simcorp.IMS.MobilePhone.Screen {
     public class MonochromeScreen : ScreenBase {
         public override void Show(IScreenImage screenImage) {
             Console.WriteLine($"I am {nameof(MonochromeScreen)}");
