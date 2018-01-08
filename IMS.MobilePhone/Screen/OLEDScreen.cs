@@ -2,10 +2,7 @@
 
 namespace Simcorp.IMS.MobilePhone.Screen {
     public class OLEDScreen : ColorfulScreen {
-        public OLEDScreen(int sizeInch, int heightPixel, int widthPixel) {
-            this.SizeInch = sizeInch;
-            this.HeightPixel = heightPixel;
-            this.WidthPixel = widthPixel;
+        public OLEDScreen(int sizeInch, int heightPixel, int widthPixel) : base(sizeInch, heightPixel, widthPixel) {
         }
 
         public override void Show(IScreenImage screenImage) {

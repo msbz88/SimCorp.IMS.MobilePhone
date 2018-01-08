@@ -58,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Battery\BatteryBase.cs" />
-    <Compile Include="Battery\IBattery.cs" />
+    <Compile Include="Battery\IBatteryCharger.cs" />
     <Compile Include="Battery\LithiumLonBattery.cs" />
     <Compile Include="Screen\ColorfulScreen.cs" />
     <Compile Include="API\Mobile.cs" />

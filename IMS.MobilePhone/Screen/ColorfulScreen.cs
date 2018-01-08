@@ -2,6 +2,9 @@
 
 namespace Simcorp.IMS.MobilePhone.Screen {
     public class ColorfulScreen : ScreenBase {
+        public ColorfulScreen(int sizeInch, int heightPixel, int widthPixel) : base(sizeInch, heightPixel, widthPixel) {
+        }
+
         public override void Show(IScreenImage screenImage) {
             Console.WriteLine($"I am {nameof(ColorfulScreen)}");
         }

@@ -2,10 +2,7 @@
 
 namespace Simcorp.IMS.MobilePhone.Screen {
     public class RetinaScreen : ColorfulScreen {
-        public RetinaScreen(int sizeInch, int heightPixel, int widthPixel) {
-            this.SizeInch = sizeInch;
-            this.HeightPixel = heightPixel;
-            this.WidthPixel = widthPixel;
+        public RetinaScreen(int sizeInch, int heightPixel, int widthPixel) : base(sizeInch, heightPixel, widthPixel) {
         }
 
         public override void Show(IScreenImage screenImage) {

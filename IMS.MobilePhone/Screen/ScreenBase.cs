@@ -1,30 +1,38 @@
-﻿namespace Simcorp.IMS.MobilePhone.Screen {
+﻿using System;
+
+namespace Simcorp.IMS.MobilePhone.Screen {
     public abstract class ScreenBase {
         private int sizeInch;
-        protected int SizeInch {
+        public int SizeInch {
             get { return sizeInch; }
-            set {
-                if (value < 0) { sizeInch = 0; }
+            private set {
+                if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "ScreenBase.SizeInch"); }
                 else { sizeInch = value; }
             }
         }
 
         private int heightPixel;
-        protected int HeightPixel {
+        public int HeightPixel {
             get { return heightPixel; }
-            set {
-                if (value < 0) { heightPixel = 0; }
+            private set {
+                if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "ScreenBase.HeightPixel"); }
                 else { heightPixel = value; }
             }
         }
 
         private int widthPixel;
-        protected int WidthPixel {
+        public int WidthPixel {
             get { return widthPixel; }
-            set {
-                if (value < 0) { widthPixel = 0; }
+            private set {
+                if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "ScreenBase.WidthPixel"); }
                 else { widthPixel = value; }
             }
+        }
+
+        public ScreenBase(int sizeInch, int heightPixel, int widthPixel) {
+            this.SizeInch = sizeInch;
+            this.HeightPixel = heightPixel;
+            this.WidthPixel = widthPixel;
         }
 
         public abstract void Show(IScreenImage screenImage);

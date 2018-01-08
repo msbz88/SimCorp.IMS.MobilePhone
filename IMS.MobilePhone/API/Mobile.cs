@@ -15,16 +15,12 @@ namespace Simcorp.IMS.MobilePhone.API {
             Screen.Show(screenImage, brightness);
         }
 
-        private void GetStatus(IBattery battery) {
-            Battery.GetStatus(battery);
+        private void GetBatteryInfo() {
+            Battery.GetBatteryInfo();
         }
 
-        private void GetStatus(IBattery battery, int volume) {
-            Battery.GetStatus(battery, volume);
-        }
-
-        private void GetStatus(IBattery battery, int volume, int charge) {
-            Battery.GetStatus(battery, volume, charge);
+        private void ChargeBattery() {
+            Battery.ChargeBattery();
         }
 
         public string Description() {
