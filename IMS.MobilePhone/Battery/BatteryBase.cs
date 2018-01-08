@@ -16,7 +16,7 @@ namespace Simcorp.IMS.MobilePhone.Battery {
             get { return charge; }
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Charge"); }
-                else if (value > Volume) { throw new ArgumentException($"Parameter cannot be greater than {Volume}.", "BatteryBase.Charge"); }
+                else if (value > Volume) { throw new ArgumentException($"Parameter cannot be greater than {this.Volume}.", "BatteryBase.Charge"); }
                 else { charge = value; }
             }
         }
@@ -31,6 +31,6 @@ namespace Simcorp.IMS.MobilePhone.Battery {
             BatteryCharger.ChargeBattery(this);
         }
 
-        public abstract void GetBatteryInfo();
+        public abstract double GetBatteryChargeLevel();
     }
 }
