@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Simcorp.IMS.MobilePhone.Dynamic {
+namespace Simcorp.IMS.MobilePhone.Speaker {
     class PhoneSpeaker : SpeakerBase {
         public PhoneSpeaker(int volume) : base(volume) {
         }

@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Battery;
-using Simcorp.IMS.MobilePhone.Dynamic;
+using Simcorp.IMS.MobilePhone.Speaker;
 using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone.API {

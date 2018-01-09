@@ -60,8 +60,8 @@
     <Compile Include="Battery\BatteryBase.cs" />
     <Compile Include="Battery\IBatteryCharger.cs" />
     <Compile Include="Battery\LithiumLonBattery.cs" />
-    <Compile Include="Dynamic\SpeakerBase.cs" />
-    <Compile Include="Dynamic\PhoneSpeaker.cs" />
+    <Compile Include="Speaker\SpeakerBase.cs" />
+    <Compile Include="Speaker\PhoneSpeaker.cs" />
     <Compile Include="Headset\IIPhoneHeadset.cs" />
     <Compile Include="Headset\IPlayback.cs" />
     <Compile Include="Headset\SamsungHeadset.cs" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using Simcorp.IMS.MobilePhone.Headset;
 
-namespace Simcorp.IMS.MobilePhone.Dynamic {
+namespace Simcorp.IMS.MobilePhone.Speaker {
     public abstract class SpeakerBase : IPlayback {
         private int volume;
         public int Volume {
