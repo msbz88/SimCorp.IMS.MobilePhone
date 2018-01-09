@@ -2,12 +2,14 @@
 using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Battery;
 using Simcorp.IMS.MobilePhone.Dynamic;
+using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone.API {
     public abstract class Mobile {
         public abstract ScreenBase Screen { get; }
         public abstract BatteryBase Battery { get; }
-        public abstract DynamicBase Dynamic { get; }
+        public abstract SpeakerBase Speaker { get; }
+        public IPlayback PlaybackComponent { get; set; }
 
         private void Show(IScreenImage screenImage) {
             Screen.Show(screenImage);
@@ -25,24 +27,20 @@ namespace Simcorp.IMS.MobilePhone.API {
             Battery.ChargeBattery();
         }
 
-        private double GetDynamicVolumeLevel() {
-            return Dynamic.GetDynamicVolumeLevel();
+        private double GetSpeakerVolumeLevel() {
+            return Speaker.GetSpeakerVolumeLevel();
         }
 
-        private void IncreaseDynamicVolumeLevel(int currentVolumeStep) {
-            Dynamic.IncreaseDynamicVolumeLevel(currentVolumeStep);
+        private void IncreaseSpeakerVolumeLevel(int currentVolumeStep) {
+            Speaker.IncreaseSpeakerVolumeLevel(currentVolumeStep);
         }
 
-        private void DecreaseDynamicVolumeLevel(int currentVolumeStep) {
-            Dynamic.DecreaseDynamicVolumeLevel(currentVolumeStep);
+        private void DecreaseSpeakerVolumeLevel(int currentVolumeStep) {
+            Speaker.DecreaseSpeakerVolumeLevel(currentVolumeStep);
         }
 
-        public string Description() {
-            var descriptionBuilder = new StringBuilder();
-            descriptionBuilder.AppendLine($"Screen Type: {Screen.ToString()}");
-            descriptionBuilder.AppendLine($"Battery Type: {Battery.ToString()}");
-            descriptionBuilder.AppendLine($"Dynamic Type: {Dynamic.ToString()}");
-            return descriptionBuilder.ToString();
+        public void Play(object data) {
+            PlaybackComponent.Play(data);
         }
     }
 }

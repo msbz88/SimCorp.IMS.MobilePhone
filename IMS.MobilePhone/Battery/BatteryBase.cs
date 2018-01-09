@@ -2,12 +2,12 @@
 
 namespace Simcorp.IMS.MobilePhone.Battery {
     public abstract class BatteryBase {
-        private int volume;
-        public int Volume {
-            get { return volume; }
+        private int capacity;
+        public int Capacity {
+            get { return capacity; }
             private set {
-                if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Volume"); }
-                else { volume = value; }
+                if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Capacity"); }
+                else { capacity = value; }
             }
         }
 
@@ -16,13 +16,13 @@ namespace Simcorp.IMS.MobilePhone.Battery {
             get { return charge; }
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Charge"); }
-                else if (value > Volume) { throw new ArgumentException($"Parameter cannot be greater than {this.Volume}.", "BatteryBase.Charge"); }
+                else if (value > Capacity) { throw new ArgumentException($"Parameter cannot be greater than {this.Capacity}.", "BatteryBase.Charge"); }
                 else { charge = value; }
             }
         }
 
-        public BatteryBase(int volume) {
-            this.Volume = volume;
+        public BatteryBase(int capacity) {
+            this.Capacity = capacity;
         }
 
         IBatteryCharger BatteryCharger { get; set; }

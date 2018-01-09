@@ -8,7 +8,7 @@ namespace Simcorp.IMS.MobilePhone.API {
         private readonly OLEDScreen vOLEDScreen = new OLEDScreen(5, 1920, 1080);
         public override BatteryBase Battery { get { return vLithiumLonBattery; } }
         private readonly LithiumLonBattery vLithiumLonBattery = new LithiumLonBattery(4000);
-        public override DynamicBase Dynamic { get { return vBassDynamic; } }
-        private readonly LowFrequencyDynamic vBassDynamic = new LowFrequencyDynamic(500);
+        public override SpeakerBase Speaker { get { return vSpeaker; } }
+        private readonly PhoneSpeaker vSpeaker = new PhoneSpeaker(500);
     }
 }

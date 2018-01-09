@@ -14,7 +14,7 @@ namespace Simcorp.IMS.MobilePhone.Screen {
         }
 
         public override string ToString() {
-            return $"Retina Screen ({this.SizeInch}\", {this.HeightPixel}x{this.WidthPixel})";
+            return $"Screen Type: Retina Screen ({this.SizeInch}\", {this.HeightPixel}x{this.WidthPixel})";
         }
     }
 }
