@@ -9,6 +9,6 @@ namespace Simcorp.IMS.MobilePhone.API {
         public override BatteryBase Battery { get { return vLithiumLonBattery; } }
         private readonly LithiumLonBattery vLithiumLonBattery = new LithiumLonBattery(4000);
         public override DynamicBase Dynamic { get { return vBassDynamic; } }
-        private readonly BassDynamic vBassDynamic = new BassDynamic(500);
+        private readonly LowFrequencyDynamic vBassDynamic = new LowFrequencyDynamic(500);
     }
 }

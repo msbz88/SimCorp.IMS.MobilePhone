@@ -29,12 +29,12 @@ namespace Simcorp.IMS.MobilePhone.API {
             return Dynamic.GetDynamicVolumeLevel();
         }
 
-        private void IncreaseDynamicVolumeLevel() {
-            Dynamic.IncreaseDynamicVolumeLevel();
+        private void IncreaseDynamicVolumeLevel(int currentVolumeStep) {
+            Dynamic.IncreaseDynamicVolumeLevel(currentVolumeStep);
         }
 
-        private void DecreaseDynamicVolumeLevel() {
-            Dynamic.DecreaseDynamicVolumeLevel();
+        private void DecreaseDynamicVolumeLevel(int currentVolumeStep) {
+            Dynamic.DecreaseDynamicVolumeLevel(currentVolumeStep);
         }
 
         public string Description() {

@@ -21,24 +21,14 @@ namespace Simcorp.IMS.MobilePhone.Dynamic {
             }
         }
 
-        private int currentVolumeStep;
-        public int CurrentVolumeStep {
-            get { return currentVolumeStep; }
-            protected set {
-                if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BassDynamic.CurrentVolumeStep"); }
-                else if (value > Volume) { throw new ArgumentException($"Parameter cannot be greater than {this.Volume}.", "BassDynamic.CurrentVolumeStep"); }
-                else { currentVolumeStep = value; }
-            }
-        }
-
         public DynamicBase(int volume) {
             this.Volume = volume;
         }
 
         public abstract double GetDynamicVolumeLevel();
 
-        public abstract void IncreaseDynamicVolumeLevel();
+        public abstract void IncreaseDynamicVolumeLevel(int currentVolumeStep);
 
-        public abstract void DecreaseDynamicVolumeLevel();
+        public abstract void DecreaseDynamicVolumeLevel(int currentVolumeStep);
     }
 }

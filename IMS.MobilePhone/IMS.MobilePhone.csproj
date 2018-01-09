@@ -61,7 +61,7 @@
     <Compile Include="Battery\IBatteryCharger.cs" />
     <Compile Include="Battery\LithiumLonBattery.cs" />
     <Compile Include="Dynamic\DynamicBase.cs" />
-    <Compile Include="Dynamic\BassDynamic.cs" />
+    <Compile Include="Dynamic\LowFrequencyDynamic.cs" />
     <Compile Include="Screen\ColorfulScreen.cs" />
     <Compile Include="API\Mobile.cs" />
     <Compile Include="Screen\IScreenImage.cs" />
