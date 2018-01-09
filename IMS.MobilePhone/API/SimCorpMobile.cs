@@ -3,7 +3,7 @@ using Simcorp.IMS.MobilePhone.Battery;
 using Simcorp.IMS.MobilePhone.Dynamic;
 
 namespace Simcorp.IMS.MobilePhone.API {
-    public class SimCorpMobile: Mobile{
+    public class SimCorpMobile : Mobile {
         public override ScreenBase Screen { get { return vOLEDScreen; } }
         private readonly OLEDScreen vOLEDScreen = new OLEDScreen(5, 1920, 1080);
         public override BatteryBase Battery { get { return vLithiumLonBattery; } }

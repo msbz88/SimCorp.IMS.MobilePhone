@@ -8,7 +8,7 @@ namespace Simcorp.IMS.MobilePhone.Dynamic {
 
         public override double GetDynamicVolumeLevel() {
             if (this.CurrentVolume != 0 && this.Volume != 0) {
-                return this.CurrentVolume / this.Volume;
+                return (double)this.CurrentVolume / (double)this.Volume;
             }
             else { return 0; }
         }
@@ -26,7 +26,7 @@ namespace Simcorp.IMS.MobilePhone.Dynamic {
         }
 
         public override string ToString() {
-            return $"Bass Dynamic (Max volume: {this.Volume}, current volume: {Math.Round(GetDynamicVolumeLevel() * 100)}%)";
+            return $"Bass Dynamic (Max volume: {this.Volume}, current volume: {GetDynamicVolumeLevel() * 100}%)";
         }
     }
 }
