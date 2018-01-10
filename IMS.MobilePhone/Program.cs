@@ -39,7 +39,7 @@ namespace Simcorp.IMS.MobilePhone {
             Console.WriteLine(simMobile.Speaker.ToString());
             */
             List<string> playBackComponents = new List<string>();
-            playBackComponents.Add("1. phone speaker.");
+            playBackComponents.Add("1. Phone speaker.");
             playBackComponents.Add("2. Samsung Headset.");
             playBackComponents.Add("3. iPhone Headset.");
 
