@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Reflection;
 using System.Collections.Generic;
-using Simcorp.IMS.MobilePhone.API;
-using Simcorp.IMS.MobilePhone.Screen;
-using Simcorp.IMS.MobilePhone.Speaker;
-using Simcorp.IMS.MobilePhone.Battery;
-using Simcorp.IMS.MobilePhone.Audio;
-using Simcorp.IMS.MobilePhone.Headset;
+using Simcorp.IMS.MobilePhone.ClassLibrary.API;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Screen;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Speaker;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Battery;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Audio;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Headset;
 
 namespace Simcorp.IMS.MobilePhone {
     class Program {
@@ -15,7 +15,7 @@ namespace Simcorp.IMS.MobilePhone {
             try {
                 result = int.Parse(userInput);
             }catch (FormatException) {
-                Console.WriteLine("Please type just integer number of playback component!");
+                Console.WriteLine("Please type just integer number of component!");
                 Console.ReadKey();
                 Console.Clear();
                 return 0;
@@ -39,20 +39,21 @@ namespace Simcorp.IMS.MobilePhone {
             IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350);
             IAudioController samsungHeadset = (IAudioController)samsungHeadsetComp;
             IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;        
-            List<string> playBackComponents = new List<string>();
-            playBackComponents.Add("1. Phone speaker.");
-            playBackComponents.Add("2. Samsung Headset.");
-            playBackComponents.Add("3. iPhone Headset.");
+            List<string> playComponentsMenuItems = new List<string>();
+            playComponentsMenuItems.Add("Phone speaker.");
+            playComponentsMenuItems.Add("Samsung Headset.");
+            playComponentsMenuItems.Add("iPhone Headset.");
             int userPlaybackChoice = 0;
             while (true) {
                 while (userPlaybackChoice == 0) {
                     Console.WriteLine(simMobile.ToString());
-                    Console.WriteLine("Please select playback component(specify index)\n");
-                    foreach (string item in playBackComponents) {
+                    Console.WriteLine("Please select component (specify index)\n");
+                    foreach (string item in playComponentsMenuItems) {
+                        Console.Write(playComponentsMenuItems.IndexOf(item) + 1 + ". ");
                         Console.WriteLine(item);
                     }
                     Console.Write("\nYour choice: ");
-                    userPlaybackChoice = CheckUserInput(Console.ReadLine(), playBackComponents);
+                    userPlaybackChoice = CheckUserInput(Console.ReadLine(), playComponentsMenuItems);
                 }
                 switch (userPlaybackChoice) {
                     case 1:
