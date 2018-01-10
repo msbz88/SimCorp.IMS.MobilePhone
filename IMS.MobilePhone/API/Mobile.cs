@@ -1,15 +1,15 @@
 ﻿using System.Text;
 using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Battery;
-using Simcorp.IMS.MobilePhone.Speaker;
+using Simcorp.IMS.MobilePhone.Audio;
 using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone.API {
     public abstract class Mobile {
         public abstract ScreenBase Screen { get; }
         public abstract BatteryBase Battery { get; }
-        public abstract SpeakerBase Speaker { get; }
-        public IPlayback PlaybackComponent { get; set; }
+        public abstract PhoneSpeaker Speaker { get; }
+        public abstract AudioController Audio { get; }
 
         private void Show(IScreenImage screenImage) {
             Screen.Show(screenImage);
@@ -27,20 +27,24 @@ namespace Simcorp.IMS.MobilePhone.API {
             Battery.ChargeBattery();
         }
 
-        private double GetSpeakerVolumeLevel() {
-            return Speaker.GetSpeakerVolumeLevel();
+        private double GetAudioVolumeLevel() {
+            return Audio.GetAudioVolumeLevel();
         }
 
-        private void IncreaseSpeakerVolumeLevel(int currentVolumeStep) {
-            Speaker.IncreaseSpeakerVolumeLevel(currentVolumeStep);
+        private void IncreaseAudioVolumeLevel(int currentVolumeStep) {
+            Audio.IncreaseAudioVolumeLevel(currentVolumeStep);
         }
 
-        private void DecreaseSpeakerVolumeLevel(int currentVolumeStep) {
-            Speaker.DecreaseSpeakerVolumeLevel(currentVolumeStep);
+        private void DecreaseAudioVolumeLevel(int currentVolumeStep) {
+            Audio.DecreaseAudioVolumeLevel(currentVolumeStep);
         }
 
-        public void Play(object data) {
-            PlaybackComponent.Play(data);
+        public void Play() {
+            Speaker.Play();
+        }
+
+        public void Play(IPlayback playbackComponent) {
+            playbackComponent.Play();
         }
     }
 }

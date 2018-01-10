@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Simcorp.IMS.MobilePhone.API;
+using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone {
     class Program {
@@ -19,7 +20,7 @@ namespace Simcorp.IMS.MobilePhone {
                 return result;
             }
             else {
-                Console.WriteLine($"Please just specify number between 1 and {playBackComponents.Count}!");
+                Console.WriteLine($"Please specify number between 1 and {playBackComponents.Count}!");
                 Console.ReadKey();
                 Console.Clear();
                 return 0;
@@ -28,6 +29,10 @@ namespace Simcorp.IMS.MobilePhone {
 
         static void Main(string[] args) {
             SimCorpMobile simMobile = new SimCorpMobile();
+            SamsungHeadset samsungHeadsetComp = new SamsungHeadset(300);
+            IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350);
+            IPlayback samsungHeadset = (IPlayback)samsungHeadsetComp;
+            IPlayback iPhoneHeadset = (IPlayback)iPhoneHeadsetComp;
             /*
             Console.WriteLine(simMobile.Screen.ToString());
             Console.WriteLine(simMobile.Battery.ToString());
@@ -39,28 +44,31 @@ namespace Simcorp.IMS.MobilePhone {
             playBackComponents.Add("3. iPhone Headset.");
 
             int userPlaybackChoice = 0;
-
-            while (userPlaybackChoice == 0) {
-                Console.WriteLine("Please select playback component(specify index)\n");
-                foreach (string item in playBackComponents){
-                    Console.WriteLine(item);
+            while (true) {
+                while (userPlaybackChoice == 0) {
+                    Console.WriteLine("Please select playback component(specify index)\n");
+                    foreach (string item in playBackComponents) {
+                        Console.WriteLine(item);
+                    }
+                    Console.Write("\nYour choice: ");
+                    userPlaybackChoice = CheckUserInput(Console.ReadLine(), playBackComponents);
                 }
-                Console.Write("\nYour choice: ");
-                userPlaybackChoice = CheckUserInput(Console.ReadLine(), playBackComponents);
-            }
 
-            switch (userPlaybackChoice) {
-                case 1:
-                    simMobile.PlaybackComponent.Play(null);
-                    break;
-                case 2:
-                    simMobile.PlaybackComponent.Play(null);
-                    break;
-                case 3:
-                    simMobile.PlaybackComponent.Play(null);
-                    break;
+                switch (userPlaybackChoice) {
+                    case 1:
+                        simMobile.Play();
+                        break;
+                    case 2:
+                        simMobile.Play(samsungHeadset);
+                        break;
+                    case 3:
+                        simMobile.Play(iPhoneHeadset);
+                        break;
+                }
+                userPlaybackChoice = 0;
+                Console.ReadKey();
+                Console.Clear();
             }
-            Console.ReadKey();
         }
     }
 }
