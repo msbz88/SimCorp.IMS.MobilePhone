@@ -1,5 +1,5 @@
-﻿using System;
-using Simcorp.IMS.MobilePhone.Audio;
+﻿using Simcorp.IMS.MobilePhone.Audio;
+using System;
 
 namespace Simcorp.IMS.MobilePhone.Speaker {
     public class PhoneSpeaker : IAudioController {

@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Reflection;
 using System.Collections.Generic;
 using Simcorp.IMS.MobilePhone.API;
+using Simcorp.IMS.MobilePhone.Screen;
+using Simcorp.IMS.MobilePhone.Speaker;
+using Simcorp.IMS.MobilePhone.Battery;
 using Simcorp.IMS.MobilePhone.Audio;
 using Simcorp.IMS.MobilePhone.Headset;
 
@@ -10,17 +14,15 @@ namespace Simcorp.IMS.MobilePhone {
             int result = 0;
             try {
                 result = int.Parse(userInput);
-            }
-            catch (FormatException) {
-                Console.WriteLine("Please type just number of playback component!");
+            }catch (FormatException) {
+                Console.WriteLine("Please type just integer number of playback component!");
                 Console.ReadKey();
                 Console.Clear();
                 return 0;
             }
             if (result > 0 && result <= playBackComponents.Count) {
                 return result;
-            }
-            else {
+            }else {
                 Console.WriteLine($"Please specify number between 1 and {playBackComponents.Count}!");
                 Console.ReadKey();
                 Console.Clear();
@@ -29,24 +31,22 @@ namespace Simcorp.IMS.MobilePhone {
         }
 
         static void Main(string[] args) {
-            SimCorpMobile simMobile = new SimCorpMobile();
+            OLEDScreen screen = new OLEDScreen(5, 1920, 1080);
+            LithiumLonBattery battery = new LithiumLonBattery(4000);
+            PhoneSpeaker speaker = new PhoneSpeaker(1000);
+            SimCorpMobile simMobile = new SimCorpMobile(screen, battery, speaker);
             SamsungHeadset samsungHeadsetComp = new SamsungHeadset(300);
             IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350);
             IAudioController samsungHeadset = (IAudioController)samsungHeadsetComp;
-            IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;
-            /*
-            Console.WriteLine(simMobile.Screen.ToString());
-            Console.WriteLine(simMobile.Battery.ToString());
-            Console.WriteLine(simMobile.Speaker.ToString());
-            */
+            IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;        
             List<string> playBackComponents = new List<string>();
             playBackComponents.Add("1. Phone speaker.");
             playBackComponents.Add("2. Samsung Headset.");
             playBackComponents.Add("3. iPhone Headset.");
-
             int userPlaybackChoice = 0;
             while (true) {
                 while (userPlaybackChoice == 0) {
+                    Console.WriteLine(simMobile.ToString());
                     Console.WriteLine("Please select playback component(specify index)\n");
                     foreach (string item in playBackComponents) {
                         Console.WriteLine(item);
@@ -54,7 +54,6 @@ namespace Simcorp.IMS.MobilePhone {
                     Console.Write("\nYour choice: ");
                     userPlaybackChoice = CheckUserInput(Console.ReadLine(), playBackComponents);
                 }
-
                 switch (userPlaybackChoice) {
                     case 1:
                         simMobile.Play();

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Text;
-using Simcorp.IMS.MobilePhone.Screen;
+﻿using Simcorp.IMS.MobilePhone.Audio;
 using Simcorp.IMS.MobilePhone.Battery;
-using Simcorp.IMS.MobilePhone.Audio;
+using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Speaker;
-using Simcorp.IMS.MobilePhone.Headset;
+using System;
+using System.Text;
 
 namespace Simcorp.IMS.MobilePhone.API {
     public abstract class Mobile {
         public abstract ScreenBase Screen { get; }
         public abstract BatteryBase Battery { get; }
         public abstract PhoneSpeaker Speaker { get; }
-        public abstract AudioController Audio { get; }
+        private AudioController Audio { get; }
 
         private void Show(IScreenImage screenImage) {
             Screen.Show(screenImage);
@@ -48,6 +47,14 @@ namespace Simcorp.IMS.MobilePhone.API {
         public void Play(IAudioController playbackComponent) {
             Console.WriteLine("Establishing connection with playback...");
             playbackComponent.Play();
+        }
+
+        public override string ToString() {
+            var descriptionBuilder = new StringBuilder();
+            descriptionBuilder.AppendLine(Screen.ToString());
+            descriptionBuilder.AppendLine(Battery.ToString());
+            descriptionBuilder.AppendLine(Speaker.ToString());
+            return descriptionBuilder.ToString();
         }
     }
 }

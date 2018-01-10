@@ -5,7 +5,7 @@ namespace Simcorp.IMS.MobilePhone.Battery {
         private int capacity;
         public int Capacity {
             get { return capacity; }
-            private set {
+            set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Capacity"); }
                 else { capacity = value; }
             }
