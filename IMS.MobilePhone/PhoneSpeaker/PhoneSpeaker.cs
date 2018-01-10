@@ -1,12 +1,12 @@
 ﻿using System;
-using Simcorp.IMS.MobilePhone.Headset;
+using Simcorp.IMS.MobilePhone.Audio;
 
-namespace Simcorp.IMS.MobilePhone.Audio {
-    public class PhoneSpeaker : IPlayback {
-        public AudioController AudioController = new AudioController(0);
+namespace Simcorp.IMS.MobilePhone.Speaker {
+    public class PhoneSpeaker : IAudioController {
+        public AudioController AudioController { get; set; }
 
         public PhoneSpeaker(int maxVolume) {
-            this.AudioController.MaxVolume = maxVolume;
+            AudioController = new AudioController(maxVolume);
         }
 
         public override string ToString() {

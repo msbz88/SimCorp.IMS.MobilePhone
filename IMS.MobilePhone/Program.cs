@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Simcorp.IMS.MobilePhone.API;
+using Simcorp.IMS.MobilePhone.Audio;
 using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone {
@@ -31,8 +32,8 @@ namespace Simcorp.IMS.MobilePhone {
             SimCorpMobile simMobile = new SimCorpMobile();
             SamsungHeadset samsungHeadsetComp = new SamsungHeadset(300);
             IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350);
-            IPlayback samsungHeadset = (IPlayback)samsungHeadsetComp;
-            IPlayback iPhoneHeadset = (IPlayback)iPhoneHeadsetComp;
+            IAudioController samsungHeadset = (IAudioController)samsungHeadsetComp;
+            IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;
             /*
             Console.WriteLine(simMobile.Screen.ToString());
             Console.WriteLine(simMobile.Battery.ToString());

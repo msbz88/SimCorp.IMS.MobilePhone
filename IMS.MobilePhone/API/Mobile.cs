@@ -2,6 +2,7 @@
 using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Battery;
 using Simcorp.IMS.MobilePhone.Audio;
+using Simcorp.IMS.MobilePhone.Speaker;
 using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone.API {
@@ -43,7 +44,7 @@ namespace Simcorp.IMS.MobilePhone.API {
             Speaker.Play();
         }
 
-        public void Play(IPlayback playbackComponent) {
+        public void Play(IAudioController playbackComponent) {
             playbackComponent.Play();
         }
     }

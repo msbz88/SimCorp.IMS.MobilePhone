@@ -61,9 +61,9 @@
     <Compile Include="Battery\IBatteryCharger.cs" />
     <Compile Include="Battery\LithiumLonBattery.cs" />
     <Compile Include="Audio\AudioController.cs" />
-    <Compile Include="Audio\PhoneSpeaker.cs" />
+    <Compile Include="PhoneSpeaker\PhoneSpeaker.cs" />
     <Compile Include="Headset\IPhoneHeadset.cs" />
-    <Compile Include="Audio\IPlayback.cs" />
+    <Compile Include="Audio\IAudioController.cs" />
     <Compile Include="Headset\SamsungHeadset.cs" />
     <Compile Include="Screen\ColorfulScreen.cs" />
     <Compile Include="API\Mobile.cs" />

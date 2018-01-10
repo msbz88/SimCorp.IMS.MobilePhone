@@ -2,11 +2,11 @@
 using Simcorp.IMS.MobilePhone.Audio;
 
 namespace Simcorp.IMS.MobilePhone.Headset {
-    class SamsungHeadset : IPlayback  {
-        public AudioController AudioController = new AudioController(0);
+    class SamsungHeadset : IAudioController {
+        public AudioController AudioController { get; set; }
 
         public SamsungHeadset(int maxVolume) {
-            AudioController.MaxVolume = maxVolume;
+            AudioController = new AudioController(maxVolume);
         }
 
         public override string ToString() {

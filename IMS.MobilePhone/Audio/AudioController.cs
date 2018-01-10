@@ -1,5 +1,4 @@
 ﻿using System;
-using Simcorp.IMS.MobilePhone.Headset;
 
 namespace Simcorp.IMS.MobilePhone.Audio {
     public class AudioController {
@@ -47,10 +46,10 @@ namespace Simcorp.IMS.MobilePhone.Audio {
             else { Console.WriteLine($"Cannot reduce Phone Speaker maxVolume on {currentVolumeStep}, because it will be less then 0.\n"); }
         }
 
-        IPlayback PlaybackComponent { get; set; }
+        IAudioController AudioComponent { get; set; }
 
         public void Play() {
-            PlaybackComponent.Play();
+            AudioComponent.Play();
         }
     }
 }
