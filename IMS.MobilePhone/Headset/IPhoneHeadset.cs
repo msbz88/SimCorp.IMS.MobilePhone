@@ -1,12 +1,19 @@
 ﻿using System;
 using Simcorp.IMS.MobilePhone.Audio;
+using Simcorp.IMS.MobilePhone.Output;
 
 namespace Simcorp.IMS.MobilePhone.Headset {
     class IPhoneHeadset : IAudioController {
+        private IOutput Output;
+
         public AudioController AudioController { get; set; }
 
         public IPhoneHeadset(int maxVolume) {
             AudioController = new AudioController(maxVolume);
+        }
+
+        public IPhoneHeadset(IOutput output) {
+            this.Output = output;
         }
 
         public override string ToString() {

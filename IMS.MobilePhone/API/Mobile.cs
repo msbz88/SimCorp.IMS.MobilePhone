@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Simcorp.IMS.MobilePhone.Screen;
 using Simcorp.IMS.MobilePhone.Battery;
 using Simcorp.IMS.MobilePhone.Audio;
@@ -45,6 +46,7 @@ namespace Simcorp.IMS.MobilePhone.API {
         }
 
         public void Play(IAudioController playbackComponent) {
+            Console.WriteLine("Establishing connection with playback...");
             playbackComponent.Play();
         }
     }
