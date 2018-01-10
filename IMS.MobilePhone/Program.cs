@@ -38,11 +38,11 @@ namespace Simcorp.IMS.MobilePhone {
             SamsungHeadset samsungHeadsetComp = new SamsungHeadset(300);
             IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350);
             IAudioController samsungHeadset = (IAudioController)samsungHeadsetComp;
-            IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;        
+            IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;
             List<string> playComponentsMenuItems = new List<string>();
-            playComponentsMenuItems.Add("Phone speaker.");
-            playComponentsMenuItems.Add("Samsung Headset.");
-            playComponentsMenuItems.Add("iPhone Headset.");
+            playComponentsMenuItems.Add("Phone speaker");
+            playComponentsMenuItems.Add("Samsung Headset");
+            playComponentsMenuItems.Add("iPhone Headset");
             int userPlaybackChoice = 0;
             while (true) {
                 while (userPlaybackChoice == 0) {

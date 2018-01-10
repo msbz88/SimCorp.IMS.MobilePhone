@@ -51,6 +51,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.API {
 
         public override string ToString() {
             var descriptionBuilder = new StringBuilder();
+            descriptionBuilder.AppendLine("Phone description:");
             descriptionBuilder.AppendLine(Screen.ToString());
             descriptionBuilder.AppendLine(Battery.ToString());
             descriptionBuilder.AppendLine(Speaker.ToString());
