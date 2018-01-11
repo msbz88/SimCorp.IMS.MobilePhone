@@ -1,5 +1,5 @@
 ﻿using System;
-using Simcorp.IMS.MobilePhone.ClassLibrary.API;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Output;
 
 namespace Simcorp.IMS.MobilePhone.ConsoleApp.Output {
     class ConsoleOutput : IOutput{

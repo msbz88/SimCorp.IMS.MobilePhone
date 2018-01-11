@@ -1,12 +1,16 @@
 ﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Audio;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Output;
 using System;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Speaker {
     public class PhoneSpeaker : IAudioController {
+        private IOutput Output;
+
         public AudioController AudioController { get; set; }
 
-        public PhoneSpeaker(int maxVolume) {
+        public PhoneSpeaker(int maxVolume, IOutput output) {
             AudioController = new AudioController(maxVolume);
+            this.Output = output;
         }
 
         public override string ToString() {
@@ -14,7 +18,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Speaker {
         }
 
         public void Play() {
-            Console.WriteLine(this);
+            Output.WriteLine(ToString());
         }
     }
 }

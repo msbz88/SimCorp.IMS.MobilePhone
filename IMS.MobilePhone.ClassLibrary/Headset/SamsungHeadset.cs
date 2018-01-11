@@ -1,5 +1,5 @@
 ﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Audio;
-using Simcorp.IMS.MobilePhone.ClassLibrary.API;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Output;
 using System;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Headset {
@@ -8,11 +8,8 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Headset {
 
         public AudioController AudioController { get; set; }
 
-        public SamsungHeadset(int maxVolume) {
+        public SamsungHeadset(int maxVolume, IOutput output) {
             AudioController = new AudioController(maxVolume);
-        }
-
-        public SamsungHeadset(IOutput output) {
             this.Output = output;
         }
 
@@ -21,7 +18,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Headset {
         }
 
         public void Play() {
-            Console.WriteLine(this);
+            Output.WriteLine(ToString());
         }
     }
 }

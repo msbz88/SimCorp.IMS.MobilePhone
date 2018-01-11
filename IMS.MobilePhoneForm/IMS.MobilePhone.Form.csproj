@@ -51,6 +51,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Output\FormOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.aa-DJ.resx">
@@ -85,6 +86,10 @@
     <ProjectReference Include="..\IMS.MobilePhone.ClassLibrary\IMS.MobilePhone.ClassLibrary.csproj">
       <Project>{eb3dbec7-762a-4950-b54a-de6248cb6428}</Project>
       <Name>IMS.MobilePhone.ClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMS.MobilePhone\IMS.MobilePhone.ConsoleApp.csproj">
+      <Project>{025a1eb3-2490-461c-ac20-d3067925dca5}</Project>
+      <Name>IMS.MobilePhone.ConsoleApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

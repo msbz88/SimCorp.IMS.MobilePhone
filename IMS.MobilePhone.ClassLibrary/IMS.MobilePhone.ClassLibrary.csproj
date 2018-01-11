@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API\IOutput.cs" />
+    <Compile Include="Output\IOutput.cs" />
     <Compile Include="API\Mobile.cs" />
     <Compile Include="API\SimCorpMobile.cs" />
     <Compile Include="Audio\AudioController.cs" />

@@ -7,6 +7,7 @@ using Simcorp.IMS.MobilePhone.ClassLibrary.Speaker;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Battery;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Audio;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Headset;
+using Simcorp.IMS.MobilePhone.ConsoleApp.Output;
 
 namespace Simcorp.IMS.MobilePhone {
     class Program {
@@ -33,10 +34,10 @@ namespace Simcorp.IMS.MobilePhone {
         static void Main(string[] args) {
             OLEDScreen screen = new OLEDScreen(5, 1920, 1080);
             LithiumLonBattery battery = new LithiumLonBattery(4000);
-            PhoneSpeaker speaker = new PhoneSpeaker(1000);
+            PhoneSpeaker speaker = new PhoneSpeaker(1000, new ConsoleOutput());
             SimCorpMobile simMobile = new SimCorpMobile(screen, battery, speaker);
-            SamsungHeadset samsungHeadsetComp = new SamsungHeadset(300);
-            IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350);
+            SamsungHeadset samsungHeadsetComp = new SamsungHeadset(300, new ConsoleOutput());
+            IPhoneHeadset iPhoneHeadsetComp = new IPhoneHeadset(350, new ConsoleOutput());
             IAudioController samsungHeadset = (IAudioController)samsungHeadsetComp;
             IAudioController iPhoneHeadset = (IAudioController)iPhoneHeadsetComp;
             List<string> playComponentsMenuItems = new List<string>();
