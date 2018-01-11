@@ -1,6 +1,5 @@
 ﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Audio;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Output;
-using System;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Headset {
    public class SamsungHeadset : IAudioController {

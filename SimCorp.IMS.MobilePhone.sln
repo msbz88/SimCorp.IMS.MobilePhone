@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.ConsoleApp", "IMS.MobilePhone\IMS.MobilePhone.ConsoleApp.csproj", "{025A1EB3-2490-461C-AC20-D3067925DCA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.ConsoleApp", "IMS.MobilePhone.ConsoleApp\IMS.MobilePhone.ConsoleApp.csproj", "{025A1EB3-2490-461C-AC20-D3067925DCA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.Form", "IMS.MobilePhoneForm\IMS.MobilePhone.Form.csproj", "{B1DCBD86-67D2-4BC9-8284-25F670E416C5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.Form", "IMS.MobilePhone.Form\IMS.MobilePhone.Form.csproj", "{B1DCBD86-67D2-4BC9-8284-25F670E416C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.ClassLibrary", "IMS.MobilePhone.ClassLibrary\IMS.MobilePhone.ClassLibrary.csproj", "{EB3DBEC7-762A-4950-B54A-DE6248CB6428}"
 EndProject
