@@ -2,7 +2,7 @@
 using Simcorp.IMS.MobilePhone.ClassLibrary.Output;
 
 namespace Simcorp.IMS.MobilePhone.ConsoleApp.Output {
-    class ConsoleOutput : IOutput{
+   public class ConsoleOutput : IOutput{
         public void Write(string text) {
             Console.Write(text);
         }

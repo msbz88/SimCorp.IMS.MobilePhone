@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.Form", "IMS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.ClassLibrary", "IMS.MobilePhone.ClassLibrary\IMS.MobilePhone.ClassLibrary.csproj", "{EB3DBEC7-762A-4950-B54A-DE6248CB6428}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMS.MobilePhone.ClassLibrary.Test", "IMS.MobilePhone.ClassLibrary.Test\IMS.MobilePhone.ClassLibrary.Test.csproj", "{EAC96471-F36E-40B5-9EE2-33E4C2D4C16D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EB3DBEC7-762A-4950-B54A-DE6248CB6428}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB3DBEC7-762A-4950-B54A-DE6248CB6428}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB3DBEC7-762A-4950-B54A-DE6248CB6428}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAC96471-F36E-40B5-9EE2-33E4C2D4C16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC96471-F36E-40B5-9EE2-33E4C2D4C16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAC96471-F36E-40B5-9EE2-33E4C2D4C16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAC96471-F36E-40B5-9EE2-33E4C2D4C16D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
