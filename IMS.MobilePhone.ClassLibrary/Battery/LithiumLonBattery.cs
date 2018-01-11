@@ -12,7 +12,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
         }
 
         public override string ToString() {
-            return $"Battery Type: Lithium Lon Battery (vCapacity: {this.Capacity}, charged: {GetBatteryChargeLevel() * 100}%)";
+            return $"Battery Type: Lithium Lon Battery (Capacity: {this.Capacity}, charged: {GetBatteryChargeLevel() * 100}%)";
         }
 
     }
