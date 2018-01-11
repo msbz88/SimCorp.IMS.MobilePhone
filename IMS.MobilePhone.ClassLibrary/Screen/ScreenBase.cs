@@ -2,30 +2,30 @@
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Screen {
     public abstract class ScreenBase {
-        private int sizeInch;
+        private int vSizeInch;
         public int SizeInch {
-            get { return sizeInch; }
+            get { return vSizeInch; }
             private set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "ScreenBase.SizeInch"); }
-                else { sizeInch = value; }
+                else { vSizeInch = value; }
             }
         }
 
-        private int heightPixel;
+        private int vHeightPixel;
         public int HeightPixel {
-            get { return heightPixel; }
+            get { return vHeightPixel; }
             private set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "ScreenBase.HeightPixel"); }
-                else { heightPixel = value; }
+                else { vHeightPixel = value; }
             }
         }
 
-        private int widthPixel;
+        private int vWidthPixel;
         public int WidthPixel {
-            get { return widthPixel; }
+            get { return vWidthPixel; }
             private set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "ScreenBase.WidthPixel"); }
-                else { widthPixel = value; }
+                else { vWidthPixel = value; }
             }
         }
 

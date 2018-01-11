@@ -2,22 +2,22 @@
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
     public abstract class BatteryBase {
-        private int capacity;
+        private int vCapacity;
         public int Capacity {
-            get { return capacity; }
+            get { return vCapacity; }
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Capacity"); }
-                else { capacity = value; }
+                else { vCapacity = value; }
             }
         }
 
-        private int charge;
+        private int vCharge;
         public int Charge {
-            get { return charge; }
+            get { return vCharge; }
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Charge"); }
                 else if (value > Capacity) { throw new ArgumentException($"Parameter cannot be greater than {this.Capacity}.", "BatteryBase.Charge"); }
-                else { charge = value; }
+                else { vCharge = value; }
             }
         }
 

@@ -2,22 +2,22 @@
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Audio {
     public class AudioController {
-        private int maxVolume;
+        private int vMaxVolume;
         public int MaxVolume {
-            get { return maxVolume; }
+            get { return vMaxVolume; }
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "AudioControllerBase.MaxVolume"); }
-                else { maxVolume = value; }
+                else { vMaxVolume = value; }
             }
         }
 
-        private int currentVolume;
+        private int vCurrentVolume;
         public int CurrentVolume {
-            get { return currentVolume; }
+            get { return vCurrentVolume; }
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "AudioControllerBase.CurrentVolume"); }
                 else if (value > MaxVolume) { throw new ArgumentException($"Parameter cannot be greater than {this.MaxVolume}.", "AudioControllerBase.CurrentVolume"); }
-                else { currentVolume = value; }
+                else { vCurrentVolume = value; }
             }
         }
 
@@ -34,13 +34,13 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Audio {
         public void IncreaseAudioVolumeLevel(int currentVolumeStep) {
             if (this.MaxVolume - this.CurrentVolume >= currentVolumeStep) {
                 this.CurrentVolume += currentVolumeStep;
-            } else { Console.WriteLine($"Cannot raise Phone Speaker maxVolume on {currentVolumeStep}, because it will be more then maximum.\n"); }
+            } else { Console.WriteLine($"Cannot raise Phone Speaker vMaxVolume on {currentVolumeStep}, because it will be more then maximum.\n"); }
         }
 
         public void DecreaseAudioVolumeLevel(int currentVolumeStep) {
             if (this.CurrentVolume >= currentVolumeStep) {
                 this.CurrentVolume -= currentVolumeStep;
-            } else { Console.WriteLine($"Cannot reduce Phone Speaker maxVolume on {currentVolumeStep}, because it will be less then 0.\n"); }
+            } else { Console.WriteLine($"Cannot reduce Phone Speaker vMaxVolume on {currentVolumeStep}, because it will be less then 0.\n"); }
         }
 
         IAudioController AudioComponent { get; set; }
