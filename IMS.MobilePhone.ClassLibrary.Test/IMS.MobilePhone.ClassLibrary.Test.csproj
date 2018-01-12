@@ -60,7 +60,7 @@
       <Project>{eb3dbec7-762a-4950-b54a-de6248cb6428}</Project>
       <Name>IMS.MobilePhone.ClassLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IMS.MobilePhone\IMS.MobilePhone.ConsoleApp.csproj">
+    <ProjectReference Include="..\IMS.MobilePhone.ConsoleApp\IMS.MobilePhone.ConsoleApp.csproj">
       <Project>{025a1eb3-2490-461c-ac20-d3067925dca5}</Project>
       <Name>IMS.MobilePhone.ConsoleApp</Name>
     </ProjectReference>
