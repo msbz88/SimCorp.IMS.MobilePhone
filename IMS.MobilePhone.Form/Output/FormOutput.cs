@@ -1,6 +1,6 @@
 ﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Output;
 
-namespace IMS.MobilePhoneForm.Output {
+namespace Simcorp.IMS.MobilePhone.PlaybackForm.Output {
 
     public class FormOutput : IOutput  {
         FormPlayComponents FormPlayComponents { get; }

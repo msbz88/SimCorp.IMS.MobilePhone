@@ -2,6 +2,7 @@
 using Simcorp.IMS.MobilePhone.ClassLibrary.Battery;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Screen;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Speaker;
+using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
 using System;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.API {
         public abstract BatteryBase Battery { get; }
         public abstract PhoneSpeaker Speaker { get; }
         private AudioController Audio { get; }
+        public SMSProvider SMSProvider { get; set; }
 
         private void Show(IScreenImage screenImage) {
             Screen.Show(screenImage);

@@ -3,7 +3,7 @@ using Simcorp.IMS.MobilePhone.ClassLibrary.Speaker;
 using System;
 using System.Windows.Forms;
 
-namespace IMS.MobilePhoneForm {
+namespace Simcorp.IMS.MobilePhone.PlaybackForm {
     public partial class FormPlayComponents : Form {
         public PhoneSpeaker Speaker { get; set; }
         public SamsungHeadset SamsungHeadset { get; set; }

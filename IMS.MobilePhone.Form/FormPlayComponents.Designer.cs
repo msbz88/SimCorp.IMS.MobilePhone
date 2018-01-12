@@ -1,4 +1,4 @@
-﻿namespace IMS.MobilePhoneForm {
+﻿namespace Simcorp.IMS.MobilePhone.PlaybackForm {
     partial class FormPlayComponents {
         /// <summary>
         /// Required designer variable.

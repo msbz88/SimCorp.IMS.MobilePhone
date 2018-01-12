@@ -1,10 +1,10 @@
-﻿using IMS.MobilePhoneForm.Output;
-using Simcorp.IMS.MobilePhone.ClassLibrary.Headset;
+﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Headset;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Speaker;
+using Simcorp.IMS.MobilePhone.PlaybackForm.Output;
 using System;
 using System.Windows.Forms;
 
-namespace IMS.MobilePhoneForm {
+namespace Simcorp.IMS.MobilePhone.PlaybackForm {
     static class Program {
         /// <summary>
         /// The main entry point for the application.

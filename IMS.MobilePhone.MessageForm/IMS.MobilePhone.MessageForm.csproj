@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B1DCBD86-67D2-4BC9-8284-25F670E416C5}</ProjectGuid>
+    <ProjectGuid>{F05049E6-559C-41AB-A505-3AA4671DEEEC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>IMS.MobilePhoneForm</RootNamespace>
-    <AssemblyName>IMS.MobilePhoneForm</AssemblyName>
+    <RootNamespace>IMS.MobilePhone.MessageForm</RootNamespace>
+    <AssemblyName>IMS.MobilePhone.MessageForm</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,20 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormMessageFormating.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormMessageFormating.Designer.cs">
+      <DependentUpon>FormMessageFormating.cs</DependentUpon>
     </Compile>
-    <Compile Include="Output\FormOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.aa-DJ.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormMessageFormating.resx">
+      <DependentUpon>FormMessageFormating.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -86,10 +82,6 @@
     <ProjectReference Include="..\IMS.MobilePhone.ClassLibrary\IMS.MobilePhone.ClassLibrary.csproj">
       <Project>{eb3dbec7-762a-4950-b54a-de6248cb6428}</Project>
       <Name>IMS.MobilePhone.ClassLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IMS.MobilePhone.ConsoleApp\IMS.MobilePhone.ConsoleApp.csproj">
-      <Project>{025a1eb3-2490-461c-ac20-d3067925dca5}</Project>
-      <Name>IMS.MobilePhone.ConsoleApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
