@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form {
+        private readonly SMSProvider.FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormatWithTimeBefore);
         private static Timer messageTimer;
         private static int MessageId { get; set; }
 
@@ -27,7 +28,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
                 return;
             }
-            string formattedMessage = $"{message}{Environment.NewLine}";
+            string formattedMessage = Formatter($"{message}{Environment.NewLine}");
             richTextBoxMessages.AppendText(formattedMessage);
         }
 

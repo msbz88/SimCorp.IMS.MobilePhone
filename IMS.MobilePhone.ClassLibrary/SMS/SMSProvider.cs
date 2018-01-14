@@ -4,9 +4,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
     public class SMSProvider {
         public delegate void SMSRecievedDelegate(string message);
         public event SMSRecievedDelegate SMSRecieved;
-
-        //public delegate string FormatDelegate(string text);
-        // private readonly FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormatWithTimeBefore);
+        public delegate string FormatDelegate(string text);
 
         public void RaiseSMSReceivedEvent(string message) {
             SMSRecievedDelegate handler = SMSRecieved;
