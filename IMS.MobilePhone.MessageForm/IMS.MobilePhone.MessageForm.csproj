@@ -84,5 +84,6 @@
       <Name>IMS.MobilePhone.ClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

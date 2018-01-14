@@ -3,18 +3,19 @@
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
     public class SMSProvider {
         public delegate void SMSRecievedDelegate(string message);
-        private delegate string FormatDelegate(string text);
-
         public event SMSRecievedDelegate SMSRecieved;
 
-        private void RaiseSMSReceivedEvent(string message) {
-            var handler = SMSRecieved;
+        //public delegate string FormatDelegate(string text);
+        // private readonly FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormatWithTimeBefore);
+
+        public void RaiseSMSReceivedEvent(string message) {
+            SMSRecievedDelegate handler = SMSRecieved;
             if (handler != null) {
                 handler(message);
             }
         }
 
-        private static string FormatWithTimeBefore(string message) {
+        public static string FormatWithTimeBefore(string message) {
             return $"[{DateTime.Now}] {message}";
         }
 

@@ -10,7 +10,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMessageFormating());
+            Application.Run(new FormMessageFormating(2000));
         }
     }
 }
