@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form {
-        public SMSProvider.FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormateNone);
+        public SMSProvider.FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormatNone);
         private static Timer messageTimer;
         public string FormattedMessage {get; set;}
 
@@ -40,7 +40,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void InitializeComboBox() {
             string[] formattingOptions = new string[6];
-            formattingOptions[0] = "No Formatting";
+            formattingOptions[0] = "Without Formatting";
             formattingOptions[1] = "Format with Time Before";
             formattingOptions[2] = "Format with Time After";
             formattingOptions[3] = "Format with UpperCase";
@@ -52,7 +52,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void ComboBox1SelectedIndexChanged(object sender, EventArgs e) {
             switch (comboBoxFormattingOpt.SelectedIndex) {
                 case 0:
-                    Formatter += SMSProvider.FormateNone;
+                    Formatter += SMSProvider.FormatNone;
                     break;
                 case 1:
                     Formatter += SMSProvider.FormatWithTimeBefore;

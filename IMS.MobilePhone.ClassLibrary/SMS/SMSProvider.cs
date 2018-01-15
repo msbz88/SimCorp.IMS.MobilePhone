@@ -16,7 +16,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
             return $"Message #{++MessageId} received";
         }
 
-        public static string FormateNone(string message) {
+        public static string FormatNone(string message) {
            return message;
         }
 
