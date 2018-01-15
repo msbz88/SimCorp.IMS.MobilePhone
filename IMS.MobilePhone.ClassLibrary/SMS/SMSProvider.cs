@@ -13,23 +13,27 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
             }
         }
 
+        public static string FormateNone(string message) {
+           return message;
+        }
+
         public static string FormatWithTimeBefore(string message) {
             return $"[{DateTime.Now}] {message}";
         }
 
-        private static string FormatWithTimeAfter(string message) {
+        public static string FormatWithTimeAfter(string message) {
             return $"{message} [{DateTime.Now}]";
         }
 
-        private static string FormatWithUpperCase(string message) {
+        public static string FormatWithUpperCase(string message) {
             return message.ToUpper();
         }
 
-        private static string FormatWithLowerCase(string message) {
+        public static string FormatWithLowerCase(string message) {
             return message.ToLower();
         }
 
-        private static string FormatWithSmile(string message) {
+        public static string FormatWithSmile(string message) {
             return $"{message} =)";
         }
     }

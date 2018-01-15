@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form {
-        private readonly SMSProvider.FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormatWithTimeBefore);
+        private SMSProvider.FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormateNone);
         private static Timer messageTimer;
         private static int MessageId { get; set; }
 
@@ -20,7 +20,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void TimerTick(object sender, EventArgs e) {
             MessageId++;
-            OnSMSReceived("Message #" + MessageId);
+            OnSMSReceived("Message #" + MessageId + " received");
         }
 
         private void OnSMSReceived(string message) {
@@ -28,18 +28,43 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
                 return;
             }
-            string formattedMessage = Formatter($"{message}{Environment.NewLine}");
+            string formattedMessage = Formatter($"{message}") + Environment.NewLine;
             richTextBoxMessages.AppendText(formattedMessage);
+            richTextBoxMessages.ScrollToCaret();
         }
 
         private void InitializeComboBox() {
-            string[] formattingOptions = new string[5];
-            formattingOptions[0] = "Format with Time Before";
-            formattingOptions[1] = "Format with Time After";
-            formattingOptions[2] = "Format with UpperCase";
-            formattingOptions[3] = "Format with LowerCase";
-            formattingOptions[4] = "Format with Smile";
-            comboBox1.Items.AddRange(formattingOptions);
+            string[] formattingOptions = new string[6];
+            formattingOptions[0] = "No Formatting";
+            formattingOptions[1] = "Format with Time Before";
+            formattingOptions[2] = "Format with Time After";
+            formattingOptions[3] = "Format with UpperCase";
+            formattingOptions[4] = "Format with LowerCase";
+            formattingOptions[5] = "Format with Smile";
+            comboBoxFormattingOpt.Items.AddRange(formattingOptions);
+        }
+
+        private void ComboBox1SelectedIndexChanged(object sender, EventArgs e) {
+            switch (comboBoxFormattingOpt.Text) {
+                case "No Formatting":
+                    Formatter += SMSProvider.FormateNone;
+                    break;
+                case "Format with Time Before":
+                    Formatter += SMSProvider.FormatWithTimeBefore;
+                    break;
+                case "Format with Time After":
+                    Formatter += SMSProvider.FormatWithTimeAfter;
+                    break;
+                case "Format with UpperCase":
+                    Formatter += SMSProvider.FormatWithUpperCase;
+                    break;
+                case "Format with LowerCase":
+                    Formatter += SMSProvider.FormatWithLowerCase;
+                    break;
+                case "Format with Smile":
+                    Formatter += SMSProvider.FormatWithSmile;
+                    break;
+            }
         }
     }
 }
