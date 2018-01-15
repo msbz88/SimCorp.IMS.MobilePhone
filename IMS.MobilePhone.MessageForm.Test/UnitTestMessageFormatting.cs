@@ -4,14 +4,13 @@ using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
 namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
     [TestClass]
     public class UnitTestMessageFormatting {
-        public string TestMessage { get; set; }
+        public string TestMessage { get; set; } = SMSProvider.SendMessage();
         public string Result { get; set; }
         public string Expectations { get; set; }
         FormMessageFormating formMessageFormating = new FormMessageFormating();
 
         [TestMethod]
         public void TestFormateNone() {
-            TestMessage = SMSProvider.SendMessage();
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
             Expectations = SMSProvider.FormateNone(TestMessage);
@@ -19,7 +18,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
         }
         [TestMethod]
         public void TestFormatWithTimeBefore() {
-            TestMessage = SMSProvider.SendMessage();
             formMessageFormating.Formatter += SMSProvider.FormatWithTimeBefore;
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
@@ -28,7 +26,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
         }
         [TestMethod]
         public void TestFormatWithTimeAfter() {
-            TestMessage = SMSProvider.SendMessage();
             formMessageFormating.Formatter += SMSProvider.FormatWithTimeAfter;
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
@@ -37,7 +34,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
         }
         [TestMethod]
         public void TestFormatWithUpperCase() {
-            TestMessage = SMSProvider.SendMessage();
             formMessageFormating.Formatter += SMSProvider.FormatWithUpperCase;
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
@@ -46,7 +42,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
         }
         [TestMethod]
         public void TestFormatWithLowerCase() {
-            TestMessage = SMSProvider.SendMessage();
             formMessageFormating.Formatter += SMSProvider.FormatWithLowerCase;
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
@@ -55,7 +50,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
         }
         [TestMethod]
         public void TestFormatWithSmile() {
-            TestMessage = SMSProvider.SendMessage();
             formMessageFormating.Formatter += SMSProvider.FormatWithSmile;
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
