@@ -71,7 +71,7 @@
             // 
             // timer1
             // 
-            this.timer1.Tick += new System.EventHandler(this.TimerTick);
+            this.timer1.Tick += new System.EventHandler(this.ProcessMessage);
             // 
             // FormMessageFormating
             // 

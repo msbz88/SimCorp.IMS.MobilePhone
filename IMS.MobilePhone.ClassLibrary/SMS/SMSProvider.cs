@@ -6,11 +6,14 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
         public event SMSRecievedDelegate SMSRecieved;
         public delegate string FormatDelegate(string text);
 
+        private static int MessageId { get; set; }
+
         public void RaiseSMSReceivedEvent(string message) {
-            SMSRecievedDelegate handler = SMSRecieved;
-            if (handler != null) {
-                handler(message);
-            }
+            SMSRecieved?.Invoke(message);
+        }
+
+        public static string SendMessage() {
+            return $"Message #{++MessageId} received";
         }
 
         public static string FormateNone(string message) {
