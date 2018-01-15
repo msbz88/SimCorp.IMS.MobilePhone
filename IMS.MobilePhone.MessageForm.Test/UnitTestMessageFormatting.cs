@@ -11,6 +11,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
 
         [TestMethod]
         public void TestFormateNone() {
+            formMessageFormating.Formatter += SMSProvider.FormateNone;
             formMessageFormating.OnSMSReceived(TestMessage);
             Result = formMessageFormating.FormattedMessage;
             Expectations = SMSProvider.FormateNone(TestMessage);
