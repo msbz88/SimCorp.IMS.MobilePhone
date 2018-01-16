@@ -1,43 +1,28 @@
 ﻿using System;
+using System.Text;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
     public class SMSProvider {
-        public delegate void SMSRecievedDelegate(string message);
+        public delegate void SMSRecievedDelegate(StringBuilder combinedMessagee);
         public event SMSRecievedDelegate SMSRecieved;
-        public delegate string FormatDelegate(string text);
 
-        private static int MessageId { get; set; }
+        IReceiver Receiver { get; set; }
 
-        public void RaiseSMSReceivedEvent(string message) {
-            SMSRecieved?.Invoke(message);
+        public SMSProvider(IReceiver receiver) {
+            this.Receiver = receiver;
         }
 
-        public static string SendMessage() {
-            return $"Message #{++MessageId} received";
+        public void RaiseSMSReceivedEvent(StringBuilder combinedMessagee) {
+            SMSRecieved?.Invoke(combinedMessagee);
         }
 
-        public static string FormatNone(string message) {
-           return message;
-        }
-
-        public static string FormatWithTimeBefore(string message) {
-            return $"[{DateTime.Now}] {message}";
-        }
-
-        public static string FormatWithTimeAfter(string message) {
-            return $"{message} [{DateTime.Now}]";
-        }
-
-        public static string FormatWithUpperCase(string message) {
-            return message.ToUpper();
-        }
-
-        public static string FormatWithLowerCase(string message) {
-            return message.ToLower();
-        }
-
-        public static string FormatWithSmile(string message) {
-            return $"{message} =)";
+        public void SendMessage(Message message) {
+            StringBuilder combinedMessage = new StringBuilder();
+            Delegate allMessageComponents = message.CombineMessageComponents();
+            foreach (Delegate messageComponent in allMessageComponents.GetInvocationList()) {
+                combinedMessage.Append(messageComponent.DynamicInvoke() + "\n");
+            }
+            Receiver.OnSMSReceived(combinedMessage);
         }
     }
 }

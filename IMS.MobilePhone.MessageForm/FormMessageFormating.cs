@@ -1,11 +1,12 @@
 ﻿using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
 using System;
 using System.Windows.Forms;
+using System.Text;
+using Simcorp.IMS.MobilePhone.MessageForm;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
-    public partial class FormMessageFormating : Form {
-        public SMSProvider.FormatDelegate Formatter = new SMSProvider.FormatDelegate(SMSProvider.FormatNone);
-        private static Timer messageTimer;
+    public partial class FormMessageFormating : Form, IReceiver {
+        public MessageFormats.FormatDelegate Formatter = new MessageFormats.FormatDelegate(MessageFormats.WithoutFormatting);
         public string FormattedMessage {get; set;}
 
         public FormMessageFormating() {
@@ -13,28 +14,22 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             InitializeComboBox();
         }
 
-        public void GenerateMessages(bool enableTimer, int intervalTimer) {
-            messageTimer = new Timer();
-            messageTimer.Tick += new EventHandler(ProcessMessage);
-            messageTimer.Interval = intervalTimer;
-            messageTimer.Enabled = enableTimer;
+        private void StripMenuCreateNewMessage(object sender, EventArgs e) {
+            NewMessageForm newMessageForm = new NewMessageForm(this);
         }
 
-        private void ProcessMessage(object sender, EventArgs e) {
-            OnSMSReceived(SMSProvider.SendMessage());
+        public void OnSMSReceived(StringBuilder combinedMessagee) {
+            if (InvokeRequired) {
+                Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), combinedMessagee);
+                return;
+            }
+            FormattedMessage = Formatter(combinedMessagee);
             WriteMessageToForm();
         }
 
-        public void OnSMSReceived(string message) {
-            if (InvokeRequired) {
-                Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
-                return;
-            }
-            FormattedMessage = Formatter($"{message}");
-        }
-
         private void WriteMessageToForm() {
-            richTextBoxMessages.AppendText(FormattedMessage + Environment.NewLine);
+            richTextBoxMessages.AppendText(FormattedMessage);
+            richTextBoxMessages.AppendText(Environment.NewLine);
             richTextBoxMessages.ScrollToCaret();
         }
 
@@ -52,23 +47,23 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void ComboBox1SelectedIndexChanged(object sender, EventArgs e) {
             switch (comboBoxFormattingOpt.SelectedIndex) {
                 case 0:
-                    Formatter += SMSProvider.FormatNone;
+                    Formatter += MessageFormats.WithoutFormatting;
                     break;
-                case 1:
-                    Formatter += SMSProvider.FormatWithTimeBefore;
-                    break;
-                case 2:
-                    Formatter += SMSProvider.FormatWithTimeAfter;
-                    break;
-                case 3:
-                    Formatter += SMSProvider.FormatWithUpperCase;
-                    break;
-                case 4:
-                    Formatter += SMSProvider.FormatWithLowerCase;
-                    break;
-                case 5:
-                    Formatter += SMSProvider.FormatWithSmile;
-                    break;
+                //case 1:
+                //    Formatter += SMSProvider.FormatWithTimeBefore;
+                //    break;
+                //case 2:
+                //    Formatter += SMSProvider.FormatWithTimeAfter;
+                //    break;
+                //case 3:
+                //    Formatter += SMSProvider.FormatWithUpperCase;
+                //    break;
+                //case 4:
+                //    Formatter += SMSProvider.FormatWithLowerCase;
+                //    break;
+                //case 5:
+                //    Formatter += SMSProvider.FormatWithSmile;
+                //    break;
             }
         }
     }

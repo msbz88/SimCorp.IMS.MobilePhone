@@ -57,6 +57,8 @@
     <Compile Include="Screen\OLEDScreen.cs" />
     <Compile Include="Screen\RetinaScreen.cs" />
     <Compile Include="Screen\ScreenBase.cs" />
+    <Compile Include="SMS\IReceiver.cs" />
+    <Compile Include="SMS\Message.cs" />
     <Compile Include="SMS\SMSProvider.cs" />
     <Compile Include="Speaker\PhoneSpeaker.cs" />
   </ItemGroup>
