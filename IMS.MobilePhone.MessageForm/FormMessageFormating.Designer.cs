@@ -56,9 +56,12 @@
             // 
             // richTextBoxMessages
             // 
+            this.richTextBoxMessages.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBoxMessages.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.richTextBoxMessages.Location = new System.Drawing.Point(14, 85);
             this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
+            this.richTextBoxMessages.ReadOnly = true;
             this.richTextBoxMessages.Size = new System.Drawing.Size(261, 290);
             this.richTextBoxMessages.TabIndex = 2;
             this.richTextBoxMessages.Text = "";
@@ -74,6 +77,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -87,14 +91,14 @@
             this.createToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newMessageToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.createToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.createToolStripMenuItem.Text = "Create";
             // 
             // newMessageToolStripMenuItem
             // 
             this.newMessageToolStripMenuItem.Name = "newMessageToolStripMenuItem";
-            this.newMessageToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.newMessageToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newMessageToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
@@ -107,7 +111,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMessageFormating";
-            this.Text = "Message Formating";
+            this.Text = "Messages";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

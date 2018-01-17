@@ -11,6 +11,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             this.FormMessageFormating = formMessageFormating;
             InitializeComponent();
             this.Show();
+            richTextBox1.ScrollToCaret();
         }
 
         private void ButtonSendMessage(object sender, EventArgs e) {
