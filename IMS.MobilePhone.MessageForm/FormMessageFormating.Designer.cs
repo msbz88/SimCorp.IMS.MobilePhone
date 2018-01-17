@@ -34,18 +34,20 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBoxMessageSearch = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.textBoxMessageSearch);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.comboBoxUniqueUsers);
             this.panel1.Controls.Add(this.listViewMessages);
             this.panel1.Controls.Add(this.comboBoxFormattingOpt);
@@ -59,11 +61,13 @@
             // 
             // comboBoxUniqueUsers
             // 
+            this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.comboBoxUniqueUsers.FormattingEnabled = true;
-            this.comboBoxUniqueUsers.Location = new System.Drawing.Point(232, 49);
+            this.comboBoxUniqueUsers.Location = new System.Drawing.Point(233, 49);
             this.comboBoxUniqueUsers.Name = "comboBoxUniqueUsers";
             this.comboBoxUniqueUsers.Size = new System.Drawing.Size(184, 21);
             this.comboBoxUniqueUsers.TabIndex = 5;
+            this.comboBoxUniqueUsers.Text = "Contacts";
             this.comboBoxUniqueUsers.SelectedIndexChanged += new System.EventHandler(this.ComboBoxUsersIndexChanged);
             // 
             // listViewMessages
@@ -71,9 +75,9 @@
             this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnUser,
             this.columnText});
-            this.listViewMessages.Location = new System.Drawing.Point(232, 106);
+            this.listViewMessages.Location = new System.Drawing.Point(232, 131);
             this.listViewMessages.Name = "listViewMessages";
-            this.listViewMessages.Size = new System.Drawing.Size(184, 269);
+            this.listViewMessages.Size = new System.Drawing.Size(184, 244);
             this.listViewMessages.TabIndex = 4;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Tile;
@@ -89,7 +93,7 @@
             // comboBoxFormattingOpt
             // 
             this.comboBoxFormattingOpt.FormattingEnabled = true;
-            this.comboBoxFormattingOpt.Location = new System.Drawing.Point(14, 49);
+            this.comboBoxFormattingOpt.Location = new System.Drawing.Point(14, 86);
             this.comboBoxFormattingOpt.Name = "comboBoxFormattingOpt";
             this.comboBoxFormattingOpt.Size = new System.Drawing.Size(204, 21);
             this.comboBoxFormattingOpt.TabIndex = 1;
@@ -99,18 +103,18 @@
             // 
             this.richTextBoxMessages.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxMessages.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBoxMessages.Location = new System.Drawing.Point(14, 106);
+            this.richTextBoxMessages.Location = new System.Drawing.Point(14, 131);
             this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
             this.richTextBoxMessages.ReadOnly = true;
-            this.richTextBoxMessages.Size = new System.Drawing.Size(204, 269);
+            this.richTextBoxMessages.Size = new System.Drawing.Size(204, 244);
             this.richTextBoxMessages.TabIndex = 2;
             this.richTextBoxMessages.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 33);
+            this.label1.Location = new System.Drawing.Point(11, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(183, 13);
             this.label1.TabIndex = 1;
@@ -143,19 +147,10 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(229, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Contacts";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 90);
+            this.label3.Location = new System.Drawing.Point(11, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 7;
@@ -164,11 +159,29 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(229, 90);
+            this.label4.Location = new System.Drawing.Point(231, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Message quick view";
+            // 
+            // textBoxMessageSearch
+            // 
+            this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxMessageSearch.Location = new System.Drawing.Point(234, 87);
+            this.textBoxMessageSearch.Name = "textBoxMessageSearch";
+            this.textBoxMessageSearch.Size = new System.Drawing.Size(183, 20);
+            this.textBoxMessageSearch.TabIndex = 9;
+            this.textBoxMessageSearch.TextChanged += new System.EventHandler(this.TextBoxMessageSearchTextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(231, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Message Search ";
             // 
             // FormMessageFormating
             // 
@@ -203,6 +216,7 @@
         private System.Windows.Forms.ComboBox comboBoxUniqueUsers;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxMessageSearch;
         private System.Windows.Forms.Label label2;
     }
 }

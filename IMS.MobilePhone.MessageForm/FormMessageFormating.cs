@@ -83,5 +83,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
 
         }
+
+        private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
+
+        }
     }
 }
