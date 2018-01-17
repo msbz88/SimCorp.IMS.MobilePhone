@@ -18,12 +18,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             NewMessageForm newMessageForm = new NewMessageForm(this);
         }
 
-        public void OnSMSReceived(StringBuilder combinedMessagee) {
+        public void OnSMSReceived(TextMessage message) {
             if (InvokeRequired) {
-                Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), combinedMessagee);
+                Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
                 return;
             }
-            FormattedMessage = Formatter(combinedMessagee);
+            FormattedMessage = Formatter(message);
             WriteMessageToForm();
         }
 
@@ -34,13 +34,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void InitializeComboBox() {
-            string[] formattingOptions = new string[6];
-            formattingOptions[0] = "Without Formatting";
-            formattingOptions[1] = "Format with Time Before";
-            formattingOptions[2] = "Format with Time After";
-            formattingOptions[3] = "Format with UpperCase";
-            formattingOptions[4] = "Format with LowerCase";
-            formattingOptions[5] = "Format with Smile";
+            string[] formattingOptions = new string[5];
+            formattingOptions[0] = "Without Formatting (default)";
+            formattingOptions[1] = "Received time at the beginning";
+            formattingOptions[2] = "Upper message text";
+            formattingOptions[3] = "Upper User Name and received time";
+            formattingOptions[4] = "Lower message text";
             comboBoxFormattingOpt.Items.AddRange(formattingOptions);
         }
 
@@ -49,21 +48,18 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 case 0:
                     Formatter += MessageFormats.WithoutFormatting;
                     break;
-                //case 1:
-                //    Formatter += SMSProvider.FormatWithTimeBefore;
-                //    break;
-                //case 2:
-                //    Formatter += SMSProvider.FormatWithTimeAfter;
-                //    break;
-                //case 3:
-                //    Formatter += SMSProvider.FormatWithUpperCase;
-                //    break;
-                //case 4:
-                //    Formatter += SMSProvider.FormatWithLowerCase;
-                //    break;
-                //case 5:
-                //    Formatter += SMSProvider.FormatWithSmile;
-                //    break;
+                case 1:
+                    Formatter += MessageFormats.BeginWithTimeFormatting;
+                    break;
+                case 2:
+                    Formatter += MessageFormats.UpperMessageTextFormatting;
+                    break;
+                case 3:
+                    Formatter += MessageFormats.UpperMessageUserAndTimeFormatting;
+                    break;
+                case 4:
+                    Formatter += MessageFormats.LowerMessageTextFormatting;
+                    break;
             }
         }
     }
