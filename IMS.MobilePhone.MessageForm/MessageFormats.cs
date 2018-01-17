@@ -1,9 +1,4 @@
-﻿using System;
-using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public class MessageFormats {

@@ -11,15 +11,15 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             this.FormMessageFormating = formMessageFormating;
             InitializeComponent();
             this.Show();
-            richTextBox1.ScrollToCaret();
+            richTextBoxNewMessage.ScrollToCaret();
         }
 
         private void ButtonSendMessage(object sender, EventArgs e) {
-            message = new TextMessage(textBox1.Text, richTextBox1.Text);
+            message = new TextMessage(textBox1.Text, richTextBoxNewMessage.Text);
             SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
             SMSProvider.SendMessage(message);
-            richTextBox1.Clear();
-            richTextBox1.Focus();
+            richTextBoxNewMessage.Clear();
+            richTextBoxNewMessage.Focus();
         }
     }
 }

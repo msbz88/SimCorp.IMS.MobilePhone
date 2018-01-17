@@ -27,7 +27,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxNewMessage = new System.Windows.Forms.RichTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -37,7 +37,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.richTextBox1);
+            this.panel1.Controls.Add(this.richTextBoxNewMessage);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
@@ -73,13 +73,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "User Name:";
             // 
-            // richTextBox1
+            // richTextBoxNewMessage
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 71);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(236, 154);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.richTextBoxNewMessage.Location = new System.Drawing.Point(12, 71);
+            this.richTextBoxNewMessage.Name = "richTextBoxNewMessage";
+            this.richTextBoxNewMessage.Size = new System.Drawing.Size(236, 154);
+            this.richTextBoxNewMessage.TabIndex = 1;
+            this.richTextBoxNewMessage.Text = "";
             // 
             // textBox1
             // 
@@ -108,7 +108,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxNewMessage;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
     }
