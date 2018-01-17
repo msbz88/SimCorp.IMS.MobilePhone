@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
@@ -15,6 +16,8 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public FormMessageFormating() {
             InitializeComponent();
             InitializeComboBoxFormatting();
+            MobileStorage.OnMessageAdded += WriteMessageAddedToForm;
+            MobileStorage.OnMessageDeleted += WriteMessageRemovedToForm;
         }
 
         private void StripMenuCreateNewMessage(object sender, EventArgs e) {
@@ -40,6 +43,16 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             if (listViewMessages.Items.Count != 0) {
                 listViewMessages.Items[listViewMessages.Items.Count - 1].EnsureVisible();
             }
+        }
+
+        private void WriteMessageAddedToForm() {
+            richTextBoxMessages.SelectionColor = Color.Gray;
+            richTextBoxMessages.AppendText("System: Message saved.\n\n");
+        }
+
+        private void WriteMessageRemovedToForm() {
+            richTextBoxMessages.SelectionColor = Color.Gray;
+            richTextBoxMessages.AppendText("System: Message removed.\n\n");
         }
 
         private void WriteDetailedMessageToForm(string formattedMessage) {

@@ -15,8 +15,8 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
         }
 
         public void SendMessage(TextMessage message) {
-            MobileStorage.AddMessage(message);
             Receiver.OnSMSReceived(message);
+            MobileStorage.AddMessage(message);
         }
     }
 }

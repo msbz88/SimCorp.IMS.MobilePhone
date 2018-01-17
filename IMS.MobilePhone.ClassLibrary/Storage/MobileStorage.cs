@@ -3,10 +3,9 @@ using System.Collections.Generic;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Storage {
     public class MobileStorage {
-        public delegate string MessageAdded();
-        public static event MessageAdded OnMessageAdded = new MessageAdded(NotifyMessageAdded);
-        public delegate string MessageDeleted();
-        public static event MessageDeleted OnMessageDeleted = new MessageDeleted(NotifyMessageRemoved);
+        public delegate void StorageNotification();
+        public static event StorageNotification OnMessageAdded;
+        public static event StorageNotification OnMessageDeleted;
 
         public static List<TextMessage> Messages = new List<TextMessage>();
 
@@ -18,14 +17,6 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Storage {
         public static void RemoveMessage(TextMessage message) {
             Messages.Remove(message);
             OnMessageDeleted?.Invoke();
-        }
-
-        public static string NotifyMessageAdded() {
-            return "Message added.";
-        }
-
-        public static string NotifyMessageRemoved() {
-            return "Message removed.";
         }
     }
 }
