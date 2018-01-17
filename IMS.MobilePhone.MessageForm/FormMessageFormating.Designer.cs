@@ -24,6 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxMessageSearch = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -38,13 +43,16 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dateTimePickerTo);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.dateTimePickerFrom);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.textBoxMessageSearch);
@@ -61,6 +69,51 @@
             this.panel1.Size = new System.Drawing.Size(438, 388);
             this.panel1.TabIndex = 0;
             // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTo.Location = new System.Drawing.Point(330, 126);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(86, 20);
+            this.dateTimePickerTo.TabIndex = 15;
+            this.dateTimePickerTo.ValueChanged += new System.EventHandler(this.DateTimePickerToValueChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(327, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "To";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(231, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "From";
+            // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(233, 126);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(89, 20);
+            this.dateTimePickerFrom.TabIndex = 12;
+            this.dateTimePickerFrom.ValueChanged += new System.EventHandler(this.DateTimePickerFromValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(231, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Contacts";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -75,14 +128,14 @@
             this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxMessageSearch.Location = new System.Drawing.Point(234, 87);
             this.textBoxMessageSearch.Name = "textBoxMessageSearch";
-            this.textBoxMessageSearch.Size = new System.Drawing.Size(183, 20);
+            this.textBoxMessageSearch.Size = new System.Drawing.Size(182, 20);
             this.textBoxMessageSearch.TabIndex = 9;
             this.textBoxMessageSearch.TextChanged += new System.EventHandler(this.TextBoxMessageSearchTextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(231, 110);
+            this.label4.Location = new System.Drawing.Point(229, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 13);
             this.label4.TabIndex = 8;
@@ -93,9 +146,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(11, 110);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.Size = new System.Drawing.Size(115, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Message detailed";
+            this.label3.Text = "Message detailed view";
             // 
             // comboBoxUniqueUsers
             // 
@@ -103,7 +156,7 @@
             this.comboBoxUniqueUsers.FormattingEnabled = true;
             this.comboBoxUniqueUsers.Location = new System.Drawing.Point(233, 49);
             this.comboBoxUniqueUsers.Name = "comboBoxUniqueUsers";
-            this.comboBoxUniqueUsers.Size = new System.Drawing.Size(184, 21);
+            this.comboBoxUniqueUsers.Size = new System.Drawing.Size(183, 21);
             this.comboBoxUniqueUsers.TabIndex = 5;
             this.comboBoxUniqueUsers.SelectedIndexChanged += new System.EventHandler(this.ComboBoxUsersIndexChanged);
             // 
@@ -112,9 +165,9 @@
             this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnUser,
             this.columnText});
-            this.listViewMessages.Location = new System.Drawing.Point(232, 131);
+            this.listViewMessages.Location = new System.Drawing.Point(232, 163);
             this.listViewMessages.Name = "listViewMessages";
-            this.listViewMessages.Size = new System.Drawing.Size(184, 244);
+            this.listViewMessages.Size = new System.Drawing.Size(184, 212);
             this.listViewMessages.TabIndex = 4;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Tile;
@@ -140,11 +193,11 @@
             // 
             this.richTextBoxMessages.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxMessages.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBoxMessages.Location = new System.Drawing.Point(14, 131);
+            this.richTextBoxMessages.Location = new System.Drawing.Point(14, 125);
             this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
             this.richTextBoxMessages.ReadOnly = true;
-            this.richTextBoxMessages.Size = new System.Drawing.Size(204, 244);
+            this.richTextBoxMessages.Size = new System.Drawing.Size(204, 250);
             this.richTextBoxMessages.TabIndex = 2;
             this.richTextBoxMessages.Text = "";
             // 
@@ -184,15 +237,6 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(231, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Contacts";
-            // 
             // FormMessageFormating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,6 +273,10 @@
         private System.Windows.Forms.TextBox textBoxMessageSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
     }
 }
 

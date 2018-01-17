@@ -36,7 +36,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             foreach (TextMessage message in messages) {
                 listViewMessages.Items.Add(new ListViewItem(new[] { message.User, message.Text }));
             }
-            listViewMessages.Items[listViewMessages.Items.Count - 1].EnsureVisible();
+            if (listViewMessages.Items.Count != 0) {
+                listViewMessages.Items[listViewMessages.Items.Count - 1].EnsureVisible();
+            }
         }
 
         private void WriteDetailedMessageToForm() {
@@ -86,6 +88,14 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
             WriteQuickMessageToForm(Storage.Where(message => message.Text.Contains(textBoxMessageSearch.Text)).ToList());
+        }
+
+        private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
+            WriteQuickMessageToForm(Storage.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList());
+        }
+
+        private void DateTimePickerToValueChanged(object sender, EventArgs e) {
+            WriteQuickMessageToForm(Storage.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList());
         }
     }
 }
