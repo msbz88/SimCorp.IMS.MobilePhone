@@ -93,12 +93,17 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void InitializeComboBoxUsers() {
             comboBoxUniqueUsers.Items.Clear();
+            comboBoxUniqueUsers.Items.Add("All");
             comboBoxUniqueUsers.Items.AddRange(MobileStorage.Messages.Select(message => message.User).Distinct().ToArray());
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
-            queryMessages = MobileStorage.Messages.Where(message => message.User == comboBoxUniqueUsers.Text).ToList();
-            WriteQuickMessageToForm(queryMessages);
+            if (comboBoxUniqueUsers.Text == "All") {
+                WriteQuickMessageToForm(MobileStorage.Messages);
+            } else {
+                queryMessages = MobileStorage.Messages.Where(message => message.User == comboBoxUniqueUsers.Text).ToList();
+                WriteQuickMessageToForm(queryMessages);
+            }
         }
 
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
@@ -107,12 +112,16 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            queryMessages = MobileStorage.Messages.Where(message => message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
+            queryMessages = MobileStorage.Messages.Where(message => 
+            message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && 
+            message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
             WriteQuickMessageToForm(queryMessages);
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            queryMessages = MobileStorage.Messages.Where(message => message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
+            queryMessages = MobileStorage.Messages.Where(message =>
+            message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && 
+            message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
             WriteQuickMessageToForm(queryMessages);
         }
     }
