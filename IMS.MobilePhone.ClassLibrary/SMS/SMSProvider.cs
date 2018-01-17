@@ -1,11 +1,9 @@
-﻿using System;
-using System.Text;
+﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Storage;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
     public class SMSProvider {
         public delegate void SMSRecievedDelegate(TextMessage message);
         public event SMSRecievedDelegate SMSRecieved;
-
         IReceiver Receiver { get; set; }
 
         public SMSProvider(IReceiver receiver) {
@@ -17,6 +15,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
         }
 
         public void SendMessage(TextMessage message) {
+            MobileStorage.AddMessage(message);
             Receiver.OnSMSReceived(message);
         }
     }

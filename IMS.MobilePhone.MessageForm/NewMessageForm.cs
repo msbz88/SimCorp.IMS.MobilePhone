@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class NewMessageForm : Form {
-        TextMessage message { get; set; }
+        TextMessage Message { get; set; }
         FormMessageFormating FormMessageFormating { get; set; }
 
         public NewMessageForm(FormMessageFormating formMessageFormating) {
@@ -15,9 +15,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void ButtonSendMessage(object sender, EventArgs e) {
-            message = new TextMessage(textBox1.Text, richTextBoxNewMessage.Text);
+            Message = new TextMessage(textBox1.Text, richTextBoxNewMessage.Text);
             SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
-            SMSProvider.SendMessage(message);
+            SMSProvider.SendMessage(Message);
             richTextBoxNewMessage.Clear();
             richTextBoxNewMessage.Focus();
         }

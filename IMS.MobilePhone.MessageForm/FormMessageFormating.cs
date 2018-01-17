@@ -1,14 +1,15 @@
 ﻿using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Storage;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form, IReceiver {
         public MessageFormats.FormatDelegate Formatter = new MessageFormats.FormatDelegate(MessageFormats.WithoutFormatting);
-        public string FormattedMessage { get; set; }
-        public List<TextMessage> Storage = new List<TextMessage>();
+        public string FormattedMessage { get; set; }         
 
         public FormMessageFormating() {
             InitializeComponent();
@@ -24,10 +25,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
                 return;
             }
-            Storage.Add(message);
             FormattedMessage = Formatter(message);
-            WriteDetailedMessageToForm();
-            WriteQuickMessageToForm(Storage);
+            WriteDetailedMessageToForm(FormattedMessage);
+            WriteQuickMessageToForm(MobileStorage.Messages);
             InitializeComboBoxUsers();
         }
 
@@ -41,8 +41,8 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             }
         }
 
-        private void WriteDetailedMessageToForm() {
-            richTextBoxMessages.AppendText(FormattedMessage);
+        private void WriteDetailedMessageToForm(string formattedMessage) {
+            richTextBoxMessages.AppendText(formattedMessage);
             richTextBoxMessages.AppendText(Environment.NewLine);
             richTextBoxMessages.ScrollToCaret();
         }
@@ -79,23 +79,23 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void InitializeComboBoxUsers() {
             comboBoxUniqueUsers.Items.Clear();
-            comboBoxUniqueUsers.Items.AddRange(Storage.Select(message => message.User).Distinct().ToArray());
+            comboBoxUniqueUsers.Items.AddRange(MobileStorage.Messages.Select(message => message.User).Distinct().ToArray());
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(Storage.Where(message => message.User == comboBoxUniqueUsers.Text).ToList());
+            WriteQuickMessageToForm(MobileStorage.Messages.Where(message => message.User == comboBoxUniqueUsers.Text).ToList());
         }
 
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(Storage.Where(message => message.Text.Contains(textBoxMessageSearch.Text)).ToList());
+            WriteQuickMessageToForm(MobileStorage.Messages.Where(message => message.Text.Contains(textBoxMessageSearch.Text)).ToList());
         }
 
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(Storage.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList());
+            WriteQuickMessageToForm(MobileStorage.Messages.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList());
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(Storage.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList());
+            WriteQuickMessageToForm(MobileStorage.Messages.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList());
         }
     }
 }

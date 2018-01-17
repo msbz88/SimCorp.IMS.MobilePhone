@@ -58,9 +58,10 @@
     <Compile Include="Screen\RetinaScreen.cs" />
     <Compile Include="Screen\ScreenBase.cs" />
     <Compile Include="SMS\IReceiver.cs" />
-    <Compile Include="SMS\Message.cs" />
+    <Compile Include="SMS\TextMessage.cs" />
     <Compile Include="SMS\SMSProvider.cs" />
     <Compile Include="Speaker\PhoneSpeaker.cs" />
+    <Compile Include="Storage\MobileStorage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
