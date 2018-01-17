@@ -26,12 +26,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             }
             Storage.Add(message);
             FormattedMessage = Formatter(message);
-            WriteMessageToForm();
-            ShowMessages(Storage);
+            WriteDetailedMessageToForm();
+            WriteQuickMessageToForm(Storage);
             InitializeComboBoxUsers();
         }
 
-        private void ShowMessages(List<TextMessage> messages) {
+        private void WriteQuickMessageToForm(List<TextMessage> messages) {
             listViewMessages.Items.Clear();
             foreach (TextMessage message in messages) {
                 listViewMessages.Items.Add(new ListViewItem(new[] { message.User, message.Text }));
@@ -39,7 +39,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             listViewMessages.Items[listViewMessages.Items.Count - 1].EnsureVisible();
         }
 
-        private void WriteMessageToForm() {
+        private void WriteDetailedMessageToForm() {
             richTextBoxMessages.AppendText(FormattedMessage);
             richTextBoxMessages.AppendText(Environment.NewLine);
             richTextBoxMessages.ScrollToCaret();
@@ -81,11 +81,11 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
-
+            WriteQuickMessageToForm(Storage.Where(message => message.User == comboBoxUniqueUsers.Text).ToList());
         }
 
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
-
+            WriteQuickMessageToForm(Storage.Where(message => message.Text.Contains(textBoxMessageSearch.Text)).ToList());
         }
     }
 }
