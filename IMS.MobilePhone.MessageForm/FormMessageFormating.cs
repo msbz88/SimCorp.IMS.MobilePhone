@@ -47,12 +47,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void WriteMessageAddedToForm() {
             richTextBoxMessages.SelectionColor = Color.Gray;
-            richTextBoxMessages.AppendText("System: Message saved.\n\n");
+            richTextBoxMessages.AppendText("System: Message saved.\n");
         }
 
         private void WriteMessageRemovedToForm() {
             richTextBoxMessages.SelectionColor = Color.Gray;
-            richTextBoxMessages.AppendText("System: Message removed.\n\n");
+            richTextBoxMessages.AppendText("System: Message removed.\n");
         }
 
         private void WriteDetailedMessageToForm(string formattedMessage) {
@@ -107,12 +107,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            queryMessages = queryMessages.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList();
+            queryMessages = MobileStorage.Messages.Where(message => message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
             WriteQuickMessageToForm(queryMessages);
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            queryMessages = queryMessages.Where(message => message.ReceivinigTime >= dateTimePickerFrom.Value && message.ReceivinigTime <= dateTimePickerTo.Value).ToList();
+            queryMessages = MobileStorage.Messages.Where(message => message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
             WriteQuickMessageToForm(queryMessages);
         }
     }
