@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxMessageSearch = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.comboBoxUniqueUsers = new System.Windows.Forms.ComboBox();
             this.listViewMessages = new System.Windows.Forms.ListView();
             this.columnUser = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -34,16 +38,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxMessageSearch = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.textBoxMessageSearch);
             this.panel1.Controls.Add(this.label4);
@@ -59,15 +61,50 @@
             this.panel1.Size = new System.Drawing.Size(438, 388);
             this.panel1.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(231, 73);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Message Search ";
+            // 
+            // textBoxMessageSearch
+            // 
+            this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxMessageSearch.Location = new System.Drawing.Point(234, 87);
+            this.textBoxMessageSearch.Name = "textBoxMessageSearch";
+            this.textBoxMessageSearch.Size = new System.Drawing.Size(183, 20);
+            this.textBoxMessageSearch.TabIndex = 9;
+            this.textBoxMessageSearch.TextChanged += new System.EventHandler(this.TextBoxMessageSearchTextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(231, 110);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Message quick view";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Message detailed";
+            // 
             // comboBoxUniqueUsers
             // 
-            this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBoxUniqueUsers.FormattingEnabled = true;
             this.comboBoxUniqueUsers.Location = new System.Drawing.Point(233, 49);
             this.comboBoxUniqueUsers.Name = "comboBoxUniqueUsers";
             this.comboBoxUniqueUsers.Size = new System.Drawing.Size(184, 21);
             this.comboBoxUniqueUsers.TabIndex = 5;
-            this.comboBoxUniqueUsers.Text = "Contacts";
             this.comboBoxUniqueUsers.SelectedIndexChanged += new System.EventHandler(this.ComboBoxUsersIndexChanged);
             // 
             // listViewMessages
@@ -147,41 +184,14 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Message detailed";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(231, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Message quick view";
-            // 
-            // textBoxMessageSearch
-            // 
-            this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMessageSearch.Location = new System.Drawing.Point(234, 87);
-            this.textBoxMessageSearch.Name = "textBoxMessageSearch";
-            this.textBoxMessageSearch.Size = new System.Drawing.Size(183, 20);
-            this.textBoxMessageSearch.TabIndex = 9;
-            this.textBoxMessageSearch.TextChanged += new System.EventHandler(this.TextBoxMessageSearchTextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(231, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Message Search ";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(231, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Contacts";
             // 
             // FormMessageFormating
             // 
@@ -218,6 +228,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxMessageSearch;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
     }
 }
 
