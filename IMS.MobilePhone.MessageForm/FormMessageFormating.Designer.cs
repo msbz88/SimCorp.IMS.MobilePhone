@@ -82,7 +82,7 @@
             this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr1);
             this.groupBoxFilters.Location = new System.Drawing.Point(422, 33);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(73, 121);
+            this.groupBoxFilters.Size = new System.Drawing.Size(73, 129);
             this.groupBoxFilters.TabIndex = 20;
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Group filter";
@@ -91,7 +91,7 @@
             // 
             this.comboBoxGroupFltr1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroupFltr1.FormattingEnabled = true;
-            this.comboBoxGroupFltr1.Location = new System.Drawing.Point(6, 16);
+            this.comboBoxGroupFltr1.Location = new System.Drawing.Point(12, 16);
             this.comboBoxGroupFltr1.Name = "comboBoxGroupFltr1";
             this.comboBoxGroupFltr1.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr1.TabIndex = 19;
@@ -271,7 +271,7 @@
             // 
             this.comboBoxGroupFltr2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroupFltr2.FormattingEnabled = true;
-            this.comboBoxGroupFltr2.Location = new System.Drawing.Point(6, 54);
+            this.comboBoxGroupFltr2.Location = new System.Drawing.Point(12, 53);
             this.comboBoxGroupFltr2.Name = "comboBoxGroupFltr2";
             this.comboBoxGroupFltr2.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr2.TabIndex = 20;
@@ -280,7 +280,7 @@
             // 
             this.comboBoxGroupFltr3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroupFltr3.FormattingEnabled = true;
-            this.comboBoxGroupFltr3.Location = new System.Drawing.Point(6, 87);
+            this.comboBoxGroupFltr3.Location = new System.Drawing.Point(12, 89);
             this.comboBoxGroupFltr3.Name = "comboBoxGroupFltr3";
             this.comboBoxGroupFltr3.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr3.TabIndex = 21;
