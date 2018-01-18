@@ -43,18 +43,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxContactsFltr = new System.Windows.Forms.ComboBox();
-            this.comboBoxSearchFltr = new System.Windows.Forms.ComboBox();
-            this.comboBoxDateFltr = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.comboBoxDateFltr);
-            this.panel1.Controls.Add(this.comboBoxSearchFltr);
-            this.panel1.Controls.Add(this.comboBoxContactsFltr);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.dateTimePickerTo);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -71,16 +67,16 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 15);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(632, 478);
+            this.panel1.Size = new System.Drawing.Size(571, 478);
             this.panel1.TabIndex = 0;
             // 
             // dateTimePickerTo
             // 
             this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerTo.Location = new System.Drawing.Point(440, 151);
-            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(111, 22);
             this.dateTimePickerTo.TabIndex = 15;
@@ -110,7 +106,7 @@
             // 
             this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerFrom.Location = new System.Drawing.Point(311, 151);
-            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(115, 22);
             this.dateTimePickerFrom.TabIndex = 12;
@@ -141,7 +137,7 @@
             // 
             this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBoxMessageSearch.Location = new System.Drawing.Point(312, 107);
-            this.textBoxMessageSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxMessageSearch.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMessageSearch.Name = "textBoxMessageSearch";
             this.textBoxMessageSearch.Size = new System.Drawing.Size(241, 22);
             this.textBoxMessageSearch.TabIndex = 9;
@@ -150,7 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(305, 181);
+            this.label4.Location = new System.Drawing.Point(308, 215);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 17);
@@ -172,7 +168,7 @@
             this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBoxUniqueUsers.FormattingEnabled = true;
             this.comboBoxUniqueUsers.Location = new System.Drawing.Point(311, 60);
-            this.comboBoxUniqueUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxUniqueUsers.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxUniqueUsers.Name = "comboBoxUniqueUsers";
             this.comboBoxUniqueUsers.Size = new System.Drawing.Size(243, 24);
             this.comboBoxUniqueUsers.TabIndex = 5;
@@ -183,10 +179,10 @@
             this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnUser,
             this.columnText});
-            this.listViewMessages.Location = new System.Drawing.Point(309, 201);
-            this.listViewMessages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewMessages.Location = new System.Drawing.Point(309, 236);
+            this.listViewMessages.Margin = new System.Windows.Forms.Padding(4);
             this.listViewMessages.Name = "listViewMessages";
-            this.listViewMessages.Size = new System.Drawing.Size(307, 260);
+            this.listViewMessages.Size = new System.Drawing.Size(245, 225);
             this.listViewMessages.TabIndex = 4;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Tile;
@@ -203,7 +199,7 @@
             // 
             this.comboBoxFormattingOpt.FormattingEnabled = true;
             this.comboBoxFormattingOpt.Location = new System.Drawing.Point(19, 106);
-            this.comboBoxFormattingOpt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxFormattingOpt.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxFormattingOpt.Name = "comboBoxFormattingOpt";
             this.comboBoxFormattingOpt.Size = new System.Drawing.Size(271, 24);
             this.comboBoxFormattingOpt.TabIndex = 1;
@@ -240,7 +236,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(632, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(571, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -260,45 +256,26 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // comboBoxContactsFltr
+            // button1
             // 
-            this.comboBoxContactsFltr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxContactsFltr.FormattingEnabled = true;
-            this.comboBoxContactsFltr.Location = new System.Drawing.Point(558, 60);
-            this.comboBoxContactsFltr.Name = "comboBoxContactsFltr";
-            this.comboBoxContactsFltr.Size = new System.Drawing.Size(58, 24);
-            this.comboBoxContactsFltr.TabIndex = 16;
-            this.comboBoxContactsFltr.SelectedIndexChanged += new System.EventHandler(this.ComboBoxContactsFltrIndexChanged);
-            // 
-            // comboBoxSearchFltr
-            // 
-            this.comboBoxSearchFltr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSearchFltr.FormattingEnabled = true;
-            this.comboBoxSearchFltr.Location = new System.Drawing.Point(558, 106);
-            this.comboBoxSearchFltr.Name = "comboBoxSearchFltr";
-            this.comboBoxSearchFltr.Size = new System.Drawing.Size(58, 24);
-            this.comboBoxSearchFltr.TabIndex = 17;
-            this.comboBoxSearchFltr.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSearchFltrIndexChanged);
-            // 
-            // comboBoxDateFltr
-            // 
-            this.comboBoxDateFltr.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDateFltr.FormattingEnabled = true;
-            this.comboBoxDateFltr.Location = new System.Drawing.Point(558, 151);
-            this.comboBoxDateFltr.Name = "comboBoxDateFltr";
-            this.comboBoxDateFltr.Size = new System.Drawing.Size(58, 24);
-            this.comboBoxDateFltr.TabIndex = 18;
-            this.comboBoxDateFltr.SelectedIndexChanged += new System.EventHandler(this.ComboBoxDateFltrIndexChanged);
+            this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.button1.Location = new System.Drawing.Point(311, 180);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(240, 27);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Сomposite filter";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.ButtonClickNewCompositeFilter);
             // 
             // FormMessageFormating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 507);
+            this.ClientSize = new System.Drawing.Size(596, 507);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMessageFormating";
             this.Text = "Messages";
             this.panel1.ResumeLayout(false);
@@ -331,9 +308,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
-        private System.Windows.Forms.ComboBox comboBoxDateFltr;
-        private System.Windows.Forms.ComboBox comboBoxSearchFltr;
-        private System.Windows.Forms.ComboBox comboBoxContactsFltr;
+        private System.Windows.Forms.Button button1;
     }
 }
 
