@@ -106,8 +106,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 WriteQuickMessageToForm(MobileStorage.Messages);
-            }
-            else {
+            } else {
                 WriteQuickMessageToForm(MessagesFilters.GetAllMessagesOfUser(MobileStorage.Messages, comboBoxUniqueUsers.Text));
             }
         }
