@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 
-
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form, IReceiver {
         public MessageFormats.FormatDelegate Formatter = new MessageFormats.FormatDelegate(MessageFormats.WithoutFormatting);
@@ -16,7 +15,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public FormMessageFormating() {
             InitializeComponent();
             InitializeComboBoxFormatting();
-            InitializeComboBoxOtherFltr();
             MobileStorage.OnMessageAdded += NotifyMessageAdded;
             MobileStorage.OnMessageDeleted += NotifyMessageRemoved;
         }
@@ -105,24 +103,15 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             comboBoxUniqueUsers.Items.AddRange(MobileStorage.Messages.Select(message => message.User).Distinct().ToArray());
         }
 
-        private void InitializeComboBoxOtherFltr() {
-            string[] AndOr = new string[3];
-            AndOr[0] = "";
-            AndOr[1] = "AND";
-            AndOr[2] = "OR";
-            comboBoxContactsFltr.Items.AddRange(AndOr);
-            comboBoxSearchFltr.Items.AddRange(AndOr);
-            comboBoxDateFltr.Items.AddRange(AndOr);
-        }
-
         public List<TextMessage> GetAllMessagesOfUser(List<TextMessage> messages, string User) {
-           return messages.Where(message => message.User == User).ToList();
+            return messages.Where(message => message.User == User).ToList();
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 WriteQuickMessageToForm(MobileStorage.Messages);
-            } else {
+            }
+            else {
                 WriteQuickMessageToForm(GetAllMessagesOfUser(MobileStorage.Messages, comboBoxUniqueUsers.Text));
             }
         }
@@ -147,10 +136,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
             WriteQuickMessageToForm(GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-        }
-
-        private void ButtonClickNewCompositeFilter(object sender, EventArgs e) {
-
         }
     }
 }

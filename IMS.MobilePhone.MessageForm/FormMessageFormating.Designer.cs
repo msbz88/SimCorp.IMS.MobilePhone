@@ -43,14 +43,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.dateTimePickerTo);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
@@ -146,7 +144,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(308, 215);
+            this.label4.Location = new System.Drawing.Point(309, 186);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(133, 17);
@@ -179,10 +177,10 @@
             this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnUser,
             this.columnText});
-            this.listViewMessages.Location = new System.Drawing.Point(309, 236);
+            this.listViewMessages.Location = new System.Drawing.Point(309, 207);
             this.listViewMessages.Margin = new System.Windows.Forms.Padding(4);
             this.listViewMessages.Name = "listViewMessages";
-            this.listViewMessages.Size = new System.Drawing.Size(245, 225);
+            this.listViewMessages.Size = new System.Drawing.Size(245, 254);
             this.listViewMessages.TabIndex = 4;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Tile;
@@ -256,17 +254,6 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.button1.Location = new System.Drawing.Point(311, 180);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 27);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Сomposite filter";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.ButtonClickNewCompositeFilter);
-            // 
             // FormMessageFormating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -308,7 +295,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
-        private System.Windows.Forms.Button button1;
     }
 }
 

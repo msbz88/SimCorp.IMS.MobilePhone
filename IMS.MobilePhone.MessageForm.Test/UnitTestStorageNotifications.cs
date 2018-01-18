@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Storage;
 
