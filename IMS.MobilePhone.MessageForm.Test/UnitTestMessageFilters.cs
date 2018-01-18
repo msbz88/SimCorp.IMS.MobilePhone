@@ -26,12 +26,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message1);
             ExpectationsList.Add(message2);
             ResultList = MessagesFilters.GetMessagesUser(MobileStorage.Messages, testMessage.User);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesContent() {
@@ -46,12 +41,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Clear();
             ExpectationsList.Add(message2);
             ResultList = MessagesFilters.GetMessagesContent(MobileStorage.Messages, "M");
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesDateToday() {
@@ -68,12 +58,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesDate(MobileStorage.Messages, DateTime.Now, DateTime.Now);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.ReceivinigTime.Date, messageRes.ReceivinigTime.Date);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesDatePlusDay() {
@@ -90,21 +75,11 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesDate(MobileStorage.Messages, DateTime.Now, DateTime.Now.AddDays(1));
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.ReceivinigTime.Date, messageRes.ReceivinigTime.Date);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
             ExpectationsList.Clear();
             MobileStorage.Messages.Clear();
             ResultList = MessagesFilters.GetMessagesDate(MobileStorage.Messages, DateTime.Now.AddDays(1), DateTime.Now);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.ReceivinigTime.Date, messageRes.ReceivinigTime.Date);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesDateMinusDay() {
@@ -121,21 +96,11 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesDate(MobileStorage.Messages, DateTime.Now.AddDays(-1), DateTime.Now);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.ReceivinigTime.Date, messageRes.ReceivinigTime.Date);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
             ExpectationsList.Clear();
             MobileStorage.Messages.Clear();
             ResultList = MessagesFilters.GetMessagesDate(MobileStorage.Messages, DateTime.Now, DateTime.Now.AddDays(-1));
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.ReceivinigTime.Date, messageRes.ReceivinigTime.Date);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserAndContent() {
@@ -150,13 +115,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Clear();
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesUserAndContent(MobileStorage.Messages, "User1", "Hello1");
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserOrContent() {
@@ -173,13 +132,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesUserOrContent(MobileStorage.Messages, "User1", "Hello");
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserAndDate() {
@@ -197,21 +150,15 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ResultList = MessagesFilters.GetMessagesUserAndDate(MobileStorage.Messages, "User1", DateTime.Now, DateTime.Now);
             ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
             ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserOrDate() {
             MobileStorage.Messages.Clear();
             SMSProvider SMSProvider = new SMSProvider(formMessageFormating);
-            TextMessage message1 = new TextMessage("User", "Hello");
+            TextMessage message1 = new TextMessage("User1", "Hello");
             SMSProvider.SendMessage(message1);
-            TextMessage message2 = new TextMessage("User1", "Hello");
+            TextMessage message2 = new TextMessage("User", "Hello");
             SMSProvider.SendMessage(message2);
             TextMessage message3 = new TextMessage("User1", "Hello1");
             SMSProvider.SendMessage(message3);
@@ -220,16 +167,8 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesUserOrDate(MobileStorage.Messages, "User1", DateTime.Now, DateTime.Now);
-            ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
+          
         }
         [TestMethod]
         public void TestGetMessagesUserAndContentAndDate() {
@@ -246,40 +185,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ResultList = MessagesFilters.GetMessagesUserAndContentAndDate(MobileStorage.Messages, "User1", "Hello1",  DateTime.Now, DateTime.Now);
             ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
             ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
-        }
-        [TestMethod]
-        public void TestGetMessagesUserOrContentOrDate() {
-            MobileStorage.Messages.Clear();
-            SMSProvider SMSProvider = new SMSProvider(formMessageFormating);
-            TextMessage message1 = new TextMessage("User", "Hello");
-            SMSProvider.SendMessage(message1);
-            TextMessage message2 = new TextMessage("User1", "Hello");
-            SMSProvider.SendMessage(message2);
-            TextMessage message3 = new TextMessage("User1", "Hello1");
-            SMSProvider.SendMessage(message3);
-            ExpectationsList.Clear();
-            ExpectationsList.Add(message1);
-            ExpectationsList.Add(message2);
-            ExpectationsList.Add(message3);
-            ResultList = MessagesFilters.GetMessagesUserOrContentOrDate(MobileStorage.Messages, "User1", "Hello1", DateTime.Now, DateTime.Now);
-            ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesContentAndDate() {
@@ -287,24 +193,15 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             SMSProvider SMSProvider = new SMSProvider(formMessageFormating);
             TextMessage message1 = new TextMessage("User", "Hello");
             SMSProvider.SendMessage(message1);
-            TextMessage message2 = new TextMessage("User1", "Hello");
+            TextMessage message2 = new TextMessage("User1", "Hell");
             SMSProvider.SendMessage(message2);
             TextMessage message3 = new TextMessage("User1", "Hello1");
             SMSProvider.SendMessage(message3);
             ExpectationsList.Clear();
             ExpectationsList.Add(message1);
-            ExpectationsList.Add(message2);
+            ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesContentAndDate(MobileStorage.Messages, "Hello", DateTime.Now, DateTime.Now);
-            ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesContentOrDate() {
@@ -323,14 +220,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ResultList = MessagesFilters.GetMessagesContentOrDate(MobileStorage.Messages, "Hello", DateTime.Now, DateTime.Now);
             ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
             ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserOrContentAndDate() {
@@ -349,14 +239,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ResultList = MessagesFilters.GetMessagesContentOrDate(MobileStorage.Messages, "Hello", DateTime.Now, DateTime.Now);
             ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
             ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserAndContentOrDate() {
@@ -375,14 +258,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ResultList = MessagesFilters.GetMessagesUserAndContentOrDate(MobileStorage.Messages, "User1", "Hello", DateTime.Now, DateTime.Now);
             ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
             ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
         [TestMethod]
         public void TestGetMessagesUserAndDateOrContent() {
@@ -395,20 +271,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             TextMessage message3 = new TextMessage("User1", "Hello1");
             SMSProvider.SendMessage(message3);
             ExpectationsList.Clear();
-            ExpectationsList.Add(message1);
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
             ResultList = MessagesFilters.GetMessagesUserAndDateOrContent(MobileStorage.Messages, "User1", "Hello1", DateTime.Now, DateTime.Now);
             ExpectationsList.OrderBy(message => message.User).ThenBy(message => message.Text);
             ResultList.OrderBy(message => message.User).ThenBy(message => message.Text);
-            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
-            foreach (TextMessage messageExp in ExpectationsList) {
-                foreach (TextMessage messageRes in ResultList) {
-                    Assert.AreEqual(messageExp.User, messageRes.User);
-                    Assert.AreEqual(messageExp.Text, messageRes.Text);
-                    Assert.AreEqual(messageExp.ReceivinigTime, messageRes.ReceivinigTime);
-                }
-            }
+            CollectionAssert.AreEqual(ExpectationsList, ResultList);
         }
     }
 }
