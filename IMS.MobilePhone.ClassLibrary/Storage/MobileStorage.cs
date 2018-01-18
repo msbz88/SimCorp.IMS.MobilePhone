@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Storage {
     public class MobileStorage {
-        public delegate void StorageNotification();
+        public delegate string StorageNotification();
         public static event StorageNotification OnMessageAdded;
         public static event StorageNotification OnMessageDeleted;
 

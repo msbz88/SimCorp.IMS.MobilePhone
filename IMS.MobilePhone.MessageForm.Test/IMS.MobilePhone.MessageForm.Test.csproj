@@ -49,6 +49,7 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UnitTestStorageNotifications.cs" />
     <Compile Include="UnitTestMessageFormatting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

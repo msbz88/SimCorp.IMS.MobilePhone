@@ -17,8 +17,8 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             InitializeComponent();
             InitializeComboBoxFormatting();
             InitializeComboBoxOtherFltr();
-            MobileStorage.OnMessageAdded += WriteMessageAddedToForm;
-            MobileStorage.OnMessageDeleted += WriteMessageRemovedToForm;
+            MobileStorage.OnMessageAdded += NotifyMessageAdded;
+            MobileStorage.OnMessageDeleted += NotifyMessageRemoved;
         }
 
         private void StripMenuCreateNewMessage(object sender, EventArgs e) {
@@ -46,20 +46,27 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             }
         }
 
-        private void WriteMessageAddedToForm() {
-            richTextBoxMessages.SelectionColor = Color.Gray;
-            richTextBoxMessages.AppendText("System: Message saved.\n");
-        }
-
-        private void WriteMessageRemovedToForm() {
-            richTextBoxMessages.SelectionColor = Color.Gray;
-            richTextBoxMessages.AppendText("System: Message removed.\n");
-        }
-
         private void WriteDetailedMessageToForm(string formattedMessage) {
             richTextBoxMessages.AppendText(formattedMessage);
             richTextBoxMessages.AppendText(Environment.NewLine);
             richTextBoxMessages.ScrollToCaret();
+        }
+
+        public string NotifyMessageAdded() {
+            string notification = "System: Message saved.";
+            WriteSystemNotificationsToForm(notification);
+            return notification;
+        }
+
+        public string NotifyMessageRemoved() {
+            string notification = "System: Message removed.";
+            WriteSystemNotificationsToForm(notification);
+            return notification;
+        }
+
+        private void WriteSystemNotificationsToForm(string message) {
+            richTextBoxMessages.SelectionColor = Color.Gray;
+            richTextBoxMessages.AppendText(message + "\n");
         }
 
         private void InitializeComboBoxFormatting() {
