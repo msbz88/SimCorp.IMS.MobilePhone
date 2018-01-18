@@ -24,7 +24,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static List<TextMessage> GetMessagesUserOrContent(List<TextMessage> messages, string user, string contains) {
-            return GetMessagesUser(messages, user).Concat(GetMessagesContent(messages, contains)).ToList();
+            return GetMessagesUser(messages, user).Concat(GetMessagesContent(messages, contains)).Distinct().ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndDate(List<TextMessage> messages, string user, DateTime dateFrom, DateTime dateTo) {
@@ -32,7 +32,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static List<TextMessage> GetMessagesUserOrDate(List<TextMessage> messages, string user, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesUser(messages, user).Concat(GetMessagesDate(messages, dateFrom, dateTo)).ToList();
+            return GetMessagesUser(messages, user).Concat(GetMessagesDate(messages, dateFrom, dateTo)).Distinct().ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndContentAndDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
@@ -40,7 +40,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static List<TextMessage> GetMessagesUserOrContentOrDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesUserOrContent(messages, user, contains).Concat(GetMessagesUserAndDate(messages, user, dateFrom, dateTo)).ToList();
+            return GetMessagesUserOrContent(messages, user, contains).Concat(GetMessagesUserAndDate(messages, user, dateFrom, dateTo)).Distinct().ToList();
         }
 
         public static List<TextMessage> GetMessagesContentAndDate(List<TextMessage> messages, string contains, DateTime dateFrom, DateTime dateTo) {
@@ -48,19 +48,19 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static List<TextMessage> GetMessagesContentOrDate(List<TextMessage> messages, string contains, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesDate(messages, dateFrom, dateTo).Concat(GetMessagesContent(messages, contains)).ToList();
+            return GetMessagesDate(messages, dateFrom, dateTo).Concat(GetMessagesContent(messages, contains)).Distinct().ToList();
         }
 
         public static List<TextMessage> GetMessagesUserOrContentAndDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesContentAndDate(messages, contains, dateFrom, dateTo).Concat(GetMessagesUser(messages, user)).ToList();
+            return GetMessagesContentAndDate(messages, contains, dateFrom, dateTo).Concat(GetMessagesUser(messages, user)).Distinct().ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndContentOrDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesContent(GetMessagesUser(messages, user), contains).Concat(GetMessagesDate(messages, dateFrom, dateTo)).ToList();
+            return GetMessagesContent(GetMessagesUser(messages, user), contains).Concat(GetMessagesDate(messages, dateFrom, dateTo)).Distinct().ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndDateOrContent(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesUserAndDate(messages, user, dateFrom, dateTo).Concat(GetMessagesContent(messages, contains)).ToList();
+            return GetMessagesUserAndDate(messages, user, dateFrom, dateTo).Concat(GetMessagesContent(messages, contains)).Distinct().ToList();
         }
     }
 }

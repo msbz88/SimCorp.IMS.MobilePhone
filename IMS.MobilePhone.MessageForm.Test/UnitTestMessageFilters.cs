@@ -141,5 +141,98 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
                 }
             }
         }
+
+        [TestMethod]
+        public void TestGetMessagesUserAndContent() {
+            MobileStorage.Messages.Clear();
+            SMSProvider SMSProvider = new SMSProvider(formMessageFormating);
+            TextMessage message1 = new TextMessage("User", "Hello");
+            SMSProvider.SendMessage(message1);
+            TextMessage message2 = new TextMessage("User1", "Hello");
+            SMSProvider.SendMessage(message2);
+            TextMessage message3 = new TextMessage("User1", "Hello1");
+            SMSProvider.SendMessage(message3);
+            ExpectationsList.Clear();
+            ExpectationsList.Add(message3);
+            ResultList = MessagesFilters.GetMessagesUserAndContent(MobileStorage.Messages, "User1", "Hello1");
+            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
+            foreach (TextMessage messageExp in ExpectationsList) {
+                foreach (TextMessage messageRes in ResultList) {
+                    Assert.AreEqual(messageExp.User, messageRes.User);
+                    Assert.AreEqual(messageExp.Text, messageRes.Text);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestGetMessagesUserOrContent() {
+            MobileStorage.Messages.Clear();
+            SMSProvider SMSProvider = new SMSProvider(formMessageFormating);
+            TextMessage message1 = new TextMessage("User", "Hello");
+            SMSProvider.SendMessage(message1);
+            TextMessage message2 = new TextMessage("User1", "Hello");
+            SMSProvider.SendMessage(message2);
+            TextMessage message3 = new TextMessage("User1", "Hello1");
+            SMSProvider.SendMessage(message3);
+            ExpectationsList.Clear();
+            ExpectationsList.Add(message1);
+            ExpectationsList.Add(message2);
+            ExpectationsList.Add(message3);
+            ResultList = MessagesFilters.GetMessagesUserOrContent(MobileStorage.Messages, "User1", "Hello");
+            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
+            foreach (TextMessage messageExp in ExpectationsList) {
+                foreach (TextMessage messageRes in ResultList) {
+                    Assert.AreEqual(messageExp.User, messageRes.User);
+                    Assert.AreEqual(messageExp.Text, messageRes.Text);
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestGetMessagesUserAndDate() {
+            MobileStorage.Messages.Clear();
+            SMSProvider SMSProvider = new SMSProvider(formMessageFormating);
+            TextMessage message1 = new TextMessage("User", "Hello");
+            SMSProvider.SendMessage(message1);
+            TextMessage message2 = new TextMessage("User1", "Hello");
+            SMSProvider.SendMessage(message2);
+            TextMessage message3 = new TextMessage("User1", "Hello1");
+            SMSProvider.SendMessage(message3);
+            ExpectationsList.Clear();
+            ExpectationsList.Add(message2);
+            ExpectationsList.Add(message3);
+            ResultList = MessagesFilters.GetMessagesUserAndDate(MobileStorage.Messages, "User1", DateTime.Now, DateTime.Now);
+            Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
+            foreach (TextMessage messageExp in ExpectationsList) {
+                foreach (TextMessage messageRes in ResultList) {
+                    Assert.AreEqual(messageExp.User, messageRes.User);
+                    Assert.AreEqual(messageExp.Text, messageRes.Text);
+                }
+            }
+        }
+
+
+
+        /*
+
+ 
+        
+        GetMessagesUserOrDate(messages, user, dateFrom, dateTo)
+
+        GetMessagesUserAndContentAndDate(messages, user, contains, dateFrom, dateTo)
+
+        GetMessagesUserOrContentOrDate(messages, user, contains, dateFrom, dateTo)
+
+        GetMessagesContentAndDate(messages, contains, dateFrom, dateTo)
+
+        GetMessagesContentOrDate(messages, contains, dateFrom, dateTo)
+
+        GetMessagesUserOrContentAndDate(messages, user, contains, dateFrom, dateTo) 
+
+        GetMessagesUserAndContentOrDate(messages, user, contains, dateFrom, dateTo)
+
+        GetMessagesUserAndDateOrContent(messages, user, contains, dateFrom, dateTo)
+        */
     }
 }
+
