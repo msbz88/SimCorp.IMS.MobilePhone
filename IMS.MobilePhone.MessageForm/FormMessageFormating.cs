@@ -134,7 +134,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndContentOrDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "AND")) {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserOrContentAndDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "AND")) {
+            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "AND")) {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndDateOrContent(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             }
         }
