@@ -3,6 +3,7 @@ using Simcorp.IMS.MobilePhone.ClassLibrary.SMS;
 using Simcorp.IMS.MobilePhone.ClassLibrary.Storage;
 using System.Collections.Generic;
 using System;
+using Simcorp.IMS.MobilePhone.MessageForm;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
     [TestClass]
@@ -23,7 +24,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             SMSProvider.SendMessage(message3);
             ExpectationsList.Add(message1);
             ExpectationsList.Add(message2);
-            ResultList = formMessageFormating.GetAllMessagesOfUser(MobileStorage.Messages, testMessage.User);
+            ResultList = MessagesFilters.GetAllMessagesOfUser(MobileStorage.Messages, testMessage.User);
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
@@ -43,7 +44,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             SMSProvider.SendMessage(message3);
             ExpectationsList.Clear();
             ExpectationsList.Add(message2);
-            ResultList = formMessageFormating.GetMessagesByContent(MobileStorage.Messages, "M");
+            ResultList = MessagesFilters.GetMessagesByContent(MobileStorage.Messages, "M");
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
@@ -66,7 +67,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message1);
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
-            ResultList = formMessageFormating.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now, DateTime.Now);
+            ResultList = MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now, DateTime.Now);
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
@@ -89,7 +90,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message1);
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
-            ResultList = formMessageFormating.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now, DateTime.Now.AddDays(1));
+            ResultList = MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now, DateTime.Now.AddDays(1));
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
@@ -98,7 +99,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             }
             ExpectationsList.Clear();
             MobileStorage.Messages.Clear();
-            ResultList = formMessageFormating.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now.AddDays(1), DateTime.Now);
+            ResultList = MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now.AddDays(1), DateTime.Now);
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
@@ -121,7 +122,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             ExpectationsList.Add(message1);
             ExpectationsList.Add(message2);
             ExpectationsList.Add(message3);
-            ResultList = formMessageFormating.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now.AddDays(-1), DateTime.Now);
+            ResultList = MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now.AddDays(-1), DateTime.Now);
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
@@ -130,7 +131,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
             }
             ExpectationsList.Clear();
             MobileStorage.Messages.Clear();
-            ResultList = formMessageFormating.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now, DateTime.Now.AddDays(-1));
+            ResultList = MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, DateTime.Now, DateTime.Now.AddDays(-1));
             Assert.AreEqual(ExpectationsList.Count, ResultList.Count);
             foreach (TextMessage messageExp in ExpectationsList) {
                 foreach (TextMessage messageRes in ResultList) {
