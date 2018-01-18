@@ -103,39 +103,24 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             comboBoxUniqueUsers.Items.AddRange(MobileStorage.Messages.Select(message => message.User).Distinct().ToArray());
         }
 
-        public List<TextMessage> GetAllMessagesOfUser(List<TextMessage> messages, string User) {
-            return messages.Where(message => message.User == User).ToList();
-        }
-
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 WriteQuickMessageToForm(MobileStorage.Messages);
             }
             else {
-                WriteQuickMessageToForm(GetAllMessagesOfUser(MobileStorage.Messages, comboBoxUniqueUsers.Text));
+                WriteQuickMessageToForm(MessagesFilters.GetAllMessagesOfUser(MobileStorage.Messages, comboBoxUniqueUsers.Text));
             }
         }
 
-        public List<TextMessage> GetMessagesByContent(List<TextMessage> messages, string contains) {
-            return messages.Where(message => message.Text.Contains(contains)).ToList();
-        }
-
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(GetMessagesByContent(MobileStorage.Messages, textBoxMessageSearch.Text));
+            WriteQuickMessageToForm(MessagesFilters.GetMessagesByContent(MobileStorage.Messages, textBoxMessageSearch.Text));
         }
-
-        public List<TextMessage> GetMessagesBetweenDates(List<TextMessage> messages, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message =>
-                   message.ReceivinigTime.Date >= dateFrom.Date &&
-                   message.ReceivinigTime.Date <= dateTo.Date).ToList();
-        }
-
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
+            WriteQuickMessageToForm(MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
+            WriteQuickMessageToForm(MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
         }
     }
 }

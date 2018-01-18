@@ -52,6 +52,7 @@
       <DependentUpon>FormMessageFormating.cs</DependentUpon>
     </Compile>
     <Compile Include="MessageFormats.cs" />
+    <Compile Include="MessagesFilters.cs" />
     <Compile Include="NewMessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
