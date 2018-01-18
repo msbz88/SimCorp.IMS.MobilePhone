@@ -107,20 +107,20 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             if (comboBoxUniqueUsers.Text == "All") {
                 WriteQuickMessageToForm(MobileStorage.Messages);
             } else {
-                WriteQuickMessageToForm(MessagesFilters.GetAllMessagesOfUser(MobileStorage.Messages, comboBoxUniqueUsers.Text));
+                WriteQuickMessageToForm(MessagesFilters.GetMessagesUser(MobileStorage.Messages, comboBoxUniqueUsers.Text));
             }
         }
 
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(MessagesFilters.GetMessagesByContent(MobileStorage.Messages, textBoxMessageSearch.Text));
+            WriteQuickMessageToForm(MessagesFilters.GetMessagesContent(MobileStorage.Messages, textBoxMessageSearch.Text));
         }
 
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
+            WriteQuickMessageToForm(MessagesFilters.GetMessagesDate(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            WriteQuickMessageToForm(MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
+            WriteQuickMessageToForm(MessagesFilters.GetMessagesDate(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
         }
     }
 }
