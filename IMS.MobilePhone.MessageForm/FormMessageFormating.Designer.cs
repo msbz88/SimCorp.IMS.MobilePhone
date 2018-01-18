@@ -25,7 +25,8 @@
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
-            this.comboBoxGroupFltr1 = new System.Windows.Forms.ComboBox();
+            this.CheckBoxOr2 = new System.Windows.Forms.CheckBox();
+            this.CheckBoxOr1 = new System.Windows.Forms.CheckBox();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,8 +46,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxGroupFltr2 = new System.Windows.Forms.ComboBox();
-            this.comboBoxGroupFltr3 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBoxFilters.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -70,66 +69,82 @@
             this.panel1.Controls.Add(this.richTextBoxMessages);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Location = new System.Drawing.Point(9, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(511, 388);
+            this.panel1.Size = new System.Drawing.Size(644, 478);
             this.panel1.TabIndex = 0;
             // 
             // groupBoxFilters
             // 
-            this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr3);
-            this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr2);
-            this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr1);
-            this.groupBoxFilters.Location = new System.Drawing.Point(422, 33);
+            this.groupBoxFilters.Controls.Add(this.CheckBoxOr2);
+            this.groupBoxFilters.Controls.Add(this.CheckBoxOr1);
+            this.groupBoxFilters.Location = new System.Drawing.Point(563, 86);
+            this.groupBoxFilters.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(73, 129);
+            this.groupBoxFilters.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxFilters.Size = new System.Drawing.Size(44, 87);
             this.groupBoxFilters.TabIndex = 20;
             this.groupBoxFilters.TabStop = false;
-            this.groupBoxFilters.Text = "Group filter";
+            this.groupBoxFilters.Text = "OR";
             // 
-            // comboBoxGroupFltr1
+            // CheckBoxOr2
             // 
-            this.comboBoxGroupFltr1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGroupFltr1.FormattingEnabled = true;
-            this.comboBoxGroupFltr1.Location = new System.Drawing.Point(12, 16);
-            this.comboBoxGroupFltr1.Name = "comboBoxGroupFltr1";
-            this.comboBoxGroupFltr1.Size = new System.Drawing.Size(48, 21);
-            this.comboBoxGroupFltr1.TabIndex = 19;
-            this.comboBoxGroupFltr1.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltr1IndexChanged);
+            this.CheckBoxOr2.AutoSize = true;
+            this.CheckBoxOr2.Location = new System.Drawing.Point(7, 65);
+            this.CheckBoxOr2.Name = "CheckBoxOr2";
+            this.CheckBoxOr2.Size = new System.Drawing.Size(18, 17);
+            this.CheckBoxOr2.TabIndex = 1;
+            this.CheckBoxOr2.UseVisualStyleBackColor = true;
+            this.CheckBoxOr2.CheckedChanged += new System.EventHandler(this.CheckBoxOr2Changed);
+            // 
+            // CheckBoxOr1
+            // 
+            this.CheckBoxOr1.AutoSize = true;
+            this.CheckBoxOr1.Location = new System.Drawing.Point(7, 21);
+            this.CheckBoxOr1.Name = "CheckBoxOr1";
+            this.CheckBoxOr1.Size = new System.Drawing.Size(18, 17);
+            this.CheckBoxOr1.TabIndex = 0;
+            this.CheckBoxOr1.UseVisualStyleBackColor = true;
+            this.CheckBoxOr1.CheckedChanged += new System.EventHandler(this.CheckBoxOr1Changed);
             // 
             // dateTimePickerTo
             // 
             this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(330, 123);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(440, 151);
+            this.dateTimePickerTo.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(84, 20);
+            this.dateTimePickerTo.Size = new System.Drawing.Size(111, 22);
             this.dateTimePickerTo.TabIndex = 15;
             this.dateTimePickerTo.ValueChanged += new System.EventHandler(this.DateTimePickerToValueChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(328, 109);
+            this.label7.Location = new System.Drawing.Point(437, 134);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 13);
+            this.label7.Size = new System.Drawing.Size(25, 17);
             this.label7.TabIndex = 14;
             this.label7.Text = "To";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(231, 109);
+            this.label6.Location = new System.Drawing.Point(308, 134);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.Size = new System.Drawing.Size(40, 17);
             this.label6.TabIndex = 13;
             this.label6.Text = "From";
             // 
             // dateTimePickerFrom
             // 
             this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(233, 123);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(311, 151);
+            this.dateTimePickerFrom.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(87, 20);
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(115, 22);
             this.dateTimePickerFrom.TabIndex = 12;
             this.dateTimePickerFrom.Value = new System.DateTime(2018, 1, 17, 18, 49, 52, 0);
             this.dateTimePickerFrom.ValueChanged += new System.EventHandler(this.DateTimePickerFromValueChanged);
@@ -137,45 +152,50 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(231, 33);
+            this.label5.Location = new System.Drawing.Point(308, 41);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(63, 17);
             this.label5.TabIndex = 11;
             this.label5.Text = "Contacts";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(231, 73);
+            this.label2.Location = new System.Drawing.Point(308, 90);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(118, 17);
             this.label2.TabIndex = 10;
             this.label2.Text = "Message Search ";
             // 
             // textBoxMessageSearch
             // 
             this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMessageSearch.Location = new System.Drawing.Point(234, 87);
+            this.textBoxMessageSearch.Location = new System.Drawing.Point(312, 107);
+            this.textBoxMessageSearch.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxMessageSearch.Name = "textBoxMessageSearch";
-            this.textBoxMessageSearch.Size = new System.Drawing.Size(182, 20);
+            this.textBoxMessageSearch.Size = new System.Drawing.Size(241, 22);
             this.textBoxMessageSearch.TabIndex = 9;
             this.textBoxMessageSearch.TextChanged += new System.EventHandler(this.TextBoxMessageSearchTextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 151);
+            this.label4.Location = new System.Drawing.Point(309, 186);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.Size = new System.Drawing.Size(133, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Message quick view";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 109);
+            this.label3.Location = new System.Drawing.Point(15, 134);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 13);
+            this.label3.Size = new System.Drawing.Size(150, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Message detailed view";
             // 
@@ -183,9 +203,10 @@
             // 
             this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBoxUniqueUsers.FormattingEnabled = true;
-            this.comboBoxUniqueUsers.Location = new System.Drawing.Point(233, 49);
+            this.comboBoxUniqueUsers.Location = new System.Drawing.Point(311, 60);
+            this.comboBoxUniqueUsers.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxUniqueUsers.Name = "comboBoxUniqueUsers";
-            this.comboBoxUniqueUsers.Size = new System.Drawing.Size(183, 21);
+            this.comboBoxUniqueUsers.Size = new System.Drawing.Size(243, 24);
             this.comboBoxUniqueUsers.TabIndex = 5;
             this.comboBoxUniqueUsers.SelectedIndexChanged += new System.EventHandler(this.ComboBoxUsersIndexChanged);
             // 
@@ -194,9 +215,10 @@
             this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnUser,
             this.columnText});
-            this.listViewMessages.Location = new System.Drawing.Point(232, 168);
+            this.listViewMessages.Location = new System.Drawing.Point(309, 207);
+            this.listViewMessages.Margin = new System.Windows.Forms.Padding(4);
             this.listViewMessages.Name = "listViewMessages";
-            this.listViewMessages.Size = new System.Drawing.Size(263, 207);
+            this.listViewMessages.Size = new System.Drawing.Size(310, 254);
             this.listViewMessages.TabIndex = 4;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Tile;
@@ -212,9 +234,10 @@
             // comboBoxFormattingOpt
             // 
             this.comboBoxFormattingOpt.FormattingEnabled = true;
-            this.comboBoxFormattingOpt.Location = new System.Drawing.Point(14, 86);
+            this.comboBoxFormattingOpt.Location = new System.Drawing.Point(19, 106);
+            this.comboBoxFormattingOpt.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxFormattingOpt.Name = "comboBoxFormattingOpt";
-            this.comboBoxFormattingOpt.Size = new System.Drawing.Size(204, 21);
+            this.comboBoxFormattingOpt.Size = new System.Drawing.Size(271, 24);
             this.comboBoxFormattingOpt.TabIndex = 1;
             this.comboBoxFormattingOpt.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFormattingIndexChanged);
             // 
@@ -222,20 +245,21 @@
             // 
             this.richTextBoxMessages.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxMessages.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBoxMessages.Location = new System.Drawing.Point(14, 124);
-            this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMessages.Location = new System.Drawing.Point(19, 153);
+            this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
             this.richTextBoxMessages.ReadOnly = true;
-            this.richTextBoxMessages.Size = new System.Drawing.Size(204, 251);
+            this.richTextBoxMessages.Size = new System.Drawing.Size(271, 308);
             this.richTextBoxMessages.TabIndex = 2;
             this.richTextBoxMessages.Text = "";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 70);
+            this.label1.Location = new System.Drawing.Point(15, 86);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 13);
+            this.label1.Size = new System.Drawing.Size(245, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Please select message format output:";
             // 
@@ -247,7 +271,8 @@
             this.createToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(511, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(644, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -256,50 +281,32 @@
             this.createToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newMessageToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.createToolStripMenuItem.Text = "Create";
             // 
             // newMessageToolStripMenuItem
             // 
             this.newMessageToolStripMenuItem.Name = "newMessageToolStripMenuItem";
             this.newMessageToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newMessageToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.newMessageToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // comboBoxGroupFltr2
-            // 
-            this.comboBoxGroupFltr2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGroupFltr2.FormattingEnabled = true;
-            this.comboBoxGroupFltr2.Location = new System.Drawing.Point(12, 53);
-            this.comboBoxGroupFltr2.Name = "comboBoxGroupFltr2";
-            this.comboBoxGroupFltr2.Size = new System.Drawing.Size(48, 21);
-            this.comboBoxGroupFltr2.TabIndex = 20;
-            this.comboBoxGroupFltr2.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltr2IndexChanged);
-            // 
-            // comboBoxGroupFltr3
-            // 
-            this.comboBoxGroupFltr3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGroupFltr3.FormattingEnabled = true;
-            this.comboBoxGroupFltr3.Location = new System.Drawing.Point(12, 89);
-            this.comboBoxGroupFltr3.Name = "comboBoxGroupFltr3";
-            this.comboBoxGroupFltr3.Size = new System.Drawing.Size(48, 21);
-            this.comboBoxGroupFltr3.TabIndex = 21;
-            this.comboBoxGroupFltr3.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltr3IndexChanged);
-            // 
             // FormMessageFormating
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 412);
+            this.ClientSize = new System.Drawing.Size(666, 507);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMessageFormating";
             this.Text = "Messages";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBoxFilters.ResumeLayout(false);
+            this.groupBoxFilters.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -329,9 +336,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
         private System.Windows.Forms.GroupBox groupBoxFilters;
-        private System.Windows.Forms.ComboBox comboBoxGroupFltr1;
-        private System.Windows.Forms.ComboBox comboBoxGroupFltr2;
-        private System.Windows.Forms.ComboBox comboBoxGroupFltr3;
+        private System.Windows.Forms.CheckBox CheckBoxOr2;
+        private System.Windows.Forms.CheckBox CheckBoxOr1;
     }
 }
 

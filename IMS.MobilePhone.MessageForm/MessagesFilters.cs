@@ -39,10 +39,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             return GetMessagesDate(GetMessagesUserAndContent(messages, user, contains), dateFrom, dateTo);
         }
 
-        public static List<TextMessage> GetMessagesUserOrContentOrDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.User == user || message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-        }
-
         public static List<TextMessage> GetMessagesContentAndDate(List<TextMessage> messages, string contains, DateTime dateFrom, DateTime dateTo) {
             return messages.Where(message => message.Text.Contains(contains) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
