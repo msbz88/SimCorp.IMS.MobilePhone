@@ -6,59 +6,48 @@ namespace Simcorp.IMS.MobilePhone.MessageForm.Test {
     [TestClass]
     public class UnitTestMessageFormatting {
         FormMessageFormating formMessageFormating = new FormMessageFormating();
-        public static string TimeNow = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
-        public static string TestMessage { get; set; } = "Message #1 received";
+        public static TextMessage testMessage = new TextMessage("User", "Hello");
         public static string Result { get; set; }
-        public static string FormatNoneExp = "Message #1 received";
-        public static string FormatWithTimeBeforeExp = $"[{TimeNow}] Message #1 received";
-        public static string FormatWithTimeAfterExp = $"Message #1 received [{TimeNow}]";
-        public static string FormatWithUpperCaseExp = "MESSAGE #1 RECEIVED";
-        public static string FormatWithLowerCaseExp = "message #1 received";
-        public static string FormatWithSmileExp = "Message #1 received =)";
+        public static string WithoutFormattingExp = $"Message #{TextMessage.MessageId}\nForm: {testMessage.User}\n{testMessage.Text}\nreceived at: {testMessage.ReceivinigTime}\n";
+        public static string BeginWithTimeFormattingExp = $"Received at: { testMessage.ReceivinigTime}\nMessage #{TextMessage.MessageId}\nForm: {testMessage.User}\n{testMessage.Text}\n";
+        public static string UpperMessageTextFormattingExp = $"Message #{TextMessage.MessageId}\nForm: {testMessage.User}\n{testMessage.Text.ToUpper()}\nreceived at: {testMessage.ReceivinigTime}\n";
+        public static string UpperMessageUserAndTimeFormattingExp = $"Message #{TextMessage.MessageId}\nFROM: {testMessage.User.ToUpper()}\n{testMessage.Text}\nRESEIVED AT: {testMessage.ReceivinigTime}\n";
+        public static string LowerMessageTextFormattingExp = $"Message #{TextMessage.MessageId}\nForm: {testMessage.User}\n{testMessage.Text.ToLower()}\nreceived at: {testMessage.ReceivinigTime}\n";
 
         [TestMethod]
-        public void TestFormatNone() {
-            formMessageFormating.Formatter += SMSProvider.FormatNone;
-            formMessageFormating.OnSMSReceived(TestMessage);
+        public void TestWithoutFormatting() {
+            formMessageFormating.Formatter += MessageFormats.WithoutFormatting;
+            formMessageFormating.OnSMSReceived(testMessage);
             Result = formMessageFormating.FormattedMessage;
-            Assert.AreEqual(FormatNoneExp, Result);
+            Assert.AreEqual(WithoutFormattingExp, Result);
         }
         [TestMethod]
-        public void TestFormatWithTimeBefore() {
-            formMessageFormating.Formatter += SMSProvider.FormatWithTimeBefore;
-            formMessageFormating.OnSMSReceived(TestMessage);
-            //Cutting seconds in result due to time synchronization
-            Result = formMessageFormating.FormattedMessage.Remove(17, 3);
-            Assert.AreEqual(FormatWithTimeBeforeExp, Result);
-        }
-        [TestMethod]
-        public void TestFormatWithTimeAfter() {
-            formMessageFormating.Formatter += SMSProvider.FormatWithTimeAfter;
-            formMessageFormating.OnSMSReceived(TestMessage);
-            //Cutting seconds in result due to time synchronization
-            Result = formMessageFormating.FormattedMessage.Remove(37, 3);
-            Assert.AreEqual(FormatWithTimeAfterExp, Result);
-        }
-        [TestMethod]
-        public void TestFormatWithUpperCase() {
-            formMessageFormating.Formatter += SMSProvider.FormatWithUpperCase;
-            formMessageFormating.OnSMSReceived(TestMessage);
+        public void TestBeginWithTimeFormatting() {
+            formMessageFormating.Formatter += MessageFormats.BeginWithTimeFormatting;
+            formMessageFormating.OnSMSReceived(testMessage);
             Result = formMessageFormating.FormattedMessage;
-            Assert.AreEqual(FormatWithUpperCaseExp, Result);
+            Assert.AreEqual(BeginWithTimeFormattingExp, Result);
         }
         [TestMethod]
-        public void TestFormatWithLowerCase() {
-            formMessageFormating.Formatter += SMSProvider.FormatWithLowerCase;
-            formMessageFormating.OnSMSReceived(TestMessage);
+        public void TestUpperMessageTextFormatting() {
+            formMessageFormating.Formatter += MessageFormats.UpperMessageTextFormatting;
+            formMessageFormating.OnSMSReceived(testMessage);
             Result = formMessageFormating.FormattedMessage;
-            Assert.AreEqual(FormatWithLowerCaseExp, Result);
+            Assert.AreEqual(UpperMessageTextFormattingExp, Result);
         }
         [TestMethod]
-        public void TestFormatWithSmile() {
-            formMessageFormating.Formatter += SMSProvider.FormatWithSmile;
-            formMessageFormating.OnSMSReceived(TestMessage);
+        public void TestUpperMessageUserAndTimeFormatting() {
+            formMessageFormating.Formatter += MessageFormats.UpperMessageUserAndTimeFormatting;
+            formMessageFormating.OnSMSReceived(testMessage);
             Result = formMessageFormating.FormattedMessage;
-            Assert.AreEqual(FormatWithSmileExp, Result);
+            Assert.AreEqual(UpperMessageUserAndTimeFormattingExp, Result);
+        }
+        [TestMethod]
+        public void TestLowerMessageTextFormatting() {
+            formMessageFormating.Formatter += MessageFormats.LowerMessageTextFormatting;
+            formMessageFormating.OnSMSReceived(testMessage);
+            Result = formMessageFormating.FormattedMessage;
+            Assert.AreEqual(LowerMessageTextFormattingExp, Result);
         }
     }
 }

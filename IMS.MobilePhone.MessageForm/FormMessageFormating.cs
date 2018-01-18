@@ -16,6 +16,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public FormMessageFormating() {
             InitializeComponent();
             InitializeComboBoxFormatting();
+            InitializeComboBoxOtherFltr();
             MobileStorage.OnMessageAdded += WriteMessageAddedToForm;
             MobileStorage.OnMessageDeleted += WriteMessageRemovedToForm;
         }
@@ -62,13 +63,13 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void InitializeComboBoxFormatting() {
-            string[] formattingOptions = new string[5];
-            formattingOptions[0] = "Without Formatting (default)";
-            formattingOptions[1] = "Received time at the beginning";
-            formattingOptions[2] = "Upper message text";
-            formattingOptions[3] = "Upper User Name and received time";
-            formattingOptions[4] = "Lower message text";
-            comboBoxFormattingOpt.Items.AddRange(formattingOptions);
+            List<string> formattingOptions = new List<string>();
+            formattingOptions.Add("Without Formatting (default)");
+            formattingOptions.Add("Received time at the beginning");
+            formattingOptions.Add("Upper message text");
+            formattingOptions.Add("Upper User Name and received time");
+            formattingOptions.Add("Lower message text");
+            comboBoxFormattingOpt.Items.AddRange(formattingOptions.ToArray());
         }
 
         private void ComboBoxFormattingIndexChanged(object sender, EventArgs e) {
@@ -97,6 +98,16 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             comboBoxUniqueUsers.Items.AddRange(MobileStorage.Messages.Select(message => message.User).Distinct().ToArray());
         }
 
+        private void InitializeComboBoxOtherFltr() {
+            string[] AndOr = new string[3];
+            AndOr[0] = "";
+            AndOr[1] = "AND";
+            AndOr[2] = "OR";
+            comboBoxContactsFltr.Items.AddRange(AndOr);
+            comboBoxSearchFltr.Items.AddRange(AndOr);
+            comboBoxDateFltr.Items.AddRange(AndOr);
+        }
+
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 WriteQuickMessageToForm(MobileStorage.Messages);
@@ -123,6 +134,18 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             message.ReceivinigTime.Date >= dateTimePickerFrom.Value.Date && 
             message.ReceivinigTime.Date <= dateTimePickerTo.Value.Date).ToList();
             WriteQuickMessageToForm(queryMessages);
+        }
+
+        private void ComboBoxContactsFltrIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void ComboBoxSearchFltrIndexChanged(object sender, EventArgs e) {
+
+        }
+
+        private void ComboBoxDateFltrIndexChanged(object sender, EventArgs e) {
+
         }
     }
 }

@@ -16,12 +16,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             return $"Message #{TextMessage.MessageId}\nForm: {message.User}\n{message.Text.ToUpper()}\nreceived at: {message.ReceivinigTime}\n";
         }
 
-        public static string LowerMessageTextFormatting(TextMessage message) {
-            return $"Message #{TextMessage.MessageId}\nForm: {message.User}\n{message.Text.ToLower()}\nreceived at: {message.ReceivinigTime}\n";
-        }
-
         public static string UpperMessageUserAndTimeFormatting(TextMessage message) {
             return $"Message #{TextMessage.MessageId}\nFROM: {message.User.ToUpper()}\n{message.Text}\nRESEIVED AT: {message.ReceivinigTime}\n";
+        }
+
+        public static string LowerMessageTextFormatting(TextMessage message) {
+            return $"Message #{TextMessage.MessageId}\nForm: {message.User}\n{message.Text.ToLower()}\nreceived at: {message.ReceivinigTime}\n";
         }
     }
 }
