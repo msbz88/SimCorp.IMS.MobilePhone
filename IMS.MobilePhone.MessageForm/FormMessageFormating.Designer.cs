@@ -25,10 +25,7 @@
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
-            this.checkBoxContacts = new System.Windows.Forms.CheckBox();
             this.comboBoxGroupFltr1 = new System.Windows.Forms.ComboBox();
-            this.checkBoxMessageSearch = new System.Windows.Forms.CheckBox();
-            this.checkBoxDateBetween = new System.Windows.Forms.CheckBox();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -75,63 +72,30 @@
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(9, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 388);
+            this.panel1.Size = new System.Drawing.Size(511, 388);
             this.panel1.TabIndex = 0;
             // 
             // groupBoxFilters
             // 
             this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr3);
             this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr2);
-            this.groupBoxFilters.Controls.Add(this.checkBoxContacts);
             this.groupBoxFilters.Controls.Add(this.comboBoxGroupFltr1);
-            this.groupBoxFilters.Controls.Add(this.checkBoxMessageSearch);
-            this.groupBoxFilters.Controls.Add(this.checkBoxDateBetween);
             this.groupBoxFilters.Location = new System.Drawing.Point(422, 33);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(84, 121);
+            this.groupBoxFilters.Size = new System.Drawing.Size(73, 121);
             this.groupBoxFilters.TabIndex = 20;
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Group filter";
-            // 
-            // checkBoxContacts
-            // 
-            this.checkBoxContacts.AutoSize = true;
-            this.checkBoxContacts.Location = new System.Drawing.Point(6, 16);
-            this.checkBoxContacts.Name = "checkBoxContacts";
-            this.checkBoxContacts.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxContacts.TabIndex = 16;
-            this.checkBoxContacts.UseVisualStyleBackColor = true;
-            this.checkBoxContacts.CheckedChanged += new System.EventHandler(this.CheckBoxContactsChanged);
             // 
             // comboBoxGroupFltr1
             // 
             this.comboBoxGroupFltr1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroupFltr1.FormattingEnabled = true;
-            this.comboBoxGroupFltr1.Location = new System.Drawing.Point(27, 16);
+            this.comboBoxGroupFltr1.Location = new System.Drawing.Point(6, 16);
             this.comboBoxGroupFltr1.Name = "comboBoxGroupFltr1";
             this.comboBoxGroupFltr1.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr1.TabIndex = 19;
             this.comboBoxGroupFltr1.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltrIndexChanged);
-            // 
-            // checkBoxMessageSearch
-            // 
-            this.checkBoxMessageSearch.AutoSize = true;
-            this.checkBoxMessageSearch.Location = new System.Drawing.Point(6, 54);
-            this.checkBoxMessageSearch.Name = "checkBoxMessageSearch";
-            this.checkBoxMessageSearch.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxMessageSearch.TabIndex = 17;
-            this.checkBoxMessageSearch.UseVisualStyleBackColor = true;
-            this.checkBoxMessageSearch.CheckedChanged += new System.EventHandler(this.CheckBoxMessageSearchChanged);
-            // 
-            // checkBoxDateBetween
-            // 
-            this.checkBoxDateBetween.AutoSize = true;
-            this.checkBoxDateBetween.Location = new System.Drawing.Point(6, 90);
-            this.checkBoxDateBetween.Name = "checkBoxDateBetween";
-            this.checkBoxDateBetween.Size = new System.Drawing.Size(15, 14);
-            this.checkBoxDateBetween.TabIndex = 18;
-            this.checkBoxDateBetween.UseVisualStyleBackColor = true;
-            this.checkBoxDateBetween.CheckedChanged += new System.EventHandler(this.CheckBoxDateBetweenChanged);
             // 
             // dateTimePickerTo
             // 
@@ -232,7 +196,7 @@
             this.columnText});
             this.listViewMessages.Location = new System.Drawing.Point(232, 168);
             this.listViewMessages.Name = "listViewMessages";
-            this.listViewMessages.Size = new System.Drawing.Size(274, 207);
+            this.listViewMessages.Size = new System.Drawing.Size(263, 207);
             this.listViewMessages.TabIndex = 4;
             this.listViewMessages.UseCompatibleStateImageBehavior = false;
             this.listViewMessages.View = System.Windows.Forms.View.Tile;
@@ -283,7 +247,7 @@
             this.createToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(518, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(511, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -307,7 +271,7 @@
             // 
             this.comboBoxGroupFltr2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroupFltr2.FormattingEnabled = true;
-            this.comboBoxGroupFltr2.Location = new System.Drawing.Point(27, 54);
+            this.comboBoxGroupFltr2.Location = new System.Drawing.Point(6, 54);
             this.comboBoxGroupFltr2.Name = "comboBoxGroupFltr2";
             this.comboBoxGroupFltr2.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr2.TabIndex = 20;
@@ -316,7 +280,7 @@
             // 
             this.comboBoxGroupFltr3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGroupFltr3.FormattingEnabled = true;
-            this.comboBoxGroupFltr3.Location = new System.Drawing.Point(27, 87);
+            this.comboBoxGroupFltr3.Location = new System.Drawing.Point(6, 87);
             this.comboBoxGroupFltr3.Name = "comboBoxGroupFltr3";
             this.comboBoxGroupFltr3.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr3.TabIndex = 21;
@@ -325,7 +289,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(536, 412);
+            this.ClientSize = new System.Drawing.Size(527, 412);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
@@ -334,7 +298,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBoxFilters.ResumeLayout(false);
-            this.groupBoxFilters.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -364,10 +327,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
         private System.Windows.Forms.GroupBox groupBoxFilters;
-        private System.Windows.Forms.CheckBox checkBoxContacts;
         private System.Windows.Forms.ComboBox comboBoxGroupFltr1;
-        private System.Windows.Forms.CheckBox checkBoxMessageSearch;
-        private System.Windows.Forms.CheckBox checkBoxDateBetween;
         private System.Windows.Forms.ComboBox comboBoxGroupFltr2;
         private System.Windows.Forms.ComboBox comboBoxGroupFltr3;
     }
