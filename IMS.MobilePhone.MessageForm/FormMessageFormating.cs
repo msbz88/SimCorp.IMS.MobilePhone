@@ -105,6 +105,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             groupFltrAndOr[2] = "OR";
             comboBoxGroupFltr1.Items.AddRange(groupFltrAndOr);
             comboBoxGroupFltr2.Items.AddRange(groupFltrAndOr);
+            comboBoxGroupFltr3.Items.AddRange(groupFltrAndOr);
         }
 
         private void InitializeComboBoxUsers() {
@@ -114,27 +115,27 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void EnableGroupFilters() {
-            if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "") {
+            if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "AND" && comboBoxGroupFltr3.Text == "") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndContent(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text));
-            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "") {
+            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "" && comboBoxGroupFltr2.Text == "AND") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr2.Text == "AND" && comboBoxGroupFltr2.Text == "") {
+            } else if (checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "" && comboBoxGroupFltr2.Text == "AND" && comboBoxGroupFltr2.Text == "AND") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesContentAndDate(MobileStorage.Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "AND") {
+            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "AND" && comboBoxGroupFltr3.Text == "AND") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndContentAndDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "") {
+            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "OR" && comboBoxGroupFltr3.Text == "") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserOrContent(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text));
-            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "") {
+            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "" && comboBoxGroupFltr3.Text == "OR") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserOrDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "") {
+            } else if (checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "" && comboBoxGroupFltr2.Text == "OR" && comboBoxGroupFltr3.Text == "OR") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesContentOrDate(MobileStorage.Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "") {
+            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "OR" && comboBoxGroupFltr3.Text == "OR") {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserOrContentOrDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "OR")) {
+            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "AND" && comboBoxGroupFltr2.Text == "OR")) {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndContentOrDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "AND")) {
+            } else if (checkBoxContacts.Checked && checkBoxMessageSearch.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "OR" && comboBoxGroupFltr3.Text == "AND")) {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserOrContentAndDate(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "OR" && comboBoxGroupFltr2.Text == "AND")) {
+            } else if (checkBoxContacts.Checked && checkBoxDateBetween.Checked && (comboBoxGroupFltr1.Text == "AND" && comboBoxGroupFltr2.Text == "OR" && comboBoxGroupFltr2.Text == "AND")) {
                 WriteQuickMessageToForm(MessagesFilters.GetMessagesUserAndDateOrContent(MobileStorage.Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             }
         }
