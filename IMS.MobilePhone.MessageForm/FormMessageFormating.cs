@@ -115,6 +115,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
             WriteQuickMessageToForm(MessagesFilters.GetMessagesByContent(MobileStorage.Messages, textBoxMessageSearch.Text));
         }
+
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
             WriteQuickMessageToForm(MessagesFilters.GetMessagesBetweenDates(MobileStorage.Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
         }
