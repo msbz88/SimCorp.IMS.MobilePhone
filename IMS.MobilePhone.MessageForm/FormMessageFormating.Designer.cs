@@ -95,7 +95,7 @@
             this.comboBoxGroupFltr1.Name = "comboBoxGroupFltr1";
             this.comboBoxGroupFltr1.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr1.TabIndex = 19;
-            this.comboBoxGroupFltr1.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltrIndexChanged);
+            this.comboBoxGroupFltr1.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltr1IndexChanged);
             // 
             // dateTimePickerTo
             // 
@@ -275,6 +275,7 @@
             this.comboBoxGroupFltr2.Name = "comboBoxGroupFltr2";
             this.comboBoxGroupFltr2.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr2.TabIndex = 20;
+            this.comboBoxGroupFltr2.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltr2IndexChanged);
             // 
             // comboBoxGroupFltr3
             // 
@@ -284,6 +285,7 @@
             this.comboBoxGroupFltr3.Name = "comboBoxGroupFltr3";
             this.comboBoxGroupFltr3.Size = new System.Drawing.Size(48, 21);
             this.comboBoxGroupFltr3.TabIndex = 21;
+            this.comboBoxGroupFltr3.SelectedIndexChanged += new System.EventHandler(this.ComboBoxGroupFltr3IndexChanged);
             // 
             // FormMessageFormating
             // 

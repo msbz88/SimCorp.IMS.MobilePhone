@@ -164,19 +164,15 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             EnableGroupFilters();
         }
 
-        private void CheckBoxContactsChanged(object sender, EventArgs e) {
+        private void ComboBoxGroupFltr1IndexChanged(object sender, EventArgs e) {
             EnableGroupFilters();
         }
 
-        private void CheckBoxMessageSearchChanged(object sender, EventArgs e) {
+        private void ComboBoxGroupFltr2IndexChanged(object sender, EventArgs e) {
             EnableGroupFilters();
         }
 
-        private void CheckBoxDateBetweenChanged(object sender, EventArgs e) {
-            EnableGroupFilters();
-        }
-
-        private void ComboBoxGroupFltrIndexChanged(object sender, EventArgs e) {
+        private void ComboBoxGroupFltr3IndexChanged(object sender, EventArgs e) {
             EnableGroupFilters();
         }
     }
