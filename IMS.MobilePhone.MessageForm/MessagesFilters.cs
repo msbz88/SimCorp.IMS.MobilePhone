@@ -32,7 +32,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static List<TextMessage> GetMessagesUserOrDate(List<TextMessage> messages, string user, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.User == user || (message.ReceivinigTime.Date >= dateFrom && message.ReceivinigTime.Date <= dateTo)).ToList();
+            return messages.Where(message => message.User == user || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndContentAndDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
@@ -40,27 +40,27 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static List<TextMessage> GetMessagesUserOrContentOrDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.User == user || message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom && message.ReceivinigTime.Date <= dateTo)).ToList();
+            return messages.Where(message => message.User == user || message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
 
         public static List<TextMessage> GetMessagesContentAndDate(List<TextMessage> messages, string contains, DateTime dateFrom, DateTime dateTo) {
-            return GetMessagesDate(GetMessagesContent(messages, contains), dateFrom, dateTo);
+            return messages.Where(message => message.Text.Contains(contains) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
 
         public static List<TextMessage> GetMessagesContentOrDate(List<TextMessage> messages, string contains, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom && message.ReceivinigTime.Date <= dateTo)).ToList();
+            return messages.Where(message => message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
 
         public static List<TextMessage> GetMessagesUserOrContentAndDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.User == user || message.Text.Contains(contains) && (message.ReceivinigTime.Date >= dateFrom && message.ReceivinigTime.Date <= dateTo)).ToList();
+            return messages.Where(message => message.User == user || message.Text.Contains(contains) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndContentOrDate(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.User == user && message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom && message.ReceivinigTime.Date <= dateTo)).ToList();
+            return messages.Where(message => message.User == user && message.Text.Contains(contains) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
         }
 
         public static List<TextMessage> GetMessagesUserAndDateOrContent(List<TextMessage> messages, string user, string contains, DateTime dateFrom, DateTime dateTo) {
-            return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom && message.ReceivinigTime.Date <= dateTo) || message.Text.Contains(contains)).ToList();
+            return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date) || message.Text.Contains(contains)).ToList();
         }
     }
 }
