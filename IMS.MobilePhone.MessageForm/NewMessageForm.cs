@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class NewMessageForm : Form {
@@ -35,14 +36,25 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             MyTimer.Tick += new EventHandler(GenerateMessages);
         }
 
-        public static string RandomString(int length) {
-            const string chars = "aaBBc";
-            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+        private static string RandomName() {
+            List<string> userNames = new List<string> { "John", "Sam", "Rob", "Martin", "Julia", "Eva" };
+            int index = random.Next(userNames.Count);
+            string curName = userNames[index];
+            userNames.RemoveAt(index);
+            return curName;
+        }
+
+        private static string RandomMessage() {
+            List<string> userNames = new List<string> { "Hello!", "Hi!", "How are u?", "Bye", "How do you like Japan so far?", "See you this weekend!" };
+            int index = random.Next(userNames.Count);
+            string curName = userNames[index];
+            userNames.RemoveAt(index);
+            return curName;
         }
 
         private void GenerateMessages(object sender, EventArgs e) {
             SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
-            Message = new TextMessage(RandomString(3), RandomString(8));
+            Message = new TextMessage(RandomName(), RandomMessage());
             SMSProvider.SendMessage(Message);
         }
 
