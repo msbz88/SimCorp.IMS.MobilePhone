@@ -16,7 +16,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public FormMessageFormating() {
             InitializeComponent();
             InitializeComboBoxFormatting();
-            InitializeComboBoxUsers();
             OnMessageAdded += NotifyMessageAdded;
             OnMessageDeleted += NotifyMessageRemoved;
         }
@@ -30,6 +29,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
                 return;
             }
+            InitializeComboBoxUsers();
             FormattedMessage = Formatter(message);
             WriteDetailedMessageToForm(FormattedMessage);
             WriteQuickMessageToForm(Messages);
@@ -102,6 +102,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             comboBoxUniqueUsers.Items.Clear();
             comboBoxUniqueUsers.Items.Add("All");
             comboBoxUniqueUsers.Items.AddRange(Messages.Select(message => message.User).Distinct().ToArray());
+            comboBoxUniqueUsers.SelectedIndex = 0;
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
