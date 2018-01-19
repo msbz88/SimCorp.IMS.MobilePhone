@@ -106,9 +106,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
-            if(comboBoxUniqueUsers.Text == "All") {
+            if (comboBoxUniqueUsers.Text == "All") {
                 CheckBoxOr1.Enabled = false;
-            }
+            } else { CheckBoxOr1.Enabled = true; }
             if (CheckBoxOr1.Checked && textBoxMessageSearch.Text != "" && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesUserOrContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
@@ -137,7 +137,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 CheckBoxOr1.Enabled = false;
-            }
+            } else { CheckBoxOr1.Enabled = true; }
             if (CheckBoxOr1.Checked && textBoxMessageSearch.Text != "" && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesUserOrContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
@@ -161,7 +161,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 CheckBoxOr1.Enabled = false;
-            }
+            } else { CheckBoxOr1.Enabled = true; }
             if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
                 WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
@@ -185,7 +185,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
             if (comboBoxUniqueUsers.Text == "All") {
                 CheckBoxOr1.Enabled = false;
-            }
+            }  else { CheckBoxOr1.Enabled = true; }
             if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
                 WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
