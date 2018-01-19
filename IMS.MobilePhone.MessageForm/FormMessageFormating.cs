@@ -16,6 +16,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public FormMessageFormating() {
             InitializeComponent();
             InitializeComboBoxFormatting();
+            InitializeComboBoxUsers();
             OnMessageAdded += NotifyMessageAdded;
             OnMessageDeleted += NotifyMessageRemoved;
         }
@@ -32,7 +33,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             FormattedMessage = Formatter(message);
             WriteDetailedMessageToForm(FormattedMessage);
             WriteQuickMessageToForm(Messages);
-            InitializeComboBoxUsers();
         }
 
         private void WriteQuickMessageToForm(List<TextMessage> messages) {
@@ -108,7 +108,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             if (CheckBoxOr1.Checked && textBoxMessageSearch.Text != "" && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesUserOrContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
+            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All") {
                 queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text == "") {
@@ -131,9 +131,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
-            } else if ((comboBoxUniqueUsers.Text == "All" || comboBoxUniqueUsers.Text == "") && textBoxMessageSearch.Text == "") {
+            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
                 WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if ((comboBoxUniqueUsers.Text == "All" || comboBoxUniqueUsers.Text == "") && textBoxMessageSearch.Text != "") {
+            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesContentAndDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
             } else {
@@ -143,13 +143,16 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            if ((comboBoxUniqueUsers.Text == "All" || comboBoxUniqueUsers.Text == "") && textBoxMessageSearch.Text == "") {
+            if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
                 WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text == "") {
                 queryMessages = GetMessagesUserOrDate(Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
+                WriteQuickMessageToForm(queryMessages);
+            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
+                queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
             } else {
                 queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
@@ -158,7 +161,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            if ((comboBoxUniqueUsers.Text == "All" || comboBoxUniqueUsers.Text == "") && textBoxMessageSearch.Text == "") {
+            if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
                 WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
                 queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
@@ -166,7 +169,11 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text == "") {
                 queryMessages = GetMessagesUserOrDate(Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
-            } else {
+            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
+                queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
+                WriteQuickMessageToForm(queryMessages);
+            }
+            else {
                 queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
             }

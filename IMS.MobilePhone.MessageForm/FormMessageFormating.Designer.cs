@@ -191,6 +191,7 @@
             // 
             // comboBoxUniqueUsers
             // 
+            this.comboBoxUniqueUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBoxUniqueUsers.FormattingEnabled = true;
             this.comboBoxUniqueUsers.Location = new System.Drawing.Point(233, 49);
