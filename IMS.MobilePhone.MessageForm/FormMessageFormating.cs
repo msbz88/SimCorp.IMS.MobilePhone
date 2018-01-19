@@ -33,7 +33,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             UpdateComboBoxUsers();
             FormattedMessage = Formatter(message);
             WriteDetailedMessageToForm(FormattedMessage);
-            WriteQuickMessageToForm(Messages);
         }
 
         private void WriteQuickMessageToForm(List<TextMessage> messages) {
