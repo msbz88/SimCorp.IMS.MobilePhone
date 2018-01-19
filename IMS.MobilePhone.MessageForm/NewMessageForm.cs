@@ -36,14 +36,13 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public static string RandomString(int length) {
-            const string chars = "ABC";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            const string chars = "aaBBc";
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         private void GenerateMessages(object sender, EventArgs e) {
             SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
-            Message = new TextMessage(RandomString(3), RandomString(15));
+            Message = new TextMessage(RandomString(3), RandomString(8));
             SMSProvider.SendMessage(Message);
         }
 

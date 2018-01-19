@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static Simcorp.IMS.MobilePhone.ClassLibrary.Storage.MobileStorage;
-using static Simcorp.IMS.MobilePhone.MessageForm.MessagesFilters;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form, IReceiver {
@@ -31,6 +30,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 return;
             }
             UpdateComboBoxUsers();
+            UpdateQuickMessageView();
             FormattedMessage = Formatter(message);
             WriteDetailedMessageToForm(FormattedMessage);
         }
@@ -106,108 +106,62 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void UpdateComboBoxUsers() {
+            string remmemberContact = comboBoxUniqueUsers.Text;
+            comboBoxUniqueUsers.Items.Clear();
+            comboBoxUniqueUsers.Items.Add("All");
             comboBoxUniqueUsers.Items.AddRange(Messages.Select(message => message.User).Distinct().ToArray());
+            comboBoxUniqueUsers.Text = remmemberContact;
+        }
+
+        private void UpdateQuickMessageView() {
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
+        }
+
+        public List<TextMessage> Filters(List<TextMessage> messages, string user, string search, DateTime dateFrom, DateTime dateTo, bool checkOr1, bool checkOr2) {
+            //And conditions
+            if (user != "All" && search != "") {
+                return messages.Where(message => message.User == user && message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            }
+            else if (user == "All" && search != "") {
+                return messages.Where(message => message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            }
+            else if (user != "All" && search == "") {
+                return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            }
+            //Or conditions
+            else if (user == "All" && search != "" & checkOr1 == false & checkOr2 == true) {
+                return messages.Where(message => message.Text.Contains(search) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            }
+            else if (user != "All" && search != "" & checkOr1 == true & checkOr2 == false) {
+                return messages.Where(message => message.User == user || message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            }
+            else if (user != "All" && search == "" & checkOr1 == false & checkOr2 == true) {
+                return messages.Where(message => message.User == user || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            }
+            else {
+                return messages.ToList();
+            }
         }
 
         private void ComboBoxUsersIndexChanged(object sender, EventArgs e) {
-            if (comboBoxUniqueUsers.Text == "All") {
-                CheckBoxOr1.Enabled = false;
-            } else { CheckBoxOr1.Enabled = true; }
-            if (CheckBoxOr1.Checked && textBoxMessageSearch.Text != "" && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesUserOrContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All") {
-                queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text == "") {
-                queryMessages = GetMessagesUserOrDate(Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
-                WriteQuickMessageToForm(Messages);
-            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentAndDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else {
-                WriteQuickMessageToForm(GetMessagesUser(Messages, comboBoxUniqueUsers.Text));
-            }
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
         }
 
         private void TextBoxMessageSearchTextChanged(object sender, EventArgs e) {
-            if (comboBoxUniqueUsers.Text == "All") {
-                CheckBoxOr1.Enabled = false;
-            } else { CheckBoxOr1.Enabled = true; }
-            if (CheckBoxOr1.Checked && textBoxMessageSearch.Text != "" && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesUserOrContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
-                WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentAndDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else {
-                queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            }
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
         }
 
         private void DateTimePickerFromValueChanged(object sender, EventArgs e) {
-            if (comboBoxUniqueUsers.Text == "All") {
-                CheckBoxOr1.Enabled = false;
-            } else { CheckBoxOr1.Enabled = true; }
-            if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
-                WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text == "") {
-                queryMessages = GetMessagesUserOrDate(Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            }else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentAndDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else {
-                queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            }
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
         }
 
         private void DateTimePickerToValueChanged(object sender, EventArgs e) {
-            if (comboBoxUniqueUsers.Text == "All") {
-                CheckBoxOr1.Enabled = false;
-            }  else { CheckBoxOr1.Enabled = true; }
-            if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text == "") {
-                WriteQuickMessageToForm(GetMessagesDate(Messages, dateTimePickerFrom.Value, dateTimePickerTo.Value));
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesUserAndContentOrDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text != "All" && textBoxMessageSearch.Text == "") {
-                queryMessages = GetMessagesUserOrDate(Messages, comboBoxUniqueUsers.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (CheckBoxOr2.Checked && comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else if (comboBoxUniqueUsers.Text == "All" && textBoxMessageSearch.Text != "") {
-                queryMessages = GetMessagesContentAndDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            } else {
-                queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
-                WriteQuickMessageToForm(queryMessages);
-            }
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
         }
 
         private void CheckBoxOr1Changed(object sender, EventArgs e) {
