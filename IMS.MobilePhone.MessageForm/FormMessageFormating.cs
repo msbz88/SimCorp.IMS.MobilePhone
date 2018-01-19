@@ -101,7 +101,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void InitializeComboBoxUsers() {
             comboBoxUniqueUsers.Items.Clear();
             comboBoxUniqueUsers.Items.Add("All");
-            comboBoxUniqueUsers.Text = "All";
             comboBoxUniqueUsers.Items.AddRange(Messages.Select(message => message.User).Distinct().ToArray());
         }
 
