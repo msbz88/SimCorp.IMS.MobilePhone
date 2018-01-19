@@ -163,12 +163,16 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             if (CheckBoxOr1.Checked) {
                 CheckBoxOr2.Enabled = false;
             } else { CheckBoxOr2.Enabled = true; }
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
         }
 
         private void CheckBoxOr2Changed(object sender, EventArgs e) {
             if (CheckBoxOr2.Checked) {
                 CheckBoxOr1.Enabled = false;
             } else { CheckBoxOr1.Enabled = true; }
+            queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
+            WriteQuickMessageToForm(queryMessages);
         }
     }
 }
