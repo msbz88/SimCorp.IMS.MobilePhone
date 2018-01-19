@@ -183,6 +183,8 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void CheckBoxOr1Changed(object sender, EventArgs e) {
             if (CheckBoxOr1.Checked) {
                 CheckBoxOr2.Enabled = false;
+            } else if (comboBoxUniqueUsers.Text == "All") {
+                CheckBoxOr2.Enabled = false;
             } else { CheckBoxOr2.Enabled = true; }
         }
 
