@@ -180,8 +180,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 CheckBoxOr1.Enabled = false;
                 queryMessages = GetMessagesContentOrDate(Messages, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
-            }
-            else {
+            } else {
                 queryMessages = GetMessagesUserAndContentAndDate(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value);
                 WriteQuickMessageToForm(queryMessages);
             }
