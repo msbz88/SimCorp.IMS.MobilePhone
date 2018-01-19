@@ -30,7 +30,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 Invoke(new SMSProvider.SMSRecievedDelegate(OnSMSReceived), message);
                 return;
             }
-            UpdateComboBoxUsers()
+            UpdateComboBoxUsers();
             FormattedMessage = Formatter(message);
             WriteDetailedMessageToForm(FormattedMessage);
             WriteQuickMessageToForm(Messages);
