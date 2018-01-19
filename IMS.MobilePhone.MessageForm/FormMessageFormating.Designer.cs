@@ -89,7 +89,7 @@
             // 
             this.CheckBoxOr2.AutoSize = true;
             this.CheckBoxOr2.Location = new System.Drawing.Point(5, 53);
-            this.CheckBoxOr2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CheckBoxOr2.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBoxOr2.Name = "CheckBoxOr2";
             this.CheckBoxOr2.Size = new System.Drawing.Size(15, 14);
             this.CheckBoxOr2.TabIndex = 1;
@@ -100,7 +100,7 @@
             // 
             this.CheckBoxOr1.AutoSize = true;
             this.CheckBoxOr1.Location = new System.Drawing.Point(5, 17);
-            this.CheckBoxOr1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CheckBoxOr1.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBoxOr1.Name = "CheckBoxOr1";
             this.CheckBoxOr1.Size = new System.Drawing.Size(15, 14);
             this.CheckBoxOr1.TabIndex = 0;
@@ -158,9 +158,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(231, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Message Search ";
+            this.label2.Text = "Messages Search ";
             // 
             // textBoxMessageSearch
             // 
@@ -176,18 +176,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(232, 151);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 13);
+            this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Message quick view";
+            this.label4.Text = "Messages quick view";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(11, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 13);
+            this.label3.Size = new System.Drawing.Size(120, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Message detailed view";
+            this.label3.Text = "Messages detailed view";
             // 
             // comboBoxUniqueUsers
             // 
@@ -234,7 +234,7 @@
             this.richTextBoxMessages.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxMessages.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.richTextBoxMessages.Location = new System.Drawing.Point(14, 124);
-            this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
             this.richTextBoxMessages.ReadOnly = true;
             this.richTextBoxMessages.Size = new System.Drawing.Size(204, 251);
