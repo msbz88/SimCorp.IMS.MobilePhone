@@ -131,8 +131,8 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
             } else if (user != "All" && search == "" && checkOr1 == true && checkOr2 == false) {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == true) {
-                return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            } else if (user == "All" && search == "" && checkOr1 == false && checkOr2 == false) {
+                return messages.Where(message => message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date).ToList();
             }
             //Or conditions
               else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == true) {
