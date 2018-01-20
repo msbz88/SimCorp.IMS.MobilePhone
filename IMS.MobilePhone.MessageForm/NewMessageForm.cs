@@ -8,7 +8,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class NewMessageForm : Form {
         TextMessage Message { get; set; }
         FormMessageFormating FormMessageFormating { get; set; }
-        Timer MyTimer = new Timer();
+        static Timer MyTimer = new Timer();
         private static Random random = new Random();
 
         public NewMessageForm(FormMessageFormating formMessageFormating) {
