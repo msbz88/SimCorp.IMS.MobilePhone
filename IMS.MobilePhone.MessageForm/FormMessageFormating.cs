@@ -119,24 +119,29 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         public List<TextMessage> Filters(List<TextMessage> messages, string user, string search, DateTime dateFrom, DateTime dateTo, bool checkOr1, bool checkOr2) {
+            if (user == "All") {
+                CheckBoxOr1.Enabled = false;
+            } else { CheckBoxOr1.Enabled = true; }
             //And conditions
-            if (user != "All" && search != "" & checkOr1 == false & checkOr2 == false) {
+            if (user != "All" && search != "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.User == user && message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user == "All" && search != "" & checkOr1 == false & checkOr2 == false) {
+            } else if (user == "All" && search != "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" & checkOr1 == false & checkOr2 == false) {
+            } else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" & checkOr1 == true & checkOr2 == false) {
+            } else if (user != "All" && search == "" && checkOr1 == true && checkOr2 == false) {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" & checkOr1 == false & checkOr2 == true) {
+            } else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == true) {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
             }
             //Or conditions
-            else if (user == "All" && search != "" & checkOr1 == false & checkOr2 == true) {
+              else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == true) {
+                return messages.Where(message => message.User == user || message.Text.Contains(search) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
+            } else if (user == "All" && search != "" && checkOr1 == false && checkOr2 == true) {
                 return messages.Where(message => message.Text.Contains(search) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search != "" & checkOr1 == true & checkOr2 == false) {
+            } else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == false) {
                 return messages.Where(message => message.User == user || message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" & checkOr1 == false & checkOr2 == true) {
+            } else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == true) {
                 return messages.Where(message => message.User == user || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
             }else {
                 return messages.ToList();
@@ -164,17 +169,11 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void CheckBoxOr1Changed(object sender, EventArgs e) {
-            if (CheckBoxOr1.Checked) {
-                CheckBoxOr2.Enabled = false;
-            } else { CheckBoxOr2.Enabled = true; }
             queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
             WriteQuickMessageToForm(queryMessages);
         }
 
         private void CheckBoxOr2Changed(object sender, EventArgs e) {
-            if (CheckBoxOr2.Checked) {
-                CheckBoxOr1.Enabled = false;
-            } else { CheckBoxOr1.Enabled = true; }
             queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
             WriteQuickMessageToForm(queryMessages);
         }
