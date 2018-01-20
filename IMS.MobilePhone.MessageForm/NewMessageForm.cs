@@ -20,11 +20,17 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void ButtonSendMessage(object sender, EventArgs e) {
-            SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
-            Message = new TextMessage(textBox1.Text, richTextBoxNewMessage.Text);
-            SMSProvider.SendMessage(Message);
-            richTextBoxNewMessage.Clear();
-            richTextBoxNewMessage.Focus();
+            if (textBox1.Text == "") {
+                MessageBox.Show("Please write your name.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else if (richTextBoxNewMessage.Text == "") {
+                MessageBox.Show("Oops! You forgot to type your message!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else {
+                SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
+                Message = new TextMessage(textBox1.Text, richTextBoxNewMessage.Text);
+                SMSProvider.SendMessage(Message);
+                richTextBoxNewMessage.Clear();
+                richTextBoxNewMessage.Focus();
+            }
         }
 
         private void ButtonGenerateMessages(object sender, EventArgs e) {
@@ -45,11 +51,14 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private static string RandomMessage() {
-            List<string> userNames = new List<string> { "Hello!", "Hi!", "How are u?", "Bye", "How do you like Japan so far?", "See you this weekend!" };
-            int index = random.Next(userNames.Count);
-            string curName = userNames[index];
-            userNames.RemoveAt(index);
-            return curName;
+            List<string> userPhrases = new List<string> { "Hello!", "Hi!", "How are u?", "Bye", "How do you like Japan so far?",
+                "See you this weekend!" , "In my view, it's a difficult task.", "What do you think?", "What a wonderful day!",
+                "You did it!", "Well done!", "Don't get upset.", "Let's go to a football game.", "Why don't we go to a concert?",
+                "Why do you ask?", "Nice morning today, isn't it?", "Do you agree?" };
+            int index = random.Next(userPhrases.Count);
+            string curPhrase = userPhrases[index];
+            userPhrases.RemoveAt(index);
+            return curPhrase;
         }
 
         private void GenerateMessages(object sender, EventArgs e) {
