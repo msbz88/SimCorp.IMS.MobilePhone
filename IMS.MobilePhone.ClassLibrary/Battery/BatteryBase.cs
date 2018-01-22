@@ -2,6 +2,9 @@
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
     public abstract class BatteryBase {
+        public delegate void ChargeNotification();
+        public static event ChargeNotification OnChargeChanged;
+
         private int vCapacity;
         public int Capacity {
             get { return vCapacity; }
@@ -17,7 +20,10 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
             set {
                 if (value < 0) { throw new ArgumentException("Parameter cannot be less than 0.", "BatteryBase.Charge"); }
                 else if (value > Capacity) { throw new ArgumentException($"Parameter cannot be greater than {this.Capacity}.", "BatteryBase.Charge"); }
-                else { vCharge = value; }
+                else {
+                    vCharge = value;
+                    OnChargeChanged?.Invoke();
+                }
             }
         }
 

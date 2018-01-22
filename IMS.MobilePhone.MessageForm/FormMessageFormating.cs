@@ -5,19 +5,24 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using static Simcorp.IMS.MobilePhone.ClassLibrary.Storage.MobileStorage;
+using Simcorp.IMS.MobilePhone.ClassLibrary.Battery;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class FormMessageFormating : Form, IReceiver {
         public MessageFormats.FormatDelegate Formatter = new MessageFormats.FormatDelegate(MessageFormats.WithoutFormatting);
         public string FormattedMessage { get; set; }
         private List<TextMessage> queryMessages = new List<TextMessage>();
+        LithiumLonBattery LithiumLonBattery = new LithiumLonBattery(4000);
+        BatteryCharger BatteryCharger { get; set; }
 
         public FormMessageFormating() {
             InitializeComponent();
             InitializeComboBoxFormatting();
             OnMessageAdded += NotifyMessageAdded;
             OnMessageDeleted += NotifyMessageRemoved;
+            BatteryBase.OnChargeChanged += DisplayCharge;
             InitializeComboBoxUsers();
+            BatteryCharger = new BatteryCharger(LithiumLonBattery);
         }
 
         private void StripMenuCreateNewMessage(object sender, EventArgs e) {
@@ -176,6 +181,15 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private void CheckBoxOr2Changed(object sender, EventArgs e) {
             queryMessages = Filters(Messages, comboBoxUniqueUsers.Text, textBoxMessageSearch.Text, dateTimePickerFrom.Value, dateTimePickerTo.Value, CheckBoxOr1.Checked, CheckBoxOr2.Checked);
             WriteQuickMessageToForm(queryMessages);
+        }
+
+        private void DisplayCharge() {
+            progressBarCharge.Value = (int)(LithiumLonBattery.GetBatteryChargeLevel() * 100);
+            progressBarCharge.Show();
+        }
+
+        private void ButtonChargeClick(object sender, EventArgs e) {
+            BatteryCharger.StartCharge();
         }
     }
 }

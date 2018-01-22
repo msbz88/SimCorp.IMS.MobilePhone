@@ -24,6 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonCharge = new System.Windows.Forms.Button();
+            this.progressBarCharge = new System.Windows.Forms.ProgressBar();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
             this.CheckBoxOr2 = new System.Windows.Forms.CheckBox();
             this.CheckBoxOr1 = new System.Windows.Forms.CheckBox();
@@ -53,6 +55,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonCharge);
+            this.panel1.Controls.Add(this.progressBarCharge);
             this.panel1.Controls.Add(this.groupBoxFilters);
             this.panel1.Controls.Add(this.dateTimePickerTo);
             this.panel1.Controls.Add(this.label7);
@@ -69,16 +73,33 @@
             this.panel1.Controls.Add(this.richTextBoxMessages);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.menuStrip1);
-            this.panel1.Location = new System.Drawing.Point(9, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 388);
+            this.panel1.Size = new System.Drawing.Size(483, 415);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonCharge
+            // 
+            this.buttonCharge.Location = new System.Drawing.Point(145, 42);
+            this.buttonCharge.Name = "buttonCharge";
+            this.buttonCharge.Size = new System.Drawing.Size(75, 23);
+            this.buttonCharge.TabIndex = 22;
+            this.buttonCharge.Text = "Charge";
+            this.buttonCharge.UseVisualStyleBackColor = true;
+            this.buttonCharge.Click += new System.EventHandler(this.ButtonChargeClick);
+            // 
+            // progressBarCharge
+            // 
+            this.progressBarCharge.Location = new System.Drawing.Point(16, 42);
+            this.progressBarCharge.Name = "progressBarCharge";
+            this.progressBarCharge.Size = new System.Drawing.Size(117, 23);
+            this.progressBarCharge.TabIndex = 21;
             // 
             // groupBoxFilters
             // 
             this.groupBoxFilters.Controls.Add(this.CheckBoxOr2);
             this.groupBoxFilters.Controls.Add(this.CheckBoxOr1);
-            this.groupBoxFilters.Location = new System.Drawing.Point(422, 70);
+            this.groupBoxFilters.Location = new System.Drawing.Point(424, 92);
             this.groupBoxFilters.Name = "groupBoxFilters";
             this.groupBoxFilters.Size = new System.Drawing.Size(44, 71);
             this.groupBoxFilters.TabIndex = 20;
@@ -110,7 +131,7 @@
             // dateTimePickerTo
             // 
             this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(330, 123);
+            this.dateTimePickerTo.Location = new System.Drawing.Point(332, 145);
             this.dateTimePickerTo.Name = "dateTimePickerTo";
             this.dateTimePickerTo.Size = new System.Drawing.Size(84, 20);
             this.dateTimePickerTo.TabIndex = 15;
@@ -119,7 +140,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(328, 109);
+            this.label7.Location = new System.Drawing.Point(330, 131);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 13);
             this.label7.TabIndex = 14;
@@ -128,7 +149,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(231, 109);
+            this.label6.Location = new System.Drawing.Point(233, 131);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 13;
@@ -137,7 +158,7 @@
             // dateTimePickerFrom
             // 
             this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(233, 123);
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(235, 145);
             this.dateTimePickerFrom.Name = "dateTimePickerFrom";
             this.dateTimePickerFrom.Size = new System.Drawing.Size(87, 20);
             this.dateTimePickerFrom.TabIndex = 12;
@@ -147,7 +168,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(231, 33);
+            this.label5.Location = new System.Drawing.Point(233, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 11;
@@ -156,7 +177,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(231, 73);
+            this.label2.Location = new System.Drawing.Point(233, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 10;
@@ -165,7 +186,7 @@
             // textBoxMessageSearch
             // 
             this.textBoxMessageSearch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxMessageSearch.Location = new System.Drawing.Point(234, 87);
+            this.textBoxMessageSearch.Location = new System.Drawing.Point(236, 109);
             this.textBoxMessageSearch.Name = "textBoxMessageSearch";
             this.textBoxMessageSearch.Size = new System.Drawing.Size(182, 20);
             this.textBoxMessageSearch.TabIndex = 9;
@@ -174,7 +195,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 151);
+            this.label4.Location = new System.Drawing.Point(234, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 8;
@@ -183,7 +204,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 109);
+            this.label3.Location = new System.Drawing.Point(13, 131);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 13);
             this.label3.TabIndex = 7;
@@ -194,7 +215,7 @@
             this.comboBoxUniqueUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUniqueUsers.ForeColor = System.Drawing.SystemColors.WindowText;
             this.comboBoxUniqueUsers.FormattingEnabled = true;
-            this.comboBoxUniqueUsers.Location = new System.Drawing.Point(233, 49);
+            this.comboBoxUniqueUsers.Location = new System.Drawing.Point(235, 71);
             this.comboBoxUniqueUsers.Name = "comboBoxUniqueUsers";
             this.comboBoxUniqueUsers.Size = new System.Drawing.Size(183, 21);
             this.comboBoxUniqueUsers.TabIndex = 5;
@@ -205,7 +226,7 @@
             this.listViewMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnUser,
             this.columnText});
-            this.listViewMessages.Location = new System.Drawing.Point(232, 168);
+            this.listViewMessages.Location = new System.Drawing.Point(234, 190);
             this.listViewMessages.Name = "listViewMessages";
             this.listViewMessages.Size = new System.Drawing.Size(234, 207);
             this.listViewMessages.TabIndex = 4;
@@ -223,7 +244,7 @@
             // comboBoxFormattingOpt
             // 
             this.comboBoxFormattingOpt.FormattingEnabled = true;
-            this.comboBoxFormattingOpt.Location = new System.Drawing.Point(14, 86);
+            this.comboBoxFormattingOpt.Location = new System.Drawing.Point(16, 108);
             this.comboBoxFormattingOpt.Name = "comboBoxFormattingOpt";
             this.comboBoxFormattingOpt.Size = new System.Drawing.Size(204, 21);
             this.comboBoxFormattingOpt.TabIndex = 1;
@@ -233,7 +254,7 @@
             // 
             this.richTextBoxMessages.BackColor = System.Drawing.SystemColors.Window;
             this.richTextBoxMessages.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.richTextBoxMessages.Location = new System.Drawing.Point(14, 124);
+            this.richTextBoxMessages.Location = new System.Drawing.Point(16, 146);
             this.richTextBoxMessages.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMessages.Name = "richTextBoxMessages";
             this.richTextBoxMessages.ReadOnly = true;
@@ -244,7 +265,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 70);
+            this.label1.Location = new System.Drawing.Point(13, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(183, 13);
             this.label1.TabIndex = 1;
@@ -282,7 +303,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 412);
+            this.ClientSize = new System.Drawing.Size(504, 432);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
@@ -323,6 +344,8 @@
         private System.Windows.Forms.GroupBox groupBoxFilters;
         private System.Windows.Forms.CheckBox CheckBoxOr2;
         private System.Windows.Forms.CheckBox CheckBoxOr1;
+        private System.Windows.Forms.Button buttonCharge;
+        private System.Windows.Forms.ProgressBar progressBarCharge;
     }
 }
 

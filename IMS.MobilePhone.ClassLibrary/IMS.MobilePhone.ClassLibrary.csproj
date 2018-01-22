@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battery\BatteryCharger.cs" />
     <Compile Include="Output\IOutput.cs" />
     <Compile Include="API\Mobile.cs" />
     <Compile Include="API\SimCorpMobile.cs" />
@@ -57,7 +58,10 @@
     <Compile Include="Screen\OLEDScreen.cs" />
     <Compile Include="Screen\RetinaScreen.cs" />
     <Compile Include="Screen\ScreenBase.cs" />
+    <Compile Include="SMS\MessageGenThread.cs" />
     <Compile Include="SMS\IReceiver.cs" />
+    <Compile Include="SMS\MessageGenBase.cs" />
+    <Compile Include="SMS\RandomSMS.cs" />
     <Compile Include="SMS\TextMessage.cs" />
     <Compile Include="SMS\SMSProvider.cs" />
     <Compile Include="Speaker\PhoneSpeaker.cs" />

@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonStopMessages = new System.Windows.Forms.Button();
             this.buttonGenerateMessages = new System.Windows.Forms.Button();
@@ -32,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.richTextBoxNewMessage = new System.Windows.Forms.RichTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,10 +114,6 @@
             this.textBox1.Size = new System.Drawing.Size(149, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.GenerateMessages);
-            // 
             // NewMessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -143,7 +137,6 @@
         private System.Windows.Forms.RichTextBox richTextBoxNewMessage;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button buttonGenerateMessages;
         private System.Windows.Forms.Button buttonStopMessages;
     }
