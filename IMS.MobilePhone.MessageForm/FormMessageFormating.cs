@@ -14,6 +14,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private List<TextMessage> queryMessages = new List<TextMessage>();
         LithiumLonBattery LithiumLonBattery = new LithiumLonBattery(4000);
         BatteryCharger BatteryCharger { get; set; }
+        private bool Battery10Charge { get; set; } = true;
 
         public FormMessageFormating() {
             InitializeComponent();
@@ -21,6 +22,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             OnMessageAdded += NotifyMessageAdded;
             OnMessageDeleted += NotifyMessageRemoved;
             BatteryBase.OnChargeChanged += DisplayCharge;
+            BatteryBase.OnChargeChanged += LowBatteryNotification;
             InitializeComboBoxUsers();
             BatteryCharger = new BatteryCharger(LithiumLonBattery);
         }
@@ -189,10 +191,18 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void ButtonChargeClick(object sender, EventArgs e) {
             BatteryCharger.StartCharge();
+            Battery10Charge = false;
         }
 
         private void ButtonStopChargeClick(object sender, EventArgs e) {
             BatteryCharger.StopCharge();
+            Battery10Charge = true;
+        }
+
+        private void LowBatteryNotification() {
+            if ((int)(LithiumLonBattery.GetBatteryChargeLevel() * 100) <10 && Battery10Charge) {
+                MessageBox.Show("Low charge level! Please charge battery.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

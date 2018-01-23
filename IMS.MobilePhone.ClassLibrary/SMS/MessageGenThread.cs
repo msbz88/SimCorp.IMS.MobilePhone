@@ -25,9 +25,11 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
 
         private void GenerateMessages() {
             while (IsRunning) {
-                Message = new TextMessage(RandomSMS.RandomName(), RandomSMS.RandomMessage());
-                SMSProvider.SendMessage(Message);
-                Thread.Sleep(3000);
+                lock (this) {
+                    Message = new TextMessage(RandomSMS.RandomName(), RandomSMS.RandomMessage());
+                    SMSProvider.SendMessage(Message);
+                    Thread.Sleep(3000);
+                }
             }
         }
     }

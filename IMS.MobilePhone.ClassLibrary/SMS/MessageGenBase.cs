@@ -2,7 +2,7 @@
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
     public abstract class MessageGenBase {
-        protected Thread MessageGen;
+        protected static Thread MessageGen;
 
         public abstract void StartThread();
 
