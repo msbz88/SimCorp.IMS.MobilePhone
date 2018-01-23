@@ -185,11 +185,14 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void DisplayCharge() {
             progressBarCharge.Value = (int)(LithiumLonBattery.GetBatteryChargeLevel() * 100);
-            progressBarCharge.Show();
         }
 
         private void ButtonChargeClick(object sender, EventArgs e) {
             BatteryCharger.StartCharge();
+        }
+
+        private void ButtonStopChargeClick(object sender, EventArgs e) {
+            BatteryCharger.StopCharge();
         }
     }
 }

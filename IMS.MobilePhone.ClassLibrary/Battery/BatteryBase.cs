@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Threading;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
     public abstract class BatteryBase {
         public delegate void ChargeNotification();
         public static event ChargeNotification OnChargeChanged;
+        public static Object LockCharge = new Object();
+        Thread BatteryThread { get; set; }
 
         private int vCapacity;
         public int Capacity {
@@ -29,12 +32,30 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
 
         public BatteryBase(int capacity) {
             this.Capacity = capacity;
+            BatteryThread = new Thread(DischargeBattery);
+            BatteryThread.Start();
         }
 
         IBatteryCharger BatteryCharger { get; set; }
 
         public void ChargeBattery() {
             BatteryCharger.ChargeBattery(this);
+        }
+
+        private void DischargeBattery() {
+            lock (LockCharge) {
+                while (Charge > 0) {
+                    lock (LockCharge) {
+                        try {
+                            Charge -= 100;
+                        }
+                        catch (ArgumentException) {
+                            Charge = 0;
+                        }
+                        Thread.Sleep(5000);
+                    }
+                }
+            }
         }
 
         public abstract double GetBatteryChargeLevel();

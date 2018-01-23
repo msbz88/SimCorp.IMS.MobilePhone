@@ -48,6 +48,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonStopCharge = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBoxFilters.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonStopCharge);
             this.panel1.Controls.Add(this.buttonCharge);
             this.panel1.Controls.Add(this.progressBarCharge);
             this.panel1.Controls.Add(this.groupBoxFilters);
@@ -80,9 +82,9 @@
             // 
             // buttonCharge
             // 
-            this.buttonCharge.Location = new System.Drawing.Point(145, 42);
+            this.buttonCharge.Location = new System.Drawing.Point(112, 27);
             this.buttonCharge.Name = "buttonCharge";
-            this.buttonCharge.Size = new System.Drawing.Size(75, 23);
+            this.buttonCharge.Size = new System.Drawing.Size(108, 23);
             this.buttonCharge.TabIndex = 22;
             this.buttonCharge.Text = "Charge";
             this.buttonCharge.UseVisualStyleBackColor = true;
@@ -90,9 +92,9 @@
             // 
             // progressBarCharge
             // 
-            this.progressBarCharge.Location = new System.Drawing.Point(16, 42);
+            this.progressBarCharge.Location = new System.Drawing.Point(234, 27);
             this.progressBarCharge.Name = "progressBarCharge";
-            this.progressBarCharge.Size = new System.Drawing.Size(117, 23);
+            this.progressBarCharge.Size = new System.Drawing.Size(234, 16);
             this.progressBarCharge.TabIndex = 21;
             // 
             // groupBoxFilters
@@ -299,6 +301,16 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
+            // buttonStopCharge
+            // 
+            this.buttonStopCharge.Location = new System.Drawing.Point(112, 56);
+            this.buttonStopCharge.Name = "buttonStopCharge";
+            this.buttonStopCharge.Size = new System.Drawing.Size(108, 24);
+            this.buttonStopCharge.TabIndex = 23;
+            this.buttonStopCharge.Text = "Stop Charging";
+            this.buttonStopCharge.UseVisualStyleBackColor = true;
+            this.buttonStopCharge.Click += new System.EventHandler(this.ButtonStopChargeClick);
+            // 
             // FormMessageFormating
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,6 +358,7 @@
         private System.Windows.Forms.CheckBox CheckBoxOr1;
         private System.Windows.Forms.Button buttonCharge;
         private System.Windows.Forms.ProgressBar progressBarCharge;
+        private System.Windows.Forms.Button buttonStopCharge;
     }
 }
 
