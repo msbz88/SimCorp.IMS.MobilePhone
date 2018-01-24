@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonStopCharge = new System.Windows.Forms.Button();
             this.buttonCharge = new System.Windows.Forms.Button();
             this.progressBarCharge = new System.Windows.Forms.ProgressBar();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
@@ -48,7 +49,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.createToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newMessageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonStopCharge = new System.Windows.Forms.Button();
+            this.labelChargePers = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBoxFilters.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -56,6 +57,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelChargePers);
             this.panel1.Controls.Add(this.buttonStopCharge);
             this.panel1.Controls.Add(this.buttonCharge);
             this.panel1.Controls.Add(this.progressBarCharge);
@@ -80,6 +82,16 @@
             this.panel1.Size = new System.Drawing.Size(483, 415);
             this.panel1.TabIndex = 0;
             // 
+            // buttonStopCharge
+            // 
+            this.buttonStopCharge.Location = new System.Drawing.Point(112, 56);
+            this.buttonStopCharge.Name = "buttonStopCharge";
+            this.buttonStopCharge.Size = new System.Drawing.Size(108, 24);
+            this.buttonStopCharge.TabIndex = 23;
+            this.buttonStopCharge.Text = "Stop Charging";
+            this.buttonStopCharge.UseVisualStyleBackColor = true;
+            this.buttonStopCharge.Click += new System.EventHandler(this.ButtonStopChargeClick);
+            // 
             // buttonCharge
             // 
             this.buttonCharge.Location = new System.Drawing.Point(112, 27);
@@ -92,9 +104,9 @@
             // 
             // progressBarCharge
             // 
-            this.progressBarCharge.Location = new System.Drawing.Point(234, 27);
+            this.progressBarCharge.Location = new System.Drawing.Point(265, 27);
             this.progressBarCharge.Name = "progressBarCharge";
-            this.progressBarCharge.Size = new System.Drawing.Size(234, 16);
+            this.progressBarCharge.Size = new System.Drawing.Size(203, 13);
             this.progressBarCharge.TabIndex = 21;
             // 
             // groupBoxFilters
@@ -301,15 +313,16 @@
             this.newMessageToolStripMenuItem.Text = "New Message";
             this.newMessageToolStripMenuItem.Click += new System.EventHandler(this.StripMenuCreateNewMessage);
             // 
-            // buttonStopCharge
+            // labelChargePers
             // 
-            this.buttonStopCharge.Location = new System.Drawing.Point(112, 56);
-            this.buttonStopCharge.Name = "buttonStopCharge";
-            this.buttonStopCharge.Size = new System.Drawing.Size(108, 24);
-            this.buttonStopCharge.TabIndex = 23;
-            this.buttonStopCharge.Text = "Stop Charging";
-            this.buttonStopCharge.UseVisualStyleBackColor = true;
-            this.buttonStopCharge.Click += new System.EventHandler(this.ButtonStopChargeClick);
+            this.labelChargePers.AutoSize = true;
+            this.labelChargePers.BackColor = System.Drawing.Color.Transparent;
+            this.labelChargePers.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelChargePers.ForeColor = System.Drawing.Color.Black;
+            this.labelChargePers.Location = new System.Drawing.Point(235, 27);
+            this.labelChargePers.Name = "labelChargePers";
+            this.labelChargePers.Size = new System.Drawing.Size(0, 13);
+            this.labelChargePers.TabIndex = 24;
             // 
             // FormMessageFormating
             // 
@@ -359,6 +372,7 @@
         private System.Windows.Forms.Button buttonCharge;
         private System.Windows.Forms.ProgressBar progressBarCharge;
         private System.Windows.Forms.Button buttonStopCharge;
+        private System.Windows.Forms.Label labelChargePers;
     }
 }
 

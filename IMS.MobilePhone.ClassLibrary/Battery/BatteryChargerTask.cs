@@ -27,18 +27,18 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
         }
 
         public void ChargeBattery(BatteryBase battery) {
-            while (battery.Capacity != battery.Charge) {
+            while (true) {
                 chargeEvent.WaitOne();
                 lock (battery) {
                     try {
                         battery.Charge += 100;
                     } catch (ArgumentException) {
                         battery.Charge += battery.Capacity - battery.Charge;
+                        StopCharge();
                     }
                     Thread.Sleep(2000);
                 }
             }
-            StopCharge();
         }
     }
 }

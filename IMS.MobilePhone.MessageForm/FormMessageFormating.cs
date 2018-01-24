@@ -202,6 +202,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void DisplayCharge() {
             progressBarCharge.Value = (int)(LithiumLonBattery.GetBatteryChargeLevel() * 100);
+            labelChargePers.Text = ((int)(LithiumLonBattery.GetBatteryChargeLevel() * 100)).ToString() + "%";
         }
 
         private void Factory() {
