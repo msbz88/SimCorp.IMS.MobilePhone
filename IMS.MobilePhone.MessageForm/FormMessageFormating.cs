@@ -15,6 +15,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         LithiumLonBattery LithiumLonBattery { get; set; }
         BatteryCharger BatteryCharger { get; set; }
         private bool Battery10Charge { get; set; } = true;
+        NewMessageForm NewMessageForm { get; set; }
 
         public FormMessageFormating() {
             InitializeComponent();
@@ -29,7 +30,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void StripMenuCreateNewMessage(object sender, EventArgs e) {
-            NewMessageForm newMessageForm = new NewMessageForm(this);
+            if (NewMessageForm == null) {
+                NewMessageForm = new NewMessageForm(this);
+            } else { NewMessageForm.Activate(); }
         }
 
         public void OnSMSReceived(TextMessage message) {

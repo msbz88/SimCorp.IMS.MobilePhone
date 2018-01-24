@@ -1,18 +1,19 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.SMS {
-    public class MessageGenThread : MessageGenBase {
+    public class MessageGenTask : MessageGenBase {
         ManualResetEvent newMessageEvent = new ManualResetEvent(false);
-        Thread MessageGen { get; set; }
+        Task MessageTask { get; set; }
         TextMessage Message { get; set; }
         RandomSMS RandomSMS { get; set; }
-        SMSProvider SMSProvider { get; set;}
+        SMSProvider SMSProvider { get; set; }
 
-        public MessageGenThread(IReceiver receiver) {
+        public MessageGenTask(IReceiver receiver) {
             RandomSMS = new RandomSMS();
             SMSProvider = new SMSProvider(receiver);
-            MessageGen = new Thread(GenerateMessages);
-            MessageGen.Start();
+            MessageTask = new Task(GenerateMessages);
+            MessageTask.Start();
         }
 
         public override void StartGeneration() {

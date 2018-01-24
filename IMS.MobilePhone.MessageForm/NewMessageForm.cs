@@ -4,16 +4,19 @@ using System.Windows.Forms;
 
 namespace Simcorp.IMS.MobilePhone.MessageForm {
     public partial class NewMessageForm : Form {
+        SMSProvider SMSProvider { get; set; }
         TextMessage Message { get; set; }
+        MessageGenTask MessageGenTask { get; set; }
         FormMessageFormating FormMessageFormating { get; set; }
-        MessageGenThread MessageGenThread { get; set; }
+        MessageGenBase MessageGen { get; set; }
 
         public NewMessageForm(FormMessageFormating formMessageFormating) {
-            this.FormMessageFormating = formMessageFormating;
+            FormMessageFormating = formMessageFormating;
             InitializeComponent();
             this.Show();
             richTextBoxNewMessage.ScrollToCaret();
-            MessageGenThread = new MessageGenThread(formMessageFormating);
+            SMSProvider = new SMSProvider(formMessageFormating);
+            Factory();
         }
 
         private void ButtonSendMessage(object sender, EventArgs e) {
@@ -22,7 +25,6 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             } else if (richTextBoxNewMessage.Text == "") {
                 MessageBox.Show("Oops! You forgot to type your message!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else {
-                SMSProvider SMSProvider = new SMSProvider(FormMessageFormating);
                 Message = new TextMessage(textBox1.Text, richTextBoxNewMessage.Text);
                 SMSProvider.SendMessage(Message);
                 richTextBoxNewMessage.Clear();
@@ -30,12 +32,19 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             }
         }
 
+        private void Factory() {
+            MGenBaseFactory[] messagesFactory = new MGenBaseFactory[2];
+            messagesFactory[0] = new MGenThreadFactory(FormMessageFormating);
+            messagesFactory[1] = new MGenTaskFactory(FormMessageFormating);
+            MessageGen = messagesFactory[0].FactoryMethod();
+        }
+
         private void ButtonGenerateMessages(object sender, EventArgs e) {
-            MessageGenThread.StartThread();
+            MessageGen.StartGeneration();
         }
 
         private void ButtonStopMesssages(object sender, EventArgs e) {
-            MessageGenThread.StopThread();
+            MessageGen.StopGeneration();
         }
     }
 }
