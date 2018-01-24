@@ -4,6 +4,8 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
     public abstract class BatteryBase {
         public delegate void ChargeNotification();
         public static event ChargeNotification OnChargeChanged;
+        public static event ChargeNotification OnChargeLess10;
+        public static event ChargeNotification OnChargeZero;
         IBatteryCharger BatteryCharger { get; set; }
 
         private int vCapacity;
@@ -25,11 +27,14 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
                     vCharge = value;
                     OnChargeChanged?.Invoke();
                 }
+                if (GetBatteryChargeLevel() * 100 < 10) { OnChargeLess10?.Invoke(); }
+                if (vCharge == 0) { OnChargeZero?.Invoke(); }
             }
         }
 
         public BatteryBase(int capacity) {
             this.Capacity = capacity;
+            if (Charge == 0) { OnChargeZero?.Invoke(); }
         }
 
         public void ChargeBattery() {

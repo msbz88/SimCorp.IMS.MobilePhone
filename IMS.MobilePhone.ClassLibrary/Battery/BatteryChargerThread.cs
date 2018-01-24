@@ -31,8 +31,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
                 lock (battery) {
                     try {
                         battery.Charge += 100;
-                    }
-                    catch (ArgumentException) {
+                    } catch (ArgumentException) {
                         battery.Charge += battery.Capacity - battery.Charge;
                     }
                     Thread.Sleep(2000);

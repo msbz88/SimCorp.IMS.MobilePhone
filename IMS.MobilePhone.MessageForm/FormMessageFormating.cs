@@ -14,7 +14,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         private List<TextMessage> queryMessages = new List<TextMessage>();
         LithiumLonBattery LithiumLonBattery { get; set; }
         ChargeBase BatteryCharger { get; set; }
-        private bool Battery10Charge { get; set; } = true;
+        private bool NotifyOnLower10Charge { get; set; } = true;
         NewMessageForm NewMessageForm { get; set; }
 
         public FormMessageFormating() {
@@ -23,16 +23,18 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             OnMessageAdded += NotifyMessageAdded;
             OnMessageDeleted += NotifyMessageRemoved;
             BatteryBase.OnChargeChanged += DisplayCharge;
-           // BatteryBase.OnCharge10 += LowBatteryNotification;
-            InitializeComboBoxUsers();
+            BatteryBase.OnChargeLess10 += LowBatteryNotification;
+            BatteryBase.OnChargeZero += LockOnZeroChargeLevel;
             LithiumLonBattery = new LithiumLonBattery(4000);
+            InitializeComboBoxUsers();
             Factory();
         }
 
         private void StripMenuCreateNewMessage(object sender, EventArgs e) {
             if (NewMessageForm == null) {
                 NewMessageForm = new NewMessageForm(this);
-            } else { NewMessageForm.Activate(); }
+            }
+            else { NewMessageForm.Activate(); }
         }
 
         public void OnSMSReceived(TextMessage message) {
@@ -132,29 +134,38 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public List<TextMessage> Filters(List<TextMessage> messages, string user, string search, DateTime dateFrom, DateTime dateTo, bool checkOr1, bool checkOr2) {
             if (user == "All") {
                 CheckBoxOr1.Enabled = false;
-            } else { CheckBoxOr1.Enabled = true; }
+            }
+            else { CheckBoxOr1.Enabled = true; }
             //And conditions
             if (user != "All" && search != "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.User == user && message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user == "All" && search != "" && checkOr1 == false && checkOr2 == false) {
+            }
+            else if (user == "All" && search != "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == false) {
+            }
+            else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" && checkOr1 == true && checkOr2 == false) {
+            }
+            else if (user != "All" && search == "" && checkOr1 == true && checkOr2 == false) {
                 return messages.Where(message => message.User == user && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user == "All" && search == "" && checkOr1 == false && checkOr2 == false) {
+            }
+            else if (user == "All" && search == "" && checkOr1 == false && checkOr2 == false) {
                 return messages.Where(message => message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date).ToList();
             }
             //Or conditions
-              else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == true) {
+            else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == true) {
                 return messages.Where(message => message.User == user || message.Text.Contains(search) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user == "All" && search != "" && checkOr1 == false && checkOr2 == true) {
+            }
+            else if (user == "All" && search != "" && checkOr1 == false && checkOr2 == true) {
                 return messages.Where(message => message.Text.Contains(search) || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == false) {
+            }
+            else if (user != "All" && search != "" && checkOr1 == true && checkOr2 == false) {
                 return messages.Where(message => message.User == user || message.Text.Contains(search) && (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            } else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == true) {
+            }
+            else if (user != "All" && search == "" && checkOr1 == false && checkOr2 == true) {
                 return messages.Where(message => message.User == user || (message.ReceivinigTime.Date >= dateFrom.Date && message.ReceivinigTime.Date <= dateTo.Date)).ToList();
-            }else {
+            }
+            else {
                 return messages.ToList();
             }
         }
@@ -202,17 +213,34 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void ButtonChargeClick(object sender, EventArgs e) {
             BatteryCharger.StartCharge();
-            Battery10Charge = false;
+            NotifyOnLower10Charge = false;
+            UnLockOnZeroChargeLevel();
         }
 
         private void ButtonStopChargeClick(object sender, EventArgs e) {
             BatteryCharger.StopCharge();
-            Battery10Charge = true;
+            NotifyOnLower10Charge = true;
         }
 
         private void LowBatteryNotification() {
-            if ((int)(LithiumLonBattery.GetBatteryChargeLevel() * 100) <10 && Battery10Charge) {
+            if (NotifyOnLower10Charge) {
                 MessageBox.Show("Low charge level! Please charge battery.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void LockOnZeroChargeLevel() {
+            foreach (Control c in this.panel1.Controls) {
+                if (c.Name != "buttonCharge") {
+                    c.Enabled = false;
+                }
+            }
+        }
+
+        private void UnLockOnZeroChargeLevel() {
+            foreach (Control c in this.panel1.Controls) {
+                if (c.Name != "CheckBoxOr1") {
+                    c.Enabled = true;
+                }
             }
         }
     }

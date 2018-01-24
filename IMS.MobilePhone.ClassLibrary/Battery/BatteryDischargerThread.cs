@@ -28,8 +28,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
                     Thread.Sleep(5000);
                     try {
                         Battery.Charge -= 100;
-                    }
-                    catch (ArgumentException) {
+                    } catch (ArgumentException) {
                         Battery.Charge = 0;
                     }
                 }

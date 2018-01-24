@@ -1,7 +1,6 @@
 ﻿namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
     public class LithiumLonBattery: BatteryBase {
         public LithiumLonBattery(int capacity) : base(capacity) {
-
         }
 
         public override double GetBatteryChargeLevel() {
