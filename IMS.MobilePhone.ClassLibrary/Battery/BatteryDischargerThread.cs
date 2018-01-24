@@ -2,7 +2,7 @@
 using System.Threading;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
-    class BatteryDischargerThread {
+    public class BatteryDischargerThread {
         protected Thread BatteryThread { get; set; }
         ManualResetEvent dischargeEvent = new ManualResetEvent(false);
         BatteryBase Battery { get; set; }

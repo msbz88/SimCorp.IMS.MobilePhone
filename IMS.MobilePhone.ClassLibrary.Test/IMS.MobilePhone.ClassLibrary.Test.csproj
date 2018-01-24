@@ -51,6 +51,7 @@
     <Compile Include="Output\UnitTestOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Output\TestOutput.cs" />
+    <Compile Include="TestBattery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
