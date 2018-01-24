@@ -2,25 +2,27 @@
 using System.Threading;
 
 namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
-    public class BatteryCharger : IBatteryCharger {
+    public class BatteryChargerThread : ChargeBase, IBatteryCharger {
         ManualResetEvent chargeEvent = new ManualResetEvent(false);
         Thread ChargeBatteryThread { get; set; }
         BatteryBase Battery { get; set; }
+        BatteryDischargerThread BatteryDischarger { get; set; }
 
-        public BatteryCharger(BatteryBase battery) {
+        public BatteryChargerThread(BatteryBase battery) {
             Battery = battery;
             ChargeBatteryThread = new Thread(() => ChargeBattery(battery)) ;
             ChargeBatteryThread.Start();
+            BatteryDischarger = new BatteryDischargerThread(battery);
         }
 
-        public void StartCharge() {
-            Battery.StopDisCharging();
+        public override void StartCharge() {
+            BatteryDischarger.StopDisCharging();
             chargeEvent.Set();
         }
 
-        public void StopCharge() {
+        public override void StopCharge() {
             chargeEvent.Reset();
-            Battery.StartDisCharging();
+            BatteryDischarger.StartDisCharging();
         }
 
         public void ChargeBattery(BatteryBase battery) {

@@ -13,7 +13,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public string FormattedMessage { get; set; }
         private List<TextMessage> queryMessages = new List<TextMessage>();
         LithiumLonBattery LithiumLonBattery { get; set; }
-        BatteryCharger BatteryCharger { get; set; }
+        ChargeBase BatteryCharger { get; set; }
         private bool Battery10Charge { get; set; } = true;
         NewMessageForm NewMessageForm { get; set; }
 
@@ -26,7 +26,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
            // BatteryBase.OnCharge10 += LowBatteryNotification;
             InitializeComboBoxUsers();
             LithiumLonBattery = new LithiumLonBattery(4000);
-            BatteryCharger = new BatteryCharger(LithiumLonBattery);
+            Factory();
         }
 
         private void StripMenuCreateNewMessage(object sender, EventArgs e) {
@@ -191,6 +191,13 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
 
         private void DisplayCharge() {
             progressBarCharge.Value = (int)(LithiumLonBattery.GetBatteryChargeLevel() * 100);
+        }
+
+        private void Factory() {
+            ChargeBaseFactory[] chargeFactory = new ChargeBaseFactory[2];
+            chargeFactory[0] = new ChargeThreadFactory(LithiumLonBattery);
+            chargeFactory[1] = new ChargeTaskFactory(LithiumLonBattery);
+            BatteryCharger = chargeFactory[1].FactoryMethod();
         }
 
         private void ButtonChargeClick(object sender, EventArgs e) {

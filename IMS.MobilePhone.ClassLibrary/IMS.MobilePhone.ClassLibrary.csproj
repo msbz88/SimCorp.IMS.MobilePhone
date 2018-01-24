@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Battery\BatteryCharger.cs" />
+    <Compile Include="Battery\BatteryChargerTask.cs" />
+    <Compile Include="Battery\BatteryChargerThread.cs" />
+    <Compile Include="Battery\BatteryDischargerTask.cs" />
+    <Compile Include="Battery\BatteryDischargerThread.cs" />
+    <Compile Include="Battery\ChargeBase.cs" />
+    <Compile Include="Battery\ChargeBaseFactory.cs" />
+    <Compile Include="Battery\ChargeTaskFactory.cs" />
+    <Compile Include="Battery\ChargeThreadFactory.cs" />
     <Compile Include="Output\IOutput.cs" />
     <Compile Include="API\Mobile.cs" />
     <Compile Include="API\SimCorpMobile.cs" />
