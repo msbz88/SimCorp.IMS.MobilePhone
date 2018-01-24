@@ -24,13 +24,13 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
         private void BatteryDischarging() {
             while (Battery.Charge >= 0) {
                 dischargeEvent.WaitOne();
-                lock (this) {
-                    Thread.Sleep(5000);
+                lock (Battery) {                   
                     try {
                         Battery.Charge -= 100;
                     } catch (ArgumentException) {
                         Battery.Charge = 0;
                     }
+                    Thread.Sleep(5000);
                 }
             }
         }

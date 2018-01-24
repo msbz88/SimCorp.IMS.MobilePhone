@@ -27,7 +27,7 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
                     vCharge = value;
                     OnChargeChanged?.Invoke();
                 }
-                if (GetBatteryChargeLevel() * 100 < 10) { OnChargeLess10?.Invoke(); }
+                if (GetBatteryChargeLevel() * 100 == 10) { OnChargeLess10?.Invoke(); }
                 if (vCharge == 0) { OnChargeZero?.Invoke(); }
             }
         }
