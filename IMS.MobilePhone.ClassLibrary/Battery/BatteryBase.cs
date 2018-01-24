@@ -6,7 +6,8 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
         public delegate void ChargeNotification();
         public static event ChargeNotification OnChargeChanged;
         protected Thread BatteryThread { get; set; }
-        public bool IsCharging { get; set; }
+        ManualResetEvent dischargeEvent = new ManualResetEvent(false);
+        IBatteryCharger BatteryCharger { get; set; }
 
         private int vCapacity;
         public int Capacity {
@@ -32,21 +33,25 @@ namespace Simcorp.IMS.MobilePhone.ClassLibrary.Battery {
 
         public BatteryBase(int capacity) {
             this.Capacity = capacity;
-        }
-
-        public void StartDischarge() {
-            BatteryThread = new Thread(DischargeBattery);
+            BatteryThread = new Thread(BatteryDischarging);
             BatteryThread.Start();
         }
-
-        IBatteryCharger BatteryCharger { get; set; }
 
         public void ChargeBattery() {
             BatteryCharger.ChargeBattery(this);
         }
 
-        protected void DischargeBattery() {
-            while (Charge > 0 && IsCharging == false) {
+        public void StartDisCharging() {
+            dischargeEvent.Set();
+        }
+
+        public void StopDisCharging() {
+            dischargeEvent.Reset();
+        }
+
+        protected void BatteryDischarging() {
+            while (Charge >= 0) {
+                dischargeEvent.WaitOne();
                 lock (this) {
                     Thread.Sleep(5000);
                     try {

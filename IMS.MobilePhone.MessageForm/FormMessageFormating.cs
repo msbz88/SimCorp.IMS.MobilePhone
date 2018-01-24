@@ -12,7 +12,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         public MessageFormats.FormatDelegate Formatter = new MessageFormats.FormatDelegate(MessageFormats.WithoutFormatting);
         public string FormattedMessage { get; set; }
         private List<TextMessage> queryMessages = new List<TextMessage>();
-        LithiumLonBattery LithiumLonBattery = new LithiumLonBattery(4000);
+        LithiumLonBattery LithiumLonBattery { get; set; }
         BatteryCharger BatteryCharger { get; set; }
         private bool Battery10Charge { get; set; } = true;
 
@@ -22,8 +22,9 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
             OnMessageAdded += NotifyMessageAdded;
             OnMessageDeleted += NotifyMessageRemoved;
             BatteryBase.OnChargeChanged += DisplayCharge;
-            BatteryBase.OnChargeChanged += LowBatteryNotification;
+           // BatteryBase.OnCharge10 += LowBatteryNotification;
             InitializeComboBoxUsers();
+            LithiumLonBattery = new LithiumLonBattery(4000);
             BatteryCharger = new BatteryCharger(LithiumLonBattery);
         }
 
