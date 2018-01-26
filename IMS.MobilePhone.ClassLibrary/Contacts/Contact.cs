@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Simcorp.IMS.MobilePhone.ClassLibrary.Contact {
+﻿namespace Simcorp.IMS.MobilePhone.ClassLibrary.Contacts {
     public class Contact {
         public string ContactName { get; set; }
         public string MobileNumber { get; set; }

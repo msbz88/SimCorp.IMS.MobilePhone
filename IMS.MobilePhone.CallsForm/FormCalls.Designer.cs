@@ -28,9 +28,10 @@
             this.buttonStart = new System.Windows.Forms.Button();
             this.listViewCalls = new System.Windows.Forms.ListView();
             this.Contact = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ReceivedTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Direction = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CountTimesCalled = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             this.panel1.Controls.Add(this.listViewCalls);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(345, 336);
+            this.panel1.Size = new System.Drawing.Size(392, 336);
             this.panel1.TabIndex = 0;
             // 
             // buttonStop
@@ -68,12 +69,13 @@
             // 
             this.listViewCalls.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Contact,
+            this.CountTimesCalled,
             this.Number,
             this.ReceivedTime,
             this.Direction});
             this.listViewCalls.Location = new System.Drawing.Point(3, 88);
             this.listViewCalls.Name = "listViewCalls";
-            this.listViewCalls.Size = new System.Drawing.Size(339, 245);
+            this.listViewCalls.Size = new System.Drawing.Size(385, 245);
             this.listViewCalls.TabIndex = 4;
             this.listViewCalls.UseCompatibleStateImageBehavior = false;
             this.listViewCalls.View = System.Windows.Forms.View.Details;
@@ -82,6 +84,11 @@
             // 
             this.Contact.Text = "Contact";
             this.Contact.Width = 80;
+            // 
+            // Number
+            // 
+            this.Number.Text = "Number";
+            this.Number.Width = 80;
             // 
             // ReceivedTime
             // 
@@ -93,16 +100,16 @@
             this.Direction.Text = "Direction";
             this.Direction.Width = 55;
             // 
-            // Number
+            // CountTimesCalled
             // 
-            this.Number.Text = "Number";
-            this.Number.Width = 80;
+            this.CountTimesCalled.Text = "Called";
+            this.CountTimesCalled.Width = 45;
             // 
             // FormCalls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 360);
+            this.ClientSize = new System.Drawing.Size(411, 360);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormCalls";
@@ -122,6 +129,7 @@
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.ColumnHeader Number;
+        private System.Windows.Forms.ColumnHeader CountTimesCalled;
     }
 }
 

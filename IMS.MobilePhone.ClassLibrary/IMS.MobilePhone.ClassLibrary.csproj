@@ -48,10 +48,10 @@
     <Compile Include="Battery\ChargeBaseFactory.cs" />
     <Compile Include="Battery\ChargeTaskFactory.cs" />
     <Compile Include="Battery\ChargeThreadFactory.cs" />
-    <Compile Include="Contact\Call.cs" />
-    <Compile Include="Contact\CallsGenThread.cs" />
-    <Compile Include="Contact\Contact.cs" />
-    <Compile Include="Contact\RandomCall.cs" />
+    <Compile Include="Contacts\Call.cs" />
+    <Compile Include="Contacts\CallsGenThread.cs" />
+    <Compile Include="Contacts\Contact.cs" />
+    <Compile Include="Contacts\RandomCall.cs" />
     <Compile Include="Output\IOutput.cs" />
     <Compile Include="API\Mobile.cs" />
     <Compile Include="API\SimCorpMobile.cs" />

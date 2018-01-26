@@ -1,4 +1,4 @@
-﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Contact;
+﻿using Simcorp.IMS.MobilePhone.ClassLibrary.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -15,8 +15,10 @@ namespace Simcorp.IMS.MobilePhone.CallsForm {
 
         private void WriteCallsToForm(List<Call> calls) {
             listViewCalls.Items.Clear();
-            foreach (Call c in calls) {
-                listViewCalls.Items.Add(new ListViewItem(new[] { c.Contact.ContactName, c.Contact.MobileNumber.ToString(), c.ReceivedTime.ToString(), c.CallDirection }));
+            foreach (Call call in calls) {
+                listViewCalls.Items.Add(new ListViewItem(new[] {
+                    call.Contact.ContactName, call.CountTimesCalled.ToString(),
+                    call.Contact.MobileNumber.ToString(), call.ReceivedTime.ToString(), call.CallDirection }));
             }
         }
 

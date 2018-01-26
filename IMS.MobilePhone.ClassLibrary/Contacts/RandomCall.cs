@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Simcorp.IMS.MobilePhone.ClassLibrary.Contact {
+namespace Simcorp.IMS.MobilePhone.ClassLibrary.Contacts {
     public class RandomCall {
         private static Random random = new Random();
 
