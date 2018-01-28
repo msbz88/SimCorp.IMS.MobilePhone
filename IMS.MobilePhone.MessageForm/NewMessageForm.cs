@@ -8,7 +8,7 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         TextMessage Message { get; set; }
         MessageGenTask MessageGenTask { get; set; }
         FormMessageFormating FormMessageFormating { get; set; }
-        MessageGenBase MessageGen { get; set; }
+        public MessageGenBase MessageGen { get; set; }
 
         public NewMessageForm(FormMessageFormating formMessageFormating) {
             FormMessageFormating = formMessageFormating;

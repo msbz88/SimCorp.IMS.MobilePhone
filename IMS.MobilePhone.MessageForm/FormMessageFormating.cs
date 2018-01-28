@@ -230,6 +230,12 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void LockOnZeroChargeLevel() {
+            if (NewMessageForm != null) {
+                NewMessageForm.MessageGen.StopGeneration();
+                foreach (Control c in NewMessageForm.Controls) {
+                    c.Enabled = false;
+                }
+            }
             foreach (Control c in this.panel1.Controls) {
                 if (c.Name != "buttonCharge") {
                     c.Enabled = false;
@@ -238,6 +244,11 @@ namespace Simcorp.IMS.MobilePhone.MessageForm {
         }
 
         private void UnLockOnZeroChargeLevel() {
+            if (NewMessageForm != null) {
+                foreach (Control c in NewMessageForm.Controls) {
+                    c.Enabled = true;
+                }
+            }
             foreach (Control c in this.panel1.Controls) {
                 if (c.Name != "CheckBoxOr1") {
                     c.Enabled = true;
